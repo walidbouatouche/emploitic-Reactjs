@@ -6,9 +6,8 @@ const URL = 'http://localhost:3000'
 
 const sendRequest  = (config) => {
     config.baseURL = URL
-    // if (localStorage.getItem("Auth")) {
-    //   const token = JSON.parse(localStorage.getItem("Auth")).token
-    //   config.headers = {
+    // if (localStorage.getItem("token")) {
+    //   const token = JSON.parse(localStorage.getItem("token"))    //   config.headers = {
     //     "authorization": token
     //   }
     // }

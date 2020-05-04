@@ -9,21 +9,11 @@ import{connect} from'react-redux'
 
       
 class Offreviewer extends Component {
-  state={
-    offres:[{}]
-}
-  componentWillReceiveProps(nextProps){
-
-    if(nextProps.state.offre.offres!=null){
-        this.setState({offres:nextProps.state.offre.offres})
-    }
-    
-}
+ 
+ 
   componentDidMount() {
-
     const id=  this.props.match.params.id;
     this.props.getOffreById(id)
-
   
   }
 
@@ -36,7 +26,7 @@ render(){
 <div className=" w3-margin">
       <br/>
         <ul className="w3-ul  w3-white">
-        <List list={this.state.offres} />
+      {(this.props.state.offre.offres!=null && this.props.state.offre.offres!=undefined)? <List list={this.props.state.offre.offres} />:"no data" }
  </ul>
        
 
