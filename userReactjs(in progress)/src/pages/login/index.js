@@ -74,7 +74,19 @@ render(){
 
 
       </div>
+      <br />
+      <br/>
+      <p>
+{(this.props.state.user.loading === false && this.props.state.user.floading === false )
 
+? (<div>
+<p className="w3-padding w3-text-red">  something worng</p>
+
+</div>)
+:null
+
+}
+</p>
   
 </Layout>
     

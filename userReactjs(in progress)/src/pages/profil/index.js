@@ -12,60 +12,16 @@ import { updateCvFile, getUserByid, updateUser } from '../../redux/user/userActi
 
 class Profilviewer extends Component {
 
-  static defaultProps = {
-    state: {},
-     
-  };
+ 
 
   state = {
-    userinfo: [],
-    _cv_link: " ",
     progress: 0,
-   
-  }
-  componentWillReceiveProps(nextProps) {
-
-    if (nextProps.state.user.user !== undefined
-      && nextProps.state.user.user != null) {
-      if (nextProps.state.user.user.url != null) {
-        this.setState({ _cv_link: nextProps.state.user.user.url })
-      }
-      else {
-        const userData = nextProps.state.user.user[0];
-        if (userData === undefined) {
-          return false;
-        }
-        const { _cat, _cv_link } = userData
-
-        if (_cat && _cv_link) {
-          this.setState({ progress: 100 })
-        }
-        else {
-
-          if (_cat) {
-
-            this.setState({ progress: 80 })
-          }
-          if (_cv_link) {
-
-            this.setState({ progress: 20 })
-          }
-        }
-        this.setState({ _cv_link })
-        this.setState({ userinfo: userData })
-
-
-
-
-
-
-
-      }
-    }
-
-
 
   }
+ 
+
+
+  
 
   async componentWillMount(){
 
@@ -138,7 +94,7 @@ this.props.history.push('/');
           
       
         
-                ) ?     this.props.state.user.user[0] :""
+                ) ?     this.props.state.user.user[0] :" "
 
 
 
