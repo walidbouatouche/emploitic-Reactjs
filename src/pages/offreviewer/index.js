@@ -33,9 +33,9 @@ render(){
   
 <Layout>
 
-<div class=" w3-margin">
+<div className=" w3-margin">
       <br/>
-        <ul class="w3-ul  w3-white">
+        <ul className="w3-ul  w3-white">
         <List list={this.state.offres} />
  </ul>
        
