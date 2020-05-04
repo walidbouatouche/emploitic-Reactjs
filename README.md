@@ -1,14 +1,6 @@
-
-foto of  my project reatc
-s
-<img src='https://github.com/walidbouatouche/reactjs_CRUD_AUTH_REDUX/blob/master/img.png?raw=true' width='600px' height='350px'>
-
-<img src='https://github.com/walidbouatouche/reactjs_CRUD_AUTH_REDUX/blob/master/img1.png?raw=true' width='600px'  height='350px'>
-<img src='https://github.com/walidbouatouche/reactjs_CRUD_AUTH_REDUX/blob/master/img2.png?raw=true' width='600px'  height='350px'>
-<img src='https://github.com/walidbouatouche/reactjs_CRUD_AUTH_REDUX/blob/master/img3.png?raw=true' width='600px'  height='350px'>
-<img src='https://github.com/walidbouatouche/reactjs_CRUD_AUTH_REDUX/blob/master/img3.png?raw=true' width='600px'  height='350px'>
-
-
+ 
+<img src='https://github.com/walidbouatouche/EMPLOITIK/blob/master/2020-05-04_031305.png' width='600px' height='350px'>
+ 
 
 
 
