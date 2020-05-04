@@ -57,7 +57,7 @@ class Lists extends Component {
     state: PropTypes.object.isRequired
   };
 
- 
+
   componentDidMount() {
 
     const idCat = this.props.match.params.id;
@@ -71,34 +71,34 @@ class Lists extends Component {
   render() {
 
     return (
-    <>
+      <>
 
-      <Layout>
+        <Layout>
 
-        <div className="w3-white w3-margin">
-          <div className="w3-container w3-padding  w3-orange text-white">
-            <h4>Offres d'emploi par fonction</h4>
+          <div className="w3-white w3-margin">
+            <div className="w3-container w3-padding  w3-orange text-white">
+              <h4>Offres d'emploi par fonction</h4>
+            </div>
+            <ul className="w3-ul w3-hoverable w3-white">
+              {(this.props.state.offre.offres != null) ?
+
+                <List list={this.props.state.offre.offres} /> : "no Data"}
+
+            </ul>
           </div>
-          <ul className="w3-ul w3-hoverable w3-white">
-      {  (this.props.state.offre.offres != null ) ? 
-      
-      <List list={this.props.state.offre.offres} />:"no Data"}
-
-          </ul>
-        </div>
 
 
-        <div class="w3-bar">
+          <div class="w3-bar">
 
-          <a href="#" className="w3-button w3-green w3-margin">1</a>
-          <a href="#"className="w3-button">2</a>
-          <a href="#" className="w3-button">3</a>
-          <a href="#" className="w3-button">4</a>
+            <a href="#" className="w3-button w3-green w3-margin">1</a>
+            <a href="#" className="w3-button">2</a>
+            <a href="#" className="w3-button">3</a>
+            <a href="#" className="w3-button">4</a>
 
-        </div>
-      </Layout>
+          </div>
+        </Layout>
 
-    </>)
+      </>)
   }
 
 
