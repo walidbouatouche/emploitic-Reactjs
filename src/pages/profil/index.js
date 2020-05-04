@@ -12,11 +12,16 @@ import { updateCvFile, getUserByid, updateUser } from '../../redux/user/userActi
 
 class Profilviewer extends Component {
 
+  static defaultProps = {
+    state: {},
+     
+  };
+
   state = {
     userinfo: [],
     _cv_link: " ",
     progress: 0,
-    isAuth:Auth.isAuth()
+   
   }
   componentWillReceiveProps(nextProps) {
 
@@ -83,9 +88,9 @@ class Profilviewer extends Component {
 
 
   updateCvFile = (formData) => {
-
+      this.props.getUserByid()
     this.props.updateCvFile(formData);
-    this.props.getUserByid()
+  
   }
 
 
@@ -116,7 +121,30 @@ this.props.history.push('/');
 
         </div>
         <div className="w3-col m8">
-          <Editform userId={Auth.getUserId()} updateUser={this.updateUserInfo} list={Listofcategorie} userinfo={this.state.userinfo} />
+          <Editform userId={Auth.getUserId()} 
+          
+          updateUser={this.updateUserInfo} list={Listofcategorie} 
+          
+          userinfo={
+            (
+              this.props.state.user.user!=null 
+              
+               && 
+              this.props.state.user.user!=undefined
+               &&
+               this.props.state.user.user[0]!=null
+               &&
+               this.props.state.user.user[0]!=undefined
+          
+      
+        
+                ) ?     this.props.state.user.user[0] :""
+
+
+
+
+
+          } />
         </div>
 
         <div className="w3-col m4">
@@ -142,7 +170,38 @@ this.props.history.push('/');
               <h4> your cv </h4>
             </div>
             <ul className="w3-ul   w3-white">
-              <Upfile userId={Auth.getUserId()} updateCvFile={this.updateCvFile} _cv_link={this.state._cv_link}></Upfile>
+      
+               <Upfile
+                userId={Auth.getUserId()}
+                updateCvFile={this.updateCvFile}
+                _cv_link={
+                    (
+                  this.props.state.user.user!=null 
+                  
+                   && 
+                  this.props.state.user.user!=undefined
+            
+                    ) ?((
+                   
+                      this.props.state.user.user.url !=null 
+                     &&  this.props.state.user.user.url !=undefined
+                     ) ?
+                     this.props.state.user.user.url : this.props.state.user.user[0]._cv_link
+
+
+
+
+
+                    ) :""
+                
+                
+                
+                } 
+                
+                /> 
+ 
+
+
 
 
 
@@ -192,6 +251,7 @@ const mapStoreToProps = state => ({
   state: state
 
 })
+
 
 export default connect(mapStoreToProps, mapDispatchToProps)(Profilviewer)
 

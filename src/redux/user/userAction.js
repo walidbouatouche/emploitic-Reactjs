@@ -118,13 +118,8 @@ export const updateCvFile=(formData)=>dispatch=>{
     url:`/api/upfile/`,
     data:formData
 
-  }).then(res=>{
-    dispatch({
-      type: UPDATE_CV_FILE_SUCCESS,
-      payload: res
-   
- 
-  })
+  }).then(()=>{
+    dispatch( getUserByid())
 
   })
       
@@ -198,7 +193,7 @@ export const updateUser=(userData)=>dispatch=>{
     url:`/api/user/_data/`,
     data:userData
 
-  }).then(res=>{
+  }).then(()=>{
     dispatch(getUserByid())
 
   })
