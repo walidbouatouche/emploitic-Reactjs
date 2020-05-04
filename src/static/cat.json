@@ -1,0 +1,39 @@
+[
+    {
+        "id":1,
+       "title":"Administration, Finance, Comptabilité  Juridique",
+       "tags":"Administration, Finance, Comptabilité  Juridique",
+        "imguri":"https://www.emploitic.com/images/finder/profession/388.png"
+    },
+
+    {
+        "id":2,
+       "title":"Commercial, Marketing, Communication  Création",
+       "tags":"Commercial, Marketing, Communication  Création",
+        "imguri":"https://www.emploitic.com/images/finder/profession/356.png"
+    },
+    {
+        "id":3,
+       "title":"Ingénierie, Industrie, Construction",
+       "tags":"Ingénierie, Industrie, Construction",
+        "imguri":"https://www.emploitic.com/images/finder/profession/367.png"
+    },
+    {
+        "id":4,
+       "title":"Informatique, Télécommunication  Réseaux",
+       "tags":"Informatique, Télécommunication  Réseaux",
+        "imguri":"https://www.emploitic.com/images/finder/profession/364.png"
+    },
+    {
+        "id":5,
+       "title":"Santé, Médical, Pharmaceutique, Délégué médical",
+       "tags":"Santé, Médical, Pharmaceutique, Délégué médical",
+        "imguri":"https://www.emploitic.com/images/finder/profession/375.png"
+    },
+    {
+        "id":6,
+       "title":"Autres",
+       "tags":"Autres",
+        "imguri":"https://www.emploitic.com/images/finder/profession/377.png"
+    }
+]
