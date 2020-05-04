@@ -7,6 +7,10 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types';
 
 import { Link } from "react-router-dom"
+
+
+
+
 function List({ list }) {
 
   return (
@@ -53,14 +57,7 @@ class Lists extends Component {
     state: PropTypes.object.isRequired
   };
 
-  componentWillReceiveProps(nextProps) {
-
-    if (nextProps.state.offre.offres != null) {
-      this.setState({ offres: nextProps.state.offre.offres })
-    }
-    console.log(nextProps.state.offre.offres)
-
-  }
+ 
   componentDidMount() {
 
     const idCat = this.props.match.params.id;
@@ -73,7 +70,8 @@ class Lists extends Component {
 
   render() {
 
-    return (<>
+    return (
+    <>
 
       <Layout>
 
@@ -82,7 +80,9 @@ class Lists extends Component {
             <h4>Offres d'emploi par fonction</h4>
           </div>
           <ul className="w3-ul w3-hoverable w3-white">
-            <List list={this.state.offres} />
+      {  (this.props.state.offre.offres != null ) ? 
+      
+      <List list={this.props.state.offre.offres} />:"no Data"}
 
           </ul>
         </div>
