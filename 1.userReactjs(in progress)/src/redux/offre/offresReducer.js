@@ -5,7 +5,10 @@ GET_OFFRES_BY_ID_SUCCESS,
 GET_OFFRES_BY_ID_FAIL,
 GET_OFFRES_BY_CAT_BEGIN,
 GET_OFFRES_BY_CAT_SUCCESS,
-GET_OFFRES_BY_CAT_FAIL
+GET_OFFRES_BY_CAT_FAIL ,
+GET_MY_OFFRES_BEGIN,
+GET_MY_OFFRES_SUCCESS,
+GET_MY_OFFRES_FAIL
   } from './offresTypes'
   
   const initialState = {
@@ -69,7 +72,31 @@ GET_OFFRES_BY_CAT_FAIL
             floading: false,
             error: action.payload.error
           } 
+          case GET_MY_OFFRES_BEGIN:
+   
+            return {
+              ...state,
+              loading: true,
+              floading: false,
+            
+            }
+          case GET_MY_OFFRES_SUCCESS:
+            
+            return {
+              ...state,
+              loading: false,
+              floading: true,
+              offres: action.payload.data
+            }
+          case  GET_MY_OFFRES_FAIL:
           
+            return {
+              ...state,
+              loading: false,
+              floading: false,
+              error: action.payload.error
+            } 
+            
 
       default:
         return state

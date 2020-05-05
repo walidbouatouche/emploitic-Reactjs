@@ -1,117 +1,93 @@
-import React, { Component } from 'react'
-import Layout from '../../layout/index'
+import React ,{useEffect}from "react";
+import { connect, useSelector } from "react-redux";
+import { getMyoffres} from "../../redux/offre/offresAction";
 import { faMapMarkerAlt, faClock, faBookmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Link } from "react-router-dom"
+import Layout from '../../layout/index'
 
-const Offreslist = [
-    {
-        id: 1,
-        title: "Développeur Front-end",
-        tags: "Legal Doctrine",
-        imguri: "https://www.emploitic.com/attachments/company_logo/logo_3601120_large.jpg"
-    },
+const Myoffres= ({getMyoffres}) => {
 
-    {
-        id: 2,
-        title: "Commercial, Marketing, Communication  Création",
-        tags: "Commercial, Marketing, Communication  Création",
-        imguri: "https://www.emploitic.com/images/finder/profession/356.png"
-    },
-    {
-        id: 3,
-        title: "Ingénierie, Industrie, Construction",
-        tags: "Ingénierie, Industrie, Construction",
-        imguri: "https://www.emploitic.com/images/finder/profession/367.png"
-    },
-    {
-        id: 4,
-        title: "Informatique, Télécommunication  Réseaux",
-        tags: "Informatique, Télécommunication  Réseaux",
-        imguri: "https://www.emploitic.com/images/finder/profession/364.png"
-    },
-    {
-        id: 5,
-        title: "Santé, Médical, Pharmaceutique, Délégué médical",
-        tags: "Santé, Médical, Pharmaceutique, Délégué médical",
-        imguri: "https://www.emploitic.com/images/finder/profession/375.png"
-    },
-    {
-        id: 6,
-        title: "Autres",
-        tags: "Autres",
-        imguri: "https://www.emploitic.com/images/finder/profession/377.png"
-    }
-]
+    const state = useSelector(state => state);
+    useEffect(() => {
+        getMyoffres()
+
+      }, [])
 
 
-function List({ list }) {
+
+  return (
+    <>
+
+    <Layout>
+
+      <div className="w3-white w3-margin">
+        <div className="w3-container w3-padding  w3-orange text-white">
+          <h4>Offres d'emploi par fonction</h4>
+        </div>
+        <ul className="w3-ul w3-hoverable w3-white">
+          {(state.offre.offres != null) ?
+
+            <List list={state.offre.offres} /> : "no Data"}
+
+        </ul>
+      </div>
+
+
+      <div class="w3-bar">
+
+        <a href="#" className="w3-button w3-green w3-margin">1</a>
+        <a href="#" className="w3-button">2</a>
+        <a href="#" className="w3-button">3</a>
+        <a href="#" className="w3-button">4</a>
+
+      </div>
+    </Layout>
+
+  </>
+  )
+
+  function List({ list }) {
 
     return (
-        list.map((item => (<div>
-
-            <li class="w3-padding-16 w3-border-light-gray w3-border-top">
-                <img src={item.imguri} alt="Image" class="w3-left w3-margin-right" style={{ width: '50px' }} />
-                <span class="w3-large"> {item.title}</span>
-                <br />
-                <span>{item.tags}</span>
-                <div class="w3-row">
-                    <div class="w3-col  m8  ">
-                        <div class="w3-row">
-                            <br />
-                            <div class="w3-col  m4  ">
-                                <p className="w3-text-gray">  <span className="w3-margin"><FontAwesomeIcon icon={faMapMarkerAlt} /></span> Alger, Algérie</p>
-                            </div>
-                            <div class="w3-col  m4">
-                                <p className="w3-text-gray">
-                                    <span className="w3-margin"><FontAwesomeIcon icon={faClock} /></span>
-                                    Aujourd'hui</p>
-                            </div>
-                            <div class="w3-col  m4">
-                                <p className="w3-text-gray"> <span className="w3-margin"><FontAwesomeIcon icon={faBookmark} /></span>Débutant / Junior</p>
-                            </div>
-                        </div>
-                    </div>
+      list.map((item => (<div>
+  
+        <li class="w3-padding-16 w3-border-light-gray w3-border-top">
+  
+          <Link to={'/offreviewer/' + item._id}>
+  
+  
+            <img src={item.imguri} alt="Image" class="w3-left w3-margin-right" style={{ width: '50px' }} />
+            <span className="w3-large  w3-text-black"> {item.titre}</span>
+            <br />
+            <span>{item.entreprise}</span>
+            <div className="w3-row">
+              <div className="w3-col  11 ">
+                <div className="w3-row">
+                  <br />
+                  <div className="w3-col  m3  ">
+                    <p className="w3-text-gray">  <span className="w3-margin"><FontAwesomeIcon icon={faMapMarkerAlt} /></span> {item.location} </p>
+                  </div>
+                  <div class="w3-col  m3">
+                    <p className="w3-text-gray">
+                      <span className="w3-margin"><FontAwesomeIcon icon={faClock} /></span>
+                      {item.date_d}</p>
+                  </div>
+                  <div className="w3-col  m6">
+                    <p className="w3-text-gray"> <span className="w3-margin"><FontAwesomeIcon icon={faBookmark} /></span>{item.type}</p>
+                  </div>
                 </div>
-            </li>
-
-
-        </div>))))
-}
-class MyLists extends Component {
-
-
-    render() {
-
-        return (<>
-
-            <Layout>
-
-                <div class="w3-white w3-margin">
-                    <div class="w3-container w3-padding  w3-light-green text-white">
-                        <h4>mes offres postoler</h4>
-                    </div>
-                    <ul class="w3-ul w3-hoverable w3-white">
-                        <List list={Offreslist} />
-                    </ul>
-                </div>
-
-
-                <div class="w3-bar">
-
-                    <a href="#" class="w3-button w3-green w3-margin">1</a>
-                    <a href="#" class="w3-button">2</a>
-                    <a href="#" class="w3-button">3</a>
-                    <a href="#" class="w3-button">4</a>
-
-                </div>
-            </Layout>
-
-        </>)
+              </div>
+            </div>
+          </Link>  </li>
+  
+  
+      </div>))))
+  }
+ 
     }
 
-
-
-
-}
-
-export default MyLists
+export default connect(
+  null,
+  { getMyoffres }
+)(Myoffres);

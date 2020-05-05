@@ -10,8 +10,10 @@ GET_OFFRES_BY_CAT_SUCCESS,
 GET_OFFRES_BY_CAT_FAIL ,
 POSTULER_OFFRES_BEGIN,
 POSTULER_OFFRES_SUCCESS,
-
-POSTULER_OFFRES_FAIL
+POSTULER_OFFRES_FAIL ,
+GET_MY_OFFRES_BEGIN,
+GET_MY_OFFRES_SUCCESS,
+GET_MY_OFFRES_FAIL
 
 } from './offresTypes'
 
@@ -116,6 +118,40 @@ alert(" vous avez deja postuler ce post ");
     //   type: POSTULER_OFFRES_FAIL  ,
     //   payload: {error}
     // })
+
+  })
+}
+
+export const getMyoffres=(id=auth.getUserId())=>dispatch=>{
+  dispatch({
+    type: GET_MY_OFFRES_BEGIN,
+  })
+  
+ 
+
+  return sendRequest({
+
+    method:'GET' ,
+    url:`/api/offre/getmyoffres/${id}`
+
+  }).then(res=>{
+    dispatch({
+      type: GET_MY_OFFRES_SUCCESS,
+      payload: res
+  
+ 
+  })
+
+  })
+      
+    
+   .catch(error=>{
+
+    
+    dispatch({
+      type:   GET_MY_OFFRES_FAIL,
+      payload: {error}
+    })
 
   })
 }

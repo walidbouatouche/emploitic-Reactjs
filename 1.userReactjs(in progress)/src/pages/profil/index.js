@@ -6,6 +6,8 @@ import Upfile from './compenent/upfile'
 import { connect } from 'react-redux'
 import Auth from '../../services/auth'
 import WitAuth from "../../lib/withauth";
+import { Link } from "react-router-dom"
+
 import { updateCvFile, getUserByid, updateUser } from '../../redux/user/userAction'
 
 
@@ -159,13 +161,29 @@ this.props.history.push('/');
 
           <div className="w3-white w3-margin">
             <div className="w3-container w3-padding-16 w3-orange text-white">
-              <h4> status de votre cv </h4>
+              <h4>  Myoffres  </h4>
             </div>
             <ul className="w3-ul   w3-white">
               <li className="w3-padding-16">
                 <div className="w3-light-grey">
 
-<button onClick={this.logout}> Deconnectez</button>
+<button  className="w3-button w3-orange w3-text-white" onClick={this.logout}> Deconnectez</button>
+                </div>
+              </li>
+
+
+            </ul>
+          </div>
+
+          <div className="w3-white w3-margin">
+            <div className="w3-container w3-padding-16 w3-orange text-white">
+              <h4> Myoffres </h4>
+            </div>
+            <ul className="w3-ul   w3-white">
+              <li className="w3-padding-16">
+                <div className="w3-light-grey">
+
+< Link className="w3-button w3-orange w3-text-white" to="/my"> Myoffres </ Link>
                 </div>
               </li>
 

@@ -6,7 +6,8 @@ import Login from'./pages/login'
 import List from'./pages/list'
 import Offreviewer from'./pages/offreviewer'
 import Profil from'./pages/profil'
-import Auth from'./services/auth'
+import Myoffres from'./pages/myoffre'
+
 import { Switch,   BrowserRouter as Router,Route} from'react-router-dom'
 class App extends React.Component {
  
@@ -18,7 +19,7 @@ class App extends React.Component {
 
   <Switch>
       <Route path="/" exact component={Home}></Route>
-  
+      <Route path="/my" exact  component={Myoffres} />
       <Route path="/list/:id" exact  component={List}></Route>
       <Route path="/login" exact  component={Login} />
       <Route path="/offreviewer/:id" exact  component={Offreviewer }></Route>
