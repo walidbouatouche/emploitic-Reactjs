@@ -16,6 +16,8 @@ class LoginOrRegister extends Component {
         Auth.setToken(token);
         Auth.setUserId(userId);
         this.props.history.push('/')
+        window.location.reload(); 
+     
       
       }
 

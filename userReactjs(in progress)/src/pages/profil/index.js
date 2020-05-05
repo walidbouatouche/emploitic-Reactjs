@@ -5,7 +5,7 @@ import Listofcategorie from '../../static/cat.json'
 import Upfile from './compenent/upfile'
 import { connect } from 'react-redux'
 import Auth from '../../services/auth'
-import { Redirect } from'react-router-dom'
+import WitAuth from "../../lib/withauth";
 import { updateCvFile, getUserByid, updateUser } from '../../redux/user/userAction'
 
 
@@ -35,10 +35,7 @@ class Profilviewer extends Component {
 
 
   updateUserInfo = (userData) => {
-
- 
     this.props.updateUser(userData);
-
 
   }
 
@@ -52,21 +49,14 @@ class Profilviewer extends Component {
 
   logout=()=>{
 Auth.clearAll();
+
 this.props.history.push('/');
 
   }
 
   render() {
 
-
-    if(!Auth.getToken()){
  
-      return(
-          <>
-<Redirect to="/login"></Redirect>
-          </>
-)
-  }
     return (<>
  
       <Layout>
@@ -209,7 +199,7 @@ const mapStoreToProps = state => ({
 })
 
 
-export default connect(mapStoreToProps, mapDispatchToProps)(Profilviewer)
+export default  WitAuth(connect(mapStoreToProps, mapDispatchToProps)(Profilviewer))
 
 
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Layout from '../../layout/index'
 import { faMapMarkerAlt, faClock, faBookmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { getOffreById } from '../../redux/offre/offresAction'
+import { getOffreById ,postulerOffre } from '../../redux/offre/offresAction'
 import { connect } from 'react-redux'
 
 
@@ -16,6 +16,11 @@ class Offreviewer extends Component {
     this.props.getOffreById(id)
 
   }
+  postuler=(id)=>{
+
+
+    this.props.postulerOffre(id)
+  }
 
   render() {
 
@@ -26,7 +31,7 @@ class Offreviewer extends Component {
         <div className=" w3-margin">
           <br />
           <ul className="w3-ul  w3-white">
-            {(this.props.state.offre.offres != null && this.props.state.offre.offres != undefined) ? <List list={this.props.state.offre.offres} /> : "no data"}
+            {(this.props.state.offre.offres != null && this.props.state.offre.offres != undefined) ? <List  postulerOffre={this.postuler} list={this.props.state.offre.offres} /> : "no data"}
           </ul>
 
 
@@ -49,7 +54,8 @@ const mapStoreToProps = state => ({
   state: state
 })
 const mapDipatchToProps = {
-  getOffreById
+  getOffreById ,
+  postulerOffre
 }
 export default connect(mapStoreToProps, mapDipatchToProps)(Offreviewer)
 
@@ -58,13 +64,15 @@ export default connect(mapStoreToProps, mapDipatchToProps)(Offreviewer)
 
 
 
-function List({ list }) {
-
+function List({ list ,postulerOffre}) {
+ const apply=(id)=>{
+  postulerOffre(id)
+ }
   return (
     list.map((item => (<div>
 
       <li class="w3-padding-16 w3-border-light-gray w3-border-top">
-        <button class="w3-button w3-orange w3-text-white w3-right">Postuler</button>
+        <button  onClick={ ()=>apply(item._id)} class="w3-button w3-orange w3-text-white w3-right">Postuler</button>
 
         <img src={item.imguri} alt="Image" class="w3-left w3-margin-right" style={{ width: '50px' }} />
         <span class="w3-large"> {item.titre}</span>
