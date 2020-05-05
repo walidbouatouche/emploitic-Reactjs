@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 
-export default function Loginorsingup({ loginOrsingup, action }) {
+const  Loginorsingup=({ loginOrsingup, action })=> {
     const [mail, setMail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -36,3 +36,6 @@ export default function Loginorsingup({ loginOrsingup, action }) {
 
     </div>)
 }
+
+
+export default Loginorsingup

@@ -72,6 +72,7 @@ GET_MY_OFFRES_FAIL
             floading: false,
             error: action.payload.error
           } 
+          
           case GET_MY_OFFRES_BEGIN:
    
             return {

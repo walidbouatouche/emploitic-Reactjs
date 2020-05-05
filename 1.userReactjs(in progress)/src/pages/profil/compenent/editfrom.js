@@ -2,7 +2,7 @@ import React  ,{useState ,useEffect}from'react'
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
-export default function Editfrom({userinfo,list,updateUser ,userId }) {
+const Editfrom =({userinfo,list,updateUser ,userId }) =>{
  
     return(<div className="w3-center" >
 
@@ -124,3 +124,6 @@ enableReinitialize
         </div>
     </div>)
 }
+
+
+export default  Editfrom

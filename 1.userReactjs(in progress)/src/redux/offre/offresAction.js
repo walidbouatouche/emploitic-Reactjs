@@ -122,7 +122,7 @@ alert(" vous avez deja postuler ce post ");
   })
 }
 
-export const getMyoffres=(id=auth.getUserId())=>dispatch=>{
+export const getMyOffres=(id=auth.getUserId())=>dispatch=>{
   dispatch({
     type: GET_MY_OFFRES_BEGIN,
   })

@@ -14,22 +14,12 @@ import { updateCvFile, getUserByid, updateUser } from '../../redux/user/userActi
 
 class Profilviewer extends Component {
 
- 
 
   state = {
     progress: 0,
 
   }
  
-
-
-  
-
-  async componentWillMount(){
-
- 
-    this.setState({isAuth:Auth.isAuth()})
-  }
   async componentDidMount() {
 
     await this.props.getUserByid()
@@ -157,11 +147,25 @@ this.props.history.push('/');
           </div>
 
 
+          <div className="w3-white w3-margin">
+            <div className="w3-container w3-padding-16 w3-orange text-white">
+              <h4> Myoffres </h4>
+            </div>
+            <ul className="w3-ul   w3-white">
+              <li className="w3-padding-16">
+                <div className="w3-light-grey">
 
+<Link className="w3-button w3-orange w3-text-white" to="/my"> Myoffres </ Link>
+                </div>
+              </li>
+
+
+            </ul>
+          </div>
 
           <div className="w3-white w3-margin">
             <div className="w3-container w3-padding-16 w3-orange text-white">
-              <h4>  Myoffres  </h4>
+              <h4> LOGOUT  </h4>
             </div>
             <ul className="w3-ul   w3-white">
               <li className="w3-padding-16">
@@ -175,21 +179,7 @@ this.props.history.push('/');
             </ul>
           </div>
 
-          <div className="w3-white w3-margin">
-            <div className="w3-container w3-padding-16 w3-orange text-white">
-              <h4> Myoffres </h4>
-            </div>
-            <ul className="w3-ul   w3-white">
-              <li className="w3-padding-16">
-                <div className="w3-light-grey">
-
-< Link className="w3-button w3-orange w3-text-white" to="/my"> Myoffres </ Link>
-                </div>
-              </li>
-
-
-            </ul>
-          </div>
+       
         </div>
 
 

@@ -17,8 +17,6 @@ class Offreviewer extends Component {
 
   }
   postuler=(id)=>{
-
-
     this.props.postulerOffre(id)
   }
 
@@ -65,14 +63,14 @@ export default connect(mapStoreToProps, mapDipatchToProps)(Offreviewer)
 
 
 function List({ list ,postulerOffre}) {
- const apply=(id)=>{
+ const _postulerOffre=(id)=>{
   postulerOffre(id)
  }
   return (
     list.map((item => (<div>
 
       <li class="w3-padding-16 w3-border-light-gray w3-border-top">
-        <button  onClick={ ()=>apply(item._id)} class="w3-button w3-orange w3-text-white w3-right">Postuler</button>
+        <button  onClick={ ()=>_postulerOffre(item._id)} class="w3-button w3-orange w3-text-white w3-right">Postuler</button>
 
         <img src={item.imguri} alt="Image" class="w3-left w3-margin-right" style={{ width: '50px' }} />
         <span class="w3-large"> {item.titre}</span>

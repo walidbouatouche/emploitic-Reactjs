@@ -1,39 +1,32 @@
 import React ,{useEffect}from "react";
 import { connect, useSelector } from "react-redux";
-import { getMyoffres} from "../../redux/offre/offresAction";
+import { getMyOffres} from "../../redux/offre/offresAction";
 import { faMapMarkerAlt, faClock, faBookmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from "react-router-dom"
 import Layout from '../../layout/index'
-
-const Myoffres= ({getMyoffres}) => {
+import WitAuth from "../../lib/withauth";
+const Myoffres= ({getMyOffres}) => {
 
     const state = useSelector(state => state);
     useEffect(() => {
-        getMyoffres()
+      getMyOffres()
 
       }, [])
 
-
-
   return (
     <>
-
     <Layout>
-
       <div className="w3-white w3-margin">
         <div className="w3-container w3-padding  w3-orange text-white">
           <h4>Offres d'emploi par fonction</h4>
         </div>
         <ul className="w3-ul w3-hoverable w3-white">
           {(state.offre.offres != null) ?
-
             <List list={state.offre.offres} /> : "no Data"}
 
         </ul>
       </div>
-
-
       <div class="w3-bar">
 
         <a href="#" className="w3-button w3-green w3-margin">1</a>
@@ -87,7 +80,7 @@ const Myoffres= ({getMyoffres}) => {
  
     }
 
-export default connect(
+export default WitAuth (connect(
   null,
-  { getMyoffres }
-)(Myoffres);
+  { getMyOffres }
+)(Myoffres)) 
