@@ -1,24 +1,17 @@
-import React, { Component } from "react";
+import React from "react";
+import Welcom from'./pages/welcom'
 import {
-  AppRegistry,
-  StyleSheet,
+
   Text,
   View,
-  FlatList,
-  AsyncStorage,
-  Button,
-  TextInput,
-  Keyboard,
-  Platform
+
 } from "react-native";
 
 
 
 function  App(){
 return(
-<View>
-<Text > hallo</Text>
-</View>
+<Welcom></Welcom>
 
 
 )
