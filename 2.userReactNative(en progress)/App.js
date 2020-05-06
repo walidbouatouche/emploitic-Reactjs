@@ -1,18 +1,19 @@
 import React from "react";
-import Welcom from'./pages/welcom'
-import {
-
-  Text,
-  View,
-
-} from "react-native";
-
-
+import Home from'./pages/home'
+import List from'./pages/list'
+import { Router, Scene } from 'react-native-router-flux'
+ 
 
 function  App(){
 return(
-<Welcom></Welcom>
 
+  <Router>
+
+  <Scene key = "root">
+     <Scene  hideNavBar={true} key = "home" component = {Home} title = "Home" initial = {true} />
+     <Scene hideNavBar={true}  key = "list" component = {List} title = "List"   />
+  </Scene>
+</Router>
 
 )
 
