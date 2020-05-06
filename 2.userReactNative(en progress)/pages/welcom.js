@@ -32,7 +32,14 @@ return(
 
 }}>
 
-<View  style={{margin:"auto"}}>
+<View  style={{marginTop:
+
+ (Dimensions.get("window").height -(Dimensions.get("window").height *2/10))/2 
+
+
+
+
+}}>
 <Button  
  title=" Welcom to EMPLOITIK Click hier"
 color="#FF4500"
