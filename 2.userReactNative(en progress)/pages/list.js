@@ -2,6 +2,7 @@ import React from "react" ;
 import Layout from'../layout'
 import {View }from "react-native"
  
+import Model from'../components/model'
 
 function List() {
 
@@ -13,7 +14,8 @@ return(
 
  
     <Layout>
-     
+    <Model></Model>
+       
     </Layout> 
     
     </View>)

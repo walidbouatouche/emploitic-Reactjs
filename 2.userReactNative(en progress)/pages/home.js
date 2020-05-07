@@ -12,10 +12,12 @@ function Welcom() {
 
   }
 return(
-    <View>
+    <View    >
 
-
-
+ 
+  
+ 
+ 
  
     <Layout>
     <View>
@@ -23,6 +25,8 @@ return(
   {
     lists.map((item) => (
       <ListItem
+ 
+      
       onPress={()=>jumpTo(item.id)}
         key={item.id}
         leftAvatar={{ source: { uri: item.imguri } }}
@@ -34,6 +38,7 @@ return(
       />
     ))
   }
+  
      </ScrollView>
 </View>
     </Layout> 
