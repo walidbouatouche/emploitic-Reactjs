@@ -9,9 +9,14 @@ import WitAuth from "../../lib/withauth";
 import { Link } from "react-router-dom"
 import Panel from '../../compenets/panel'
 import { updateCvFile, getUserByid, updateUser } from '../../redux/user/userAction'
-
+import PropTypes from 'prop-types';
 class Profilviewer extends Component {
-
+  static propTypes = {
+    state: PropTypes.object.isRequired ,
+    getUserByid:PropTypes.func.isRequired ,
+    updateCvFile:PropTypes.func.isRequired ,
+    user: PropTypes.array.isRequired 
+  };
 
   state = {
     progress: 0,
@@ -151,7 +156,8 @@ const mapDispatchToProps = {
 }
 
 const mapStoreToProps = state => ({
-  state: state
+  state: state,
+  user:state.user
 
 })
 

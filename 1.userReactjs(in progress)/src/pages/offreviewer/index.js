@@ -4,10 +4,16 @@ import Layout from '../../layout/index'
 import { getOffreById ,postulerOffre } from '../../redux/offre/offresAction'
 import { connect } from 'react-redux'
 import _Offrevwier from'./compenets/offrevwier'
-
+import PropTypes from 'prop-types';
 
 class Offreviewer extends Component {
-
+  static propTypes = {
+    id: PropTypes.number.isRequired  ,
+    state: PropTypes.object.isRequired ,
+    postulerOffre:PropTypes.func.isRequired ,
+    getOffreById:PropTypes.func.isRequired ,
+    offre: PropTypes.array.isRequired 
+  };
 
   componentDidMount() {
     const id = this.props.match.params.id;
@@ -47,7 +53,8 @@ class Offreviewer extends Component {
 
 const mapStoreToProps = state => ({
 
-  state: state
+  state: state ,
+  offre:state.offre
 })
 const mapDipatchToProps = {
   getOffreById ,

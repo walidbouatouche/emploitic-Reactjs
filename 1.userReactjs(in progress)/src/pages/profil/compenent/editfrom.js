@@ -1,8 +1,14 @@
 import React  ,{useState ,useEffect}from'react'
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-
+import PropTypes from 'prop-types';
 const Editfrom =({userinfo,list,updateUser ,userId }) =>{
+    Editfrom.propTypes = {
+        updateUser: PropTypes.func.isRequired,
+        list: PropTypes.array.isRequired ,
+        userinfo:PropTypes.object.isRequired ,
+        userId:PropTypes.string.isRequired
+      };
  
     return(<div className="w3-center" >
 

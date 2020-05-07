@@ -39,11 +39,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
   function MobilNavabar({ menu }) {
     return (<div>
+ 
+
+          
       {menu.map((menuitem) =>
         (
-          <a key={menuitem.id} className="w3-bar-item w3-button w3-hover-orange "> {menuitem.title}</a>
+          <Link key={menuitem.id}  to={menuitem.to} className="w3-bar-item w3-button w3-hover-orange "> {menuitem.title}</Link>
         )
       )}
+<Link to="/profil"className="w3-bar-item w3-text-orange w3-button  w3-right w3-hover--light-green">
+            <FontAwesomeIcon icon={faUser} />
+
+          </Link>
     </div>)
   }
 
@@ -73,6 +80,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
         </div>
         <div id="navDemo" className="      w3-bar-block  w3-hide w3-hide-large w3-hide-medium">
           <MobilNavabar menu={menu} />
+          
+
         </div>
 
       </div>

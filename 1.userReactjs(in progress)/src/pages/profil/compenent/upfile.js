@@ -3,12 +3,19 @@ import Auth from '../../../services/auth'
 import { faDownload, faEdit } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
  
-
+import PropTypes from 'prop-types';
 
 const FileUpload = ({ updateCvFile, _cv_link, userId }) => {
+
+
+  FileUpload.propTypes = {
+    updateCvFile: PropTypes.func.isRequired,
+    list: PropTypes.array.isRequired ,
+    userId:PropTypes.string.isRequired ,
+    _cv_link:PropTypes.string.isRequired
+  };
+
   const inputFile = useRef(null);
-
-
 
   const onButtonClick = () => { inputFile.current.click(); };
   const onChange = (e) => {

@@ -1,7 +1,12 @@
 import React, { useState } from 'react'
 
-
+import PropTypes from 'prop-types';
 const  Loginorsingup=({ loginOrsingup, action })=> {
+
+    Loginorsingup.propTypes = {
+        loginOrsingup: PropTypes.func.isRequired,
+        action : PropTypes.string.isRequired
+      };
     const [mail, setMail] = useState('');
     const [password, setPassword] = useState('');
 

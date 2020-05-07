@@ -2,9 +2,12 @@ import React from'react'
 import { faMapMarkerAlt, faClock, faBookmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from "react-router-dom"
+import PropTypes from 'prop-types';
 
 const Listlist=({ list })=> {
-
+  Listlist.propTypes = {
+    list: PropTypes.array
+  };
     return (
       list.map((item => (<div>
         <li class="w3-padding-16 w3-border-light-gray w3-border-top">

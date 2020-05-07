@@ -5,7 +5,7 @@ import { getOffreByCat } from '../../redux/offre/offresAction'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types';
 import Listlist from'./compenets/lisList'
-
+ 
 
 class Lists extends Component {
 
@@ -13,7 +13,9 @@ class Lists extends Component {
 
   static propTypes = {
     idCat: PropTypes.number.isRequired,
-    state: PropTypes.object.isRequired
+    state: PropTypes.object.isRequired ,
+    getOffreByCat:PropTypes.func.isRequired ,
+    offre: PropTypes.array.isRequired ,
   };
 
 
@@ -58,7 +60,8 @@ class Lists extends Component {
 }
 const mapStoreToProps = state => ({
 
-  state: state
+  state: state,
+  offre:state.offre.offres
 })
 const mapDipatchToProps = {
   getOffreByCat

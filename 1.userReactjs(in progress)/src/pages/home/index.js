@@ -2,7 +2,10 @@ import React, { Component } from 'react'
 import Layout from '../../layout/index'
 import Offreslist from '../../static/cat.json'
 import List from'./compenets/listhome'
+
 const Home =()=>{
+
+   
     return (<>
 
       <Layout>

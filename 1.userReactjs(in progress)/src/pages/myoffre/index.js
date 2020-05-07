@@ -6,7 +6,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from "react-router-dom"
 import Layout from '../../layout/index'
 import WitAuth from "../../lib/withauth";
+import PropTypes from "prop-types";
 const Myoffres= ({getMyOffres}) => {
+
+  Myoffres.propTypes = {
+    getMyOffres: PropTypes.func.isRequired
+  };
 
     const state = useSelector(state => state);
     useEffect(() => {

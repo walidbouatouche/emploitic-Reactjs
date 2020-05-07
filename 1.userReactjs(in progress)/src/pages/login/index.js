@@ -4,9 +4,17 @@ import LoginOrsingup from './compenets/loginOrsingup'
 import { singup, login } from '../../redux/user/userAction'
 import { connect } from 'react-redux'
 import Auth from '../../services/auth'
+import PropTypes from 'prop-types';
+
 class LoginOrRegister extends Component {
 
-
+  static propTypes = {
+ 
+    state: PropTypes.object.isRequired ,
+    singup:PropTypes.func.isRequired ,
+    login:PropTypes.func.isRequired ,
+    user: PropTypes.array.isRequired ,
+  };
   componentWillReceiveProps(nextProps) {
     if (nextProps.state.user.floading === true) {
       if (nextProps.state.user.user.token) {
@@ -132,10 +140,11 @@ class LoginOrRegister extends Component {
 
 const mapStoreToProps = state => ({
 
-  state: state
+  state: state ,
+  user:state.user
 })
 const mapDipatchToProps = {
   singup,
-  login
+  login 
 }
 export default connect(mapStoreToProps, mapDipatchToProps)(LoginOrRegister)

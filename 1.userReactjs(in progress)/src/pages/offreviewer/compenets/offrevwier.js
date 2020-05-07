@@ -1,7 +1,14 @@
 import React from'react'
 import { faMapMarkerAlt, faClock, faBookmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import PropTypes from 'prop-types';
 const Offrevwier =({ list ,postulerOffre})=> {
+  Offrevwier.propTypes = {
+    postulerOffre: PropTypes.func.isRequired,
+    list: PropTypes.array.isRequired
+  };
+
+
     const _postulerOffre=(id)=>{
      postulerOffre(id)
     }
