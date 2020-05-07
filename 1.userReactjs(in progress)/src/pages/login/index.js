@@ -96,12 +96,8 @@ class LoginOrRegister extends Component {
                   ? (<div>
 
                     <p className="w3-text-green">
-
-
                       Loading ...
-                   
-     </p>
-
+                                                    </p>
 
 
                   </div>)

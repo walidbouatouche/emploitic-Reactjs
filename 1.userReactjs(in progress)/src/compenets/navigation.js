@@ -2,28 +2,16 @@ import React from 'react'
 import { Link } from "react-router-dom"
 import {   faBars, faUser } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-export default function Navabar() {
-
-
-
-
+ const  Navabar =()=> {
   const menu = [
     {
       id: 1,
       title: " offres d'emploi",
       to:"/"
 
-    },
-    {
-      id: 2,
-      title: " Your profil" ,
-      to:"/profil"
-    },
-    {
-      id: 3,
-      title: "Emploitic connect"
-
-    }]
+    }
+ 
+    ]
 
 
 
@@ -32,15 +20,11 @@ export default function Navabar() {
   function toggleFunction() {
     var x = document.getElementById("navDemo");
     if (x.className.indexOf("w3-show") == -1) {
-
       x.className = x.className.concat(" w3-show")
-
-
     }
     else {
       x.className = x.className.replace("w3-show", "")
     }
-
   }
   function DesktopNavabar({ menu }) {
     return (<div>
@@ -55,7 +39,6 @@ export default function Navabar() {
 
   function MobilNavabar({ menu }) {
     return (<div>
-
       {menu.map((menuitem) =>
         (
           <a key={menuitem.id} className="w3-bar-item w3-button w3-hover-orange "> {menuitem.title}</a>
@@ -63,6 +46,7 @@ export default function Navabar() {
       )}
     </div>)
   }
+
 
   return (
    <div>
@@ -101,3 +85,6 @@ export default function Navabar() {
 
 
 }
+
+
+export default Navabar

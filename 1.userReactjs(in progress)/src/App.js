@@ -21,13 +21,14 @@ class App extends React.Component {
       <Route path="/" exact component={Home}></Route>
       <Route path="/my" exact  component={Myoffres} />
       <Route path="/list/:id" exact  component={List}></Route>
-      <Route path="/login" exact  component={Login} />
+      {/* <Route path="/login" exact  component={Login} /> */}
       <Route path="/offreviewer/:id" exact  component={Offreviewer }></Route>
      
       
       <Route path="/profil" exact  component={Profil} />
    
- 
+      <Route exact  component={Home} />
+
       </Switch>
       </Router>);
   }

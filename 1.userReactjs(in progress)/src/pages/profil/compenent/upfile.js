@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import Auth from '../../../services/auth'
 import { faDownload, faEdit } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Link } from 'react-router-dom'
+ 
 
 
 const FileUpload = ({ updateCvFile, _cv_link, userId }) => {

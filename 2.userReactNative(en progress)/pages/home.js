@@ -1,6 +1,6 @@
 import React from "react" ;
 import Layout from'../layout'
-import {View }from "react-native"
+import {View  , ScrollView}from "react-native"
 import lists from'../static/cat.json'
 import { ListItem } from 'react-native-elements'
 import { Actions } from 'react-native-router-flux';
@@ -19,6 +19,7 @@ return(
  
     <Layout>
     <View>
+    <ScrollView>
   {
     lists.map((item) => (
       <ListItem
@@ -33,6 +34,7 @@ return(
       />
     ))
   }
+     </ScrollView>
 </View>
     </Layout> 
     
