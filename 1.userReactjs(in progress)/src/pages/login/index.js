@@ -9,11 +9,11 @@ import PropTypes from 'prop-types';
 class LoginOrRegister extends Component {
 
   static propTypes = {
- 
-    state: PropTypes.object.isRequired ,
-    singup:PropTypes.func.isRequired ,
-    login:PropTypes.func.isRequired ,
-    user: PropTypes.array.isRequired ,
+
+    state: PropTypes.object.isRequired,
+    singup: PropTypes.func.isRequired,
+    login: PropTypes.func.isRequired,
+    user: PropTypes.array.isRequired,
   };
   componentWillReceiveProps(nextProps) {
     if (nextProps.state.user.floading === true) {
@@ -24,9 +24,9 @@ class LoginOrRegister extends Component {
         Auth.setToken(token);
         Auth.setUserId(userId);
         this.props.history.push('/')
-        window.location.reload(); 
-     
-      
+        window.location.reload();
+
+
       }
 
 
@@ -89,7 +89,7 @@ class LoginOrRegister extends Component {
 
 
                       Registration completed successfully
-                      
+
      </p>
 
 
@@ -140,11 +140,11 @@ class LoginOrRegister extends Component {
 
 const mapStoreToProps = state => ({
 
-  state: state ,
-  user:state.user
+  state: state,
+  user: state.user
 })
 const mapDipatchToProps = {
   singup,
-  login 
+  login
 }
 export default connect(mapStoreToProps, mapDipatchToProps)(LoginOrRegister)
