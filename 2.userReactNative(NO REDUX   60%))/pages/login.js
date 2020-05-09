@@ -19,7 +19,7 @@ const Login = () => {
     const _password = password;
     alert(_password);
     Sendrequest('/api/user/_data/', 'POST', JSON.stringify({ mail: _mail, password: _password })).then(res => {
-  
+
       res.json().then((response) => {
         const { token, userId } = response
         //  we receive data from backend

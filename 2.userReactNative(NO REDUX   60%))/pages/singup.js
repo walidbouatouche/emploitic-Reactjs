@@ -3,9 +3,7 @@ import Layout from '../layout'
 import { TouchableOpacity, TextInput, View, StyleSheet, ScrollView, Text } from "react-native"
 import Sendrequest from '../services/sendrequest'
 
-
 const Singup = () => {
-
     const [mail, setMail] = useState('');
     const [password, setPassword] = useState('');
     const handlePassword = (text) => {

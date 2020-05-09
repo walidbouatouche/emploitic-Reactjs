@@ -1,10 +1,8 @@
-import { AsyncStorage} from 'react-native'
-
-
+import { AsyncStorage } from 'react-native'
 class _Auth {
-   constructor() {
-    AsyncStorage.getItem('userId').then((value) =>{this._userId =value})  ;
-    AsyncStorage.getItem('token').then((value) =>{this._token =value})  ;
+    constructor() {
+        AsyncStorage.getItem('userId').then((value) => { this._userId = value });
+        AsyncStorage.getItem('token').then((value) => { this._token = value });
     }
     setToken(token) {
         AsyncStorage.setItem('token', token)
