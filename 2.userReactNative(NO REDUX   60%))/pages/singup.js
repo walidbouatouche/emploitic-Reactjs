@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Layout from '../layout'
 import { TouchableOpacity, TextInput, View, StyleSheet, ScrollView, Text } from "react-native"
-import Sendrequest from '../services/sendrequest'
+import sendRequest from '../services/sendrequest'
 
 const Singup = () => {
     const [mail, setMail] = useState('');
@@ -15,7 +15,7 @@ const Singup = () => {
     const login = () => {
         const _mail = mail;
         const _password = password;
-        Sendrequest('/api/user/data/', 'POST', JSON.stringify({ mail: _mail, password: _password })).then(res => {
+        sendRequest('/api/user/data/', 'POST', JSON.stringify({ mail: _mail, password: _password })).then(res => {
             alert("singuo secssfully")
 
         }).catch(e => {
