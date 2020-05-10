@@ -1,0 +1,52 @@
+.center {
+    margin: auto;
+}
+
+ 
+  
+  #footer {
+  
+    width: 100%;
+             /* Footer height */
+  }
+
+  .border-bottom:hover{
+  color:red;
+  background: white;
+
+  }
+  body{
+    background: 	#F5F5F5;
+  }
+  #navDemo {
+    margin-top: 2px;
+  }
+  img {
+    width: 100%;
+  }
+
+  form{
+    width:50%;
+    margin: auto;
+  }
+  .border {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    z-index: 1;
+  }
+#myNavbar{
+  z-index: -1;
+}
+ 
+a:active{
+  text-decoration: none;
+}
+a:hover{
+  text-decoration: none;
+}
+
+body{
+
+  background: #f1f4f9;
+}
