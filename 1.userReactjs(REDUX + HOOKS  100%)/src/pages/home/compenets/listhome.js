@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from "react-router-dom"
 import PropTypes from "prop-types";
+//The component to display the list of job offers categories
+//المكون الخاص بإظهار قائمة اصناف  عروض الشغل
 const List = ({ list }) => {
   List.propTypes = {
     list: PropTypes.array

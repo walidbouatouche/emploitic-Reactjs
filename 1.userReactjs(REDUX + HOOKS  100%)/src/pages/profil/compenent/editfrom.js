@@ -2,8 +2,18 @@ import React  ,{useState ,useEffect}from'react'
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import PropTypes from 'prop-types';
+  //The code is clear and simple
+ // الكود واضح وبسيط
 
-const Editfrom =({userinfo,list,updateUser ,userId }) =>{
+ // Only the new thing we used was the formic library
+ // فقط الشىء الجديد استعملنا مكتبة فورميك                
+ 
+ /*   https://jaredpalmer.com/formik/      */
+
+ /* https://jasonwatmore.com/post/2020/04/20/react-formik-combined-add-edit-create-update-form-example */
+
+
+ const Editfrom =({userinfo,list,updateUser ,userId }) =>{
 
     Editfrom.propTypes = {
         updateUser: PropTypes.func.isRequired,
@@ -79,11 +89,9 @@ enableReinitialize
 
             
             }
-             
                     
                 </Field>
                                 </div>
-
 
                                 <div >
                                 <br />  
@@ -94,17 +102,12 @@ enableReinitialize
 <br />                        </div>
 
 
-
-
-
 <div >
                             <label htmlFor="experience">  experience(short text)</label>
                             <Field   name="experience"  as="textarea" className={'w3-input w3-border' + (errors.experience && touched.experience ? ' w3-border w3-border-red' : '')} />
                             {errors.experience && touched.experience ? (<div className="w3-text-red">{errors.experience}</div>) : null}
 
 <br />                        </div>
-
-
 
 <div >
                             <label htmlFor="deplom"> diplome(short text)</label>

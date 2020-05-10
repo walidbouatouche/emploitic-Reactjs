@@ -18,10 +18,12 @@ class LoginOrRegister extends Component {
     if (nextProps.state.user.floading === true) {
       if (nextProps.state.user.user.token) {
         // when we receive token mean: successfully login
+        //عندما نتلقى يعني الرمز المميز: تسجيل الدخول بنجاح
         const { token, userId } = nextProps.state.user.user
         //  we receive data from backend
-        Auth.setToken(token);
-        Auth.setUserId(userId);
+        //نتلقى البيانات من الخلفية
+        Auth.setToken(token); //
+        Auth.setUserId(userId);  
         this.props.history.push('/')
         window.location.reload();
       }

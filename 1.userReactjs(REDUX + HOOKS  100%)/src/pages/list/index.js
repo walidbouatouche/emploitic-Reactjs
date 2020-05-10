@@ -18,6 +18,8 @@ class Lists extends Component {
   }
 
   componentDidMount() {
+     //Get an ID from the home page
+    //   الحصول على معرف من الصفحة الرئيسية      /* https://scotch.io/courses/using-react-router-4/route-params               */
     const idCat = this.props.match.params.id;
     this.props.getOffreByCat(idCat)
 
@@ -45,6 +47,9 @@ class Lists extends Component {
 
 
 }
+
+// In short you need to know Redux well
+//باختصار  تحتاج الى معرفة جيدة redux     /* https://www.javatpoint.com/react-redux-example     */
 const mapStoreToProps = state => ({
   state: state,
   offre: state.offre.offres

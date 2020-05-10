@@ -2,7 +2,9 @@ import React from 'react'
 import { faMapMarkerAlt, faClock, faBookmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import PropTypes from 'prop-types';
-
+  
+  //The code is clear and simple
+ // الكود واضح وبسيط
 const Offrevwier = ({ list, postulerOffre }) => {
 
   Offrevwier.propTypes = {

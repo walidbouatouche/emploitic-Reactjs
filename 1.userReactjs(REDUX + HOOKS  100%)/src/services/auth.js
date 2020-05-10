@@ -1,3 +1,8 @@
+
+//Class for authentication, token monitoring, and member identification
+//فئة للمصادقة ومراقبة الرمز المميز وتحديد العضو
+/* https://www.javascripttutorial.net/es6/javascript-class/ */
+
 class _Auth {
 
     constructor() {
@@ -25,7 +30,7 @@ class _Auth {
     }
 
     isAuth() {
-        return Boolean(this._token);
+        return Boolean(this._token); //https://www.w3schools.com/js/js_booleans.asp
     }
 }
 

@@ -11,6 +11,8 @@ import Panel from '../../compenets/panel'
 import { updateCvFile, getUserByid, updateUser } from '../../redux/user/userAction'
 import PropTypes from 'prop-types';
 
+//A page about user data
+//صفحة خاص ببيانات المستخدم
 class Profilviewer extends Component {
   static propTypes = {
     state: PropTypes.object.isRequired,
@@ -49,6 +51,13 @@ class Profilviewer extends Component {
           <h4 className="w3-margin">Vous infos</h4>
         </div>
         <div className="w3-col m8">
+  {
+ 
+  //update data
+  //تحديث البيانات
+  
+  }
+                   
           <Editform userId={Auth.getUserId()}
             updateUser={this.updateUserInfo} list={Listofcategorie}
             userinfo={

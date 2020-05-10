@@ -3,6 +3,11 @@ import { faDownload, faEdit } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import PropTypes from 'prop-types';
 
+
+  //The code is clear and simple
+ // الكود واضح وبسيط
+
+ 
 const FileUpload = ({ updateCvFile, _cv_link, userId }) => {
 
   FileUpload.propTypes = {

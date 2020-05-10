@@ -7,7 +7,7 @@ const Loginorsingup = ({ loginOrsingup, action }) => {
         action: PropTypes.string.isRequired
     };
 
-    const [mail, setMail] = useState('');
+    const [mail, setMail] = useState('');  //https://ar.reactjs.org/docs/hooks-intro.html
     const [password, setPassword] = useState('');
 
 

@@ -1,5 +1,6 @@
 import React from 'react'
-
+//The code is clear and simple
+// الكود واضح وبسيط
 const Footer = () => {
   return (<div className="w3-border w3-dark-grey">
     <footer className="w3-row-padding w3-padding-32 ">
@@ -11,3 +12,7 @@ const Footer = () => {
 }
 
 export default Footer
+
+
+
+

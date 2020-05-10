@@ -1,5 +1,6 @@
 import React from 'react'
-
+//For design we used a lot on site
+//خاص بتصميم استعملنا كثير في موقع
 const Panel = ({ title, children }) => {
     return (<>
         <div className="w3-white w3-margin">

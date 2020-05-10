@@ -4,7 +4,8 @@ import { getOffreById, postulerOffre } from '../../redux/offre/offresAction'
 import { connect } from 'react-redux'
 import _Offrevwier from './compenets/offrevwier'
 import PropTypes from 'prop-types';
-
+  //The code is clear and simple
+ // الكود واضح وبسيط
 class Offreviewer extends Component {
   static propTypes = {
     id: PropTypes.number.isRequired,

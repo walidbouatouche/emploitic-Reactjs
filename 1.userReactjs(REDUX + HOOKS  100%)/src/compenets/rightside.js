@@ -1,6 +1,7 @@
 import React from 'react'
 import Panel from './panel'
-
+//الجانب الأيمن من الصفحة
+//Rightside of page
 const Rightside = () => {
         return (<>
                 <div className="w3-col  l3  w3-margin-top">

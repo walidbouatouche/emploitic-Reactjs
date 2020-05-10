@@ -4,8 +4,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from "react-router-dom"
 import PropTypes from 'prop-types';
 
-const Listlist = ({ list }) => {
+//A page to display job offers according to the specified classification
+//صفحة لعرض عروض العمل حسب التصنيف المحدد
+const Listlist = ({ list }) => {  
 
+
+   //typechecking-with-proptypes
+  //التحقق من الأنواع باستخدام PropTypes           /* https://ar.reactjs.org/docs/typechecking-with-proptypes.html            */
   Listlist.propTypes = {
     list: PropTypes.array
   };

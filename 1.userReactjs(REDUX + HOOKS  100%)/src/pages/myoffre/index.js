@@ -7,7 +7,10 @@ import { Link } from "react-router-dom"
 import Layout from '../../layout/index'
 import WitAuth from "../../lib/withauth";
 import PropTypes from "prop-types";
-
+ //A page showing the offers you have requested
+ //صفحة تظهر العروض التي طلبتها
+  //The code is clear and simple
+ // الكود واضح وبسيط
 const Myoffres = ({ getMyOffres }) => {
 
   Myoffres.propTypes = {

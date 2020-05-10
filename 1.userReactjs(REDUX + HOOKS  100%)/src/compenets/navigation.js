@@ -3,6 +3,11 @@ import { Link } from "react-router-dom"
 import { faBars, faUser } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
+
+// The main menu of the page
+// القائمة الرئيسية للصفحة
+//The code is clear and simple
+// الكود واضح وبسيط
 const Navabar = () => {
 
   const menu = [
