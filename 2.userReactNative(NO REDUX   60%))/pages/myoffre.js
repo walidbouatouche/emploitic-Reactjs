@@ -6,6 +6,11 @@ import Sendrequest from '../services/sendrequest';
 import Auth from '../services/auth';
 import { ListItem } from 'react-native-elements';
 
+//A page showing the offers you have requested
+//صفحة تظهر العروض التي طلبتها
+//The code is clear and simple
+// الكود واضح وبسيط
+
 const Myoffre = (props) => {
   const [myoffres, setMyoffres] = useState([{}]);
   useEffect(() => {

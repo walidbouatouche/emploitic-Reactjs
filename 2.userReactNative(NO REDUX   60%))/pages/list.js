@@ -7,8 +7,10 @@ import { ListItem } from 'react-native-elements';
 const List = (props) => {
   const [offres, setOffres] = useState([{}]);
   useEffect(() => {
+    //Get an ID from the home page
+    // الحصول على معرف من الصفحة الرئيسية   
 
-    sendrRequest(`/api/offre/_data/${props.id}`, 'GET', false).then(res => {
+    sendRequest(`/api/offre/_data/${props.id}`, 'GET', false).then(res => {  /* https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch*/
       res.json().then((response) => {
         console.log(response);
         setOffres(response)

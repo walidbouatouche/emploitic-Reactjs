@@ -6,7 +6,7 @@ import Auth from '../services/auth'
 import { Actions } from 'react-native-router-flux';
 
 const Login = () => {
-  const [mail, setMail] = useState('');
+  const [mail, setMail] = useState(''); //https://ar.reactjs.org/docs/hooks-intro.html
   const [password, setPassword] = useState('');
   const handlePassword = (text) => {
     setPassword(text)

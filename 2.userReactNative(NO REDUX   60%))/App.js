@@ -8,6 +8,12 @@ import Singup from './pages/singup'
 import { Router, Scene, Drawer } from 'react-native-router-flux'
 import MenuIcon from './components/menuIcon'
 import Sidemenu from './components/sidemenu'
+ /* We are completely  use to our project 
+ * https://github.com/aksonov/react-native-router-flux
+ */
+ /*  نحن نستخدم مشروعنا بالكامل 
+ * https://github.com/aksonov/react-native-router-flux
+ */
 
 const App = () => {
   return (

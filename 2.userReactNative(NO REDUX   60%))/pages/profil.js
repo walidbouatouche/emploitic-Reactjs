@@ -6,6 +6,8 @@ import sendRequest from '../services/sendrequest';
 import Auth from '../services/auth';
 import { ListItem } from 'react-native-elements';
 
+//A page about user data
+//صفحة خاص ببيانات المستخدم
 const Profil = (props) => {
   const [myoffres, setMyoffres] = useState([{}]);
   useEffect(() => {

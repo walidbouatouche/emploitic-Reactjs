@@ -5,6 +5,9 @@ import lists from '../static/cat.json'
 import { ListItem } from 'react-native-elements'
 import { Actions, ActionConst } from 'react-native-router-flux';
 
+
+//The first page that the user sees
+//الصفحة الاولى التي يراها المستخدم 
 const Home = () => {
   const jumpTo = (id) => {
 

@@ -1,4 +1,4 @@
-function sendRequest(path,method,data){
+function sendRequest(path,method,data){   //https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
   if(data===false){
     return fetch('http://localhost:3000'+path, {
       method: method,

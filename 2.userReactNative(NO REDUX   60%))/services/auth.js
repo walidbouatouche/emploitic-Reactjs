@@ -1,4 +1,9 @@
 import { AsyncStorage } from 'react-native'
+
+//Class for authentication, token monitoring, and member identification
+//فئة للمصادقة ومراقبة الرمز المميز وتحديد العضو
+/* https://www.javascripttutorial.net/es6/javascript-class/ */
+
 class _Auth {
     constructor() {
         AsyncStorage.getItem('userId').then((value) => { this._userId = value });
