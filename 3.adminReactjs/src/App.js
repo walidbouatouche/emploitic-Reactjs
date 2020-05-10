@@ -1,5 +1,6 @@
 import React from 'react';
-
+import { Provider } from 'react-redux'
+import { store } from './_helpers/store'
 const App = () => {
 
   return (
@@ -10,7 +11,11 @@ const App = () => {
 }
 
 const AppWithStore = () => {
-  return(<App />)
+  return (
+    <Provider store={store}>
+      <App />
+    </Provider>
+  )
 
 }
 
