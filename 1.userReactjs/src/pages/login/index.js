@@ -21,7 +21,8 @@ class LoginOrRegister extends Component {
         //عندما نتلقى يعني الرمز المميز: تسجيل الدخول بنجاح
         const { token, userId } = nextProps.state.user.user
         //  we receive data from backend
-        //نتلقى البيانات من الخلفية
+        // store user details and jwt token in local storage to keep user logged in between page refreshes
+        // قم بتخزين تفاصيل المستخدم ورمز jwt المميز في التخزين المحلي للحفاظ على تسجيل دخول المستخدم بين تحديثات الصفحة
         Auth.setToken(token); //
         Auth.setUserId(userId);  
         this.props.history.push('/')

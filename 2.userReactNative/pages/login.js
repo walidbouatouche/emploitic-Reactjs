@@ -23,6 +23,8 @@ const Login = () => {
       res.json().then((response) => {
         const { token, userId } = response
         //  we receive data from backend
+        // store user details and jwt token in local storage to keep user logged in between page refreshes
+        // قم بتخزين تفاصيل المستخدم ورمز jwt المميز في التخزين المحلي للحفاظ على تسجيل دخول المستخدم بين تحديثات الصفحة
         Auth.setToken(token);
         Auth.setUserId(userId);
         window.location.reload();
