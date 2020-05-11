@@ -1,7 +1,7 @@
 import { offreConstants } from '../_canstants/offres.constants'
 
 export function offres(state = {}, action) {
-
+    console.log(action);
     switch (action.type) {
         case offreConstants.GET_ALL_OFFRES_REQUEST:
             return {
@@ -10,7 +10,7 @@ export function offres(state = {}, action) {
 
         case offreConstants.GET_ALL_OFFRES_SUCCESS:
             return {
-                listoffres: action.offres
+                listoffres: action.offre
             }
 
         case offreConstants.GET_ALL_OFFRES_FAILURE:

@@ -1,14 +1,14 @@
 import sendRequest from '../../_helpers/sendrequest'
 import { offreConstants } from '../_canstants/offres.constants'
 
-export const offreAction = {
+export const _offreAction = {
     getAllOffres,
 }
 
 function getAllOffres() {
+    return dispatch=>{
     dispatch({
-        tyoe: offreConstants.GET_ALL_OFFRES_REQUEST
-
+        type: offreConstants.GET_ALL_OFFRES_REQUEST
     })
     return sendRequest({
         method: 'GET',
@@ -23,11 +23,11 @@ function getAllOffres() {
         error => {
             dispatch({
                 type: offreConstants.GET_ALL_OFFRES_FAILURE,
-                error
-
+                error:"somthing Wrong"
             })
 
         }
 
     )
+    }
 }
