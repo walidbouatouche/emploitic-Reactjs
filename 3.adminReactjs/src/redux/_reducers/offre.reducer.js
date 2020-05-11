@@ -10,7 +10,7 @@ export function offres(state = {}, action) {
 
         case offreConstants.GET_ALL_OFFRES_SUCCESS:
             return {
-                listoffres: action.offre
+                listoffres: action.offre.data
             }
 
         case offreConstants.GET_ALL_OFFRES_FAILURE:
