@@ -17,6 +17,21 @@ export function offres(state = {}, action) {
             return {
                 error: action.error
             }
+        case offreConstants.REMOVE_OFFRES_REQUEST:
+            return {
+                loading: true
+            };
+
+        case offreConstants.REMOVE_OFFRES_SUCCESS:
+            return {
+                succes: true
+            }
+
+        case offreConstants.REMOVE_OFFRES_FAILURE:
+            return {
+                error: action.error
+            }
+
 
         default:
             return state;

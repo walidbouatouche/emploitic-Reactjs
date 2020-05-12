@@ -4,16 +4,21 @@ import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
-const OffreList = ({ offrelist }) => {
+const OffreList = ({ offrelist, _removeOffre }) => {
+
+
+    function removeOffre(_id) {
+
+        if (window.confirm(" Are you Sure !!")) {
+            _removeOffre(_id);
+        }
+    }
 
     return (<>
-   
+        <button className="w3-margin"> +</button>
         <table className="w3-table-all w3-width w3-margin-top">
-        <button className="w3-margin"> +</button> 
             <thead>
-   
                 <tr className="w3-orange w3-text-white">
-                    
                     <th> Offre</th>
                     <th>Edit</th>
                     <th> Remove</th>
@@ -24,7 +29,7 @@ const OffreList = ({ offrelist }) => {
                     <tr key={item._id} >
                         <th>{item.titre}</th>
                         <th  ><FontAwesomeIcon icon={faEdit} /></th>
-                        <th  ><FontAwesomeIcon icon={faTrash} /></th>
+                        <th onClick={() => removeOffre(item._id)} ><FontAwesomeIcon icon={faTrash} /></th>
                     </tr>
                 )}
             </tbody>
