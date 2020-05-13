@@ -8,11 +8,11 @@ const OffreList = ({ offrelist, _removeOffre }) => {
 
 
     function removeOffre(_id) {
-
         if (window.confirm(" Are you Sure !!")) {
             _removeOffre(_id);
         }
     }
+
 
     return (<>
         <button className="w3-margin"> +</button>

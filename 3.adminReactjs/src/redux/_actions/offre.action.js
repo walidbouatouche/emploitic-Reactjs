@@ -44,6 +44,7 @@ function removeOffre(id) {
             url: `/api/offre/_data/${id}`
         }).then(
             () => {
+                dispatch({type:offreConstants.REMOVE_OFFRES_SUCCESS})
                 dispatch(_offreAction.getAllOffres())
             },
             () => {

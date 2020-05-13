@@ -19,6 +19,7 @@ const Offremanager = () => {
     }, [])
     function removeOffre(_id) {
         dispatch(_offreAction.removeOffre(_id))
+      
     }
     return (<>
         <Layout>
