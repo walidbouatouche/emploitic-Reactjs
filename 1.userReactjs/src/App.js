@@ -1,6 +1,7 @@
 import React from 'react';
 import store from './redux/store';
 import { Provider } from "react-redux";
+
 import Home from './pages/home'
 // import Login from './pages/login'
 import List from './pages/list'

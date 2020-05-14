@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+
 import Layout from '../../layout/index'
 import Editform from './compenent/editfrom'
 import Listofcategorie from '../../static/cat.json'

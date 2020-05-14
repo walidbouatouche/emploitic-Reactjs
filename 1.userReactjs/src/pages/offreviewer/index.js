@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+
 import Layout from '../../layout/index'
 import { getOffreById, postulerOffre } from '../../redux/offre/offresAction'
 import { connect } from 'react-redux'

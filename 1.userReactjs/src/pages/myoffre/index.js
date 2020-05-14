@@ -3,6 +3,7 @@ import { connect, useSelector } from "react-redux";
 import { getMyOffres } from "../../redux/offre/offresAction";
 import { faMapMarkerAlt, faClock, faBookmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import { Link } from "react-router-dom"
 import Layout from '../../layout/index'
 import WitAuth from "../../lib/withauth";
