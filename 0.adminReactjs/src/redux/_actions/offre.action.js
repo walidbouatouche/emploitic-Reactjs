@@ -6,14 +6,14 @@ export const _offreAction = {
     removeOffre
 }
 
-function getAllOffres() {
+function getAllOffres(query='a') {
     return dispatch => {
         dispatch({
             type: offreConstants.GET_ALL_OFFRES_REQUEST
         })
         return sendRequest({
             method: 'GET',
-            url: `/api/offre/data/`
+            url: `/api/offre/offres_adminRoutes/`+query
         }).then(
             offre => {
                 dispatch({
