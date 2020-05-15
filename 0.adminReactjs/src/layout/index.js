@@ -9,10 +9,10 @@ const Layout = (props) => {
     <>
       <Menu />
       <div className="w3-row">
-        <div className="w3-col  l9 w3-margin-top">
+        <div className="w3-col   w3-margin-top">
           {props.children}
         </div>
-        <Rightside />
+        {/* <Rightside /> */}
       </div>
       <Footer />
     </>

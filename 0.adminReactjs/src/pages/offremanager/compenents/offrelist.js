@@ -15,7 +15,7 @@ const OffreList = ({ offrelist, _removeOffre }) => {
 
 
     return (<>
-        <button className="w3-margin"> +</button>
+      
         <table className="w3-table-all w3-width w3-margin-top">
             <thead>
                 <tr className="w3-orange w3-text-white">
