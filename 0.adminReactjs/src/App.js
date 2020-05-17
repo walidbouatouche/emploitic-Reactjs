@@ -3,11 +3,12 @@ import { Provider } from 'react-redux'
 import { store } from './_helpers/store'
 import { Switch, BrowserRouter as Router, Route } from 'react-router-dom'
 import Offremanger from './pages/offremanager';
+import { history } from './_helpers/history'
 const App = () => {
 
   return (
 
-    <Router>
+    <Router history={history}>
       <Switch>
         <Route path="/" exact component={Offremanger} />
       </Switch>

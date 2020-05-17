@@ -4,13 +4,13 @@ import Rightside from '../compenents/rightside'
 import Footer from '../compenents/footer'
 //The main layout that appears on all pages
 //التخطيط الرئيسي الذي يظهر في جميع الصفحات
-const Layout = (props) => {
+const Layout = ({children}) => {
   return (
     <>
       <Menu />
       <div className="w3-row">
         <div className="w3-col   w3-margin-top">
-          {props.children}
+          {children}
         </div>
         {/* <Rightside /> */}
       </div>

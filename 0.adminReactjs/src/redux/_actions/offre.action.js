@@ -2,13 +2,13 @@ import sendRequest from '../../_helpers/sendrequest'
 import { offreConstants } from '../_canstants/offres.constants'
 
 export const _offreAction = {
-    getAllOffres,
+    searchOffres,
     removeOffre,
     getCatById ,
     getMoreOffre
 }
 
-function getAllOffres(query = 'a') { // search and get all   بحث و في نفس الوقت جلب كل البيانات
+function searchOffres(query = 'a') { // search and get all   بحث و في نفس الوقت جلب كل البيانات
     return dispatch => {
         dispatch({
             type: offreConstants.GET_ALL_OFFRES_REQUEST

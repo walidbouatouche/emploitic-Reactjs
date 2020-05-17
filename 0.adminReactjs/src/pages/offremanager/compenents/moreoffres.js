@@ -1,10 +1,10 @@
-import React, { useState } from "react"
+import React  from "react"
 
-const Moreoffre = ({ _moreoffre ,limit }) => {
+const Moreoffre = ({ _moreOffre ,limit }) => {
 
     function handelClick() {
        
-        _moreoffre(limit);
+        _moreOffre(limit);
 
     }
     return (<>
