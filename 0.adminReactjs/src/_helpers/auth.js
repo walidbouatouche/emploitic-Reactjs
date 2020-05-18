@@ -33,15 +33,17 @@ class _Auth {
 
     //     return tokenIsexpired();
     Boolean(this._token)
-    
-                        //https://www.w3schools.com/js/js_booleans.asp
+              //https://www.w3schools.com/js/js_booleans.asp
      }
 
     // tokenIsexpired() {
     //     if (this._token) {
     //         if (Boolean(checkToken(this._token))) {
     //          return true ;
+
+    
     //         }
+    
     //         else {
     //             this.clearAll();
     //             window.location.reload();
