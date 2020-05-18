@@ -29,10 +29,13 @@ class _Auth {
         localStorage.clear()
     }
 
-    // isAuth() {
+     isAuth() {
 
-    //     return tokenIsexpired(); //https://www.w3schools.com/js/js_booleans.asp
-    // }
+    //     return tokenIsexpired();
+    Boolean(this._token)
+    
+                        //https://www.w3schools.com/js/js_booleans.asp
+     }
 
     // tokenIsexpired() {
     //     if (this._token) {
