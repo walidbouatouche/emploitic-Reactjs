@@ -24,7 +24,14 @@ const LoginOrRegister = () => {
     }
 
     function makeAuth() {
+           //  we receive data from backends
         const { token, userId, role } = state.user.userData
+     
+
+        /* 
+        store user details and jwt token in local storage to 
+        keep user logged in between page refreshes 
+        */ 
         Auth.setToken(token);
         Auth.setUserId(userId);
         Auth.setRole(role)
@@ -39,6 +46,12 @@ const LoginOrRegister = () => {
             {state.user.error && <Alerts.AlertDanger text={state.user.error} />}
 
             {state.user.succes && <Alerts.Alertsuccess text={" singup Success!"} />}
+           
+           { 
+           // when we receive userData mean: successfully login
+           // we will call funtion makeAuth
+           }
+           
             {state.user.userData && (makeAuth.call())}
 
             <br />

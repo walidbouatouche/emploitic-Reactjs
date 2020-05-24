@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import Auth from './auth';
-import Login from '../pages/login'
+ 
 
+
+   /*
+            Check for token Show the null page if  it is false 
+           and show the receiving page from props if it is true
+           */
 const testAuth = Auth.isAuth();
 const testAdmin = Auth.getRole() === 'admin';
 const testUser = Auth.getRole() === 'user';

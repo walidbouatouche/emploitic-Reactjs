@@ -10,7 +10,7 @@ import Auth from '../../../_helpers/auth'
 import { UserAuth } from '../../../_helpers/withauth'
 
 //A page showing the offers you have requested
-//صفحة تظهر العروض التي طلبتها
+ 
 
 const Myoffres = () => {
 

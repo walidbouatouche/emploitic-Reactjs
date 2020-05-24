@@ -44,6 +44,8 @@ const Navabar = () => {
   ]
 
   function logout() {
+        // remove user from local storage to log user out
+
     Auth.clearAll();
     window.location.reload()
 

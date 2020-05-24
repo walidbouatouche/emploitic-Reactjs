@@ -2,11 +2,9 @@ import React  ,{useState ,useEffect}from'react'
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import PropTypes from 'prop-types';
-  //The code is clear and simple
- // الكود واضح وبسيط
-
+ 
  // Only the new thing we used was the formic library
- // فقط الشىء الجديد استعملنا مكتبة فورميك                
+               
  
  /*   https://jaredpalmer.com/formik/      */
 

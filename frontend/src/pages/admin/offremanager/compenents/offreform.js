@@ -46,7 +46,8 @@ enableReinitialize
                 .required(' date_end start is required'),
                 })}
                 onSubmit={fields => {
-                    // updateUser({...fields,userId})
+             // return fields of user with  imageuri property by  spreed ES6 method
+
                    if(window.confirm("Are you sure")){
                     addEditOffre({...fields,imguri }); 
                    }

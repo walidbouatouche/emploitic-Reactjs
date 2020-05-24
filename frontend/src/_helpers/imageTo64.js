@@ -1,5 +1,5 @@
 import React from 'react';
-
+// convert image to string
 const showImage = ({ showImagEvent }) => {
 
   function imageChange(e) {

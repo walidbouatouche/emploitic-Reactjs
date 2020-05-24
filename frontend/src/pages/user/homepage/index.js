@@ -3,6 +3,9 @@ import Layout from '../../../layout/index'
 import categorieoffre from '../../../static/cat.json'
 import List from './compenets/listhome'
 import { UserAuth } from '../../../_helpers/withauth'
+
+//The first page that the user sees
+
 const Home = () => {
     return (
         <Layout>

@@ -14,7 +14,9 @@ import Button from '../../../compenents/button'
 import categorieoffre from '../../../static/cat.json'
 
 import { AdminAuth } from '../../../_helpers/withauth'
-
+{
+    //  i wirte  many function name with underscore  just for make the code readable
+}
 const Offremanager = () => {
 
     const state = useSelector(state => state)
@@ -22,6 +24,11 @@ const Offremanager = () => {
     const [limit, setLimit] = useState(4)
 
     useEffect(() => {
+        /*  
+          *  limit number of topics it will increment +4  when admin
+            click showmre
+           * next time i will use  pagination
+            */
         getMoreOffre(limit)
 
     }, [])
@@ -38,6 +45,7 @@ const Offremanager = () => {
 
     }
     function searchOffre(char) {
+        //  char: text query get from child
         dispatch(_offreAction.searchOffres(char.trim()))
         setLimit(4);
 
@@ -48,6 +56,8 @@ const Offremanager = () => {
 
     }
     function addOffre(data) {
+
+        // deleting property we dont need to add
         delete data._id
         dispatch(_offreAction.addOffre(data))
 
@@ -64,6 +74,7 @@ const Offremanager = () => {
                 {state.offres.loading && <Spinner />}
                 {state.offres.error && <Alerts.AlertDanger text={state.offres.error} />}
                 {state.offres.listoffres &&
+
                     <OffreList addOffre={addOffre} editOffre={editOffre} _removeOffre={removeOffre} offrelist={state.offres.listoffres} />}
                 {state.offres.succes &&
                     <Alerts.Alertsuccess text={"Success!"} />
@@ -72,6 +83,7 @@ const Offremanager = () => {
             </div>
             <div className="w3-col m4 ">
                 <Panel title="filter">
+
                     <Search searchOffre={searchOffre} _placeholder={'search offre'} />
                     <Select filterOffre={filterOffre} _title={'Choose your offre'} _data={categorieoffre} />
                     <Button title="Rest" onClick={() => getMoreOffre(4)} /><br />

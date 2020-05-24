@@ -1,4 +1,5 @@
 
+//Class for authentication, token monitoring, and member identification
 
 
 class _Auth {
@@ -35,6 +36,8 @@ class _Auth {
 
 
     clearAll() {
+            // remove user from local storage to log user out
+
         this._token = "";
         localStorage.clear()
     }

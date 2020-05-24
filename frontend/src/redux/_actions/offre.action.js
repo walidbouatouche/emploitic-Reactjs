@@ -9,7 +9,7 @@ export const _offreAction = {
     addOffre,
     updateOffre,
     getOffreById,
-    postulerOffre ,
+    postulerOffre,
     getMyOffre
 }
 
@@ -85,6 +85,7 @@ function removeOffre(id) {
                     type: offreConstants.REMOVE_OFFRES_SUCCESS,
 
                 })
+                //  update direct the data in UI  when delete
                 dispatch(_offreAction.getMoreOffre())
             },
             () => {
@@ -165,6 +166,8 @@ function addOffre(data) {
             dispatch({
                 type: offreConstants.ADD_OFFRE_SUCCESS,
             })
+            //  update direct the data in UI  when add
+
             dispatch(_offreAction.getMoreOffre())
         },
             () => {
@@ -195,6 +198,9 @@ function updateOffre(data) {
                     {
                         type: offreConstants.UPDATE_OFFRE_SUCCESS
                     })
+
+                //  update direct the data in UI  when update
+
                 dispatch(_offreAction.getMoreOffre())
             }
             ,
@@ -228,6 +234,12 @@ function postulerOffre(id, idUser) {
 
         }
             ,
+
+            /*
+              * get response  by destruct from recive errer 
+              *  and check if true and show error to user
+              *   if not true that mean  undefeinded  error
+                            */
             ({ response }) => {
                 dispatch({
                     type: offreConstants.POSTULER_OFFRES_FAIL,
@@ -243,7 +255,7 @@ function postulerOffre(id, idUser) {
 
 function getMyOffre(id) {
 
-   
+
     return dispatch => {
         dispatch({
             type: offreConstants.GET_MY_OFFRES_BEGIN
