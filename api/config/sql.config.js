@@ -1,3 +1,5 @@
+
+// connect to Database
 const mysql = require('mysql');
 const serverInfo = {
     host: 'localhost',

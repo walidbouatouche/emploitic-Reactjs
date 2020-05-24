@@ -1,3 +1,5 @@
+
+// connect to SQL
 const CON = require('../config/sql.config');
 
 
@@ -43,12 +45,14 @@ exports.searchOffre = (req, res, next) => {
 
     // here I will some validation(sql injection / auth / data validation)
 
+
+    // get char from url
     const { char } = req.params;
     const QUERY = `SELECT * FROM OFFRE WHERE titre like '%${char}%'`
 
 
     CON.query(QUERY, (err, result) => {
-      if (err) errorMessage('invalidRequest');
+      if (err) errorMessage('invalidRequest'); // errer sql syntax
       res.status(200).json(result)
     })
   }
@@ -286,7 +290,7 @@ exports.getMyoffres = (req, res, next) => {
   const idUser = req.params.id;
 
 
-  const QUERY = 'SELECT  * from myoffre, offre WHERE   `myoffre`.` id_user` =' + `${idUser}` +  ' AND  `offre`.`_id` = `myoffre`.`idoffre`'  
+  const QUERY = 'SELECT  * from myoffre, offre WHERE   `myoffre`.` id_user` =' + `${idUser}` + ' AND  `offre`.`_id` = `myoffre`.`idoffre`'
   console.log(QUERY)
   CON.query(QUERY, function (err, result) {
     if (err) errorMessage(err);
@@ -296,4 +300,3 @@ exports.getMyoffres = (req, res, next) => {
 
 
 }
- 

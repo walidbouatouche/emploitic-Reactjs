@@ -1,8 +1,7 @@
 const CON = require('../config/sql.config');
-const jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken'); // token for logi
 
 exports.signup = (req, res, next) => {
-
     const errorMessage = (msg) => {
         res.status(400).json({ message: msg })
     }
@@ -15,6 +14,7 @@ exports.signup = (req, res, next) => {
         const { mail, password } = req.body.data;
         CON.query(`select mail from user where mail='${mail}'`, (err, result) => {
             if (err) { errorMessage('invalidRequest'); }
+            // check if user already  singup
             if (result.length > 1) {
                 errorMessage(' Mail Already')
 
@@ -55,17 +55,14 @@ exports.signup = (req, res, next) => {
 
 exports.login = (req, res, next) => {
 
-
+    // connect
     const errorMessage = (msg) => {
         res.status(400).json({ message: msg })
     }
 
     try {
-
-
         const { mail, password } = req.body.data;
         const hash = (password);
-
         const QUERY = `SELECT * FROM user  WHERE mail='${mail}'   and  _pass='${hash}'  `
         CON.query(QUERY, function (err, user, fields) {
             if (err) throw errorMessage("somthing Wtong");
@@ -95,7 +92,6 @@ exports.login = (req, res, next) => {
 
 
 }
-
 
 exports.getUserById = (req, res, next) => {
 
@@ -128,7 +124,6 @@ exports.updateUser = (req, res, next) => {
     const errorMessage = (msg) => {
         res.status(400).json({ message: msg })
     }
-
     const { experience, cat, deplom, userId, nom, prenom, adresse, phone } = req.body
     const QUERY = `
       UPDATE user SET 
@@ -140,7 +135,7 @@ exports.updateUser = (req, res, next) => {
        phone='${ phone}' ,
        _cat='${cat}'
       WHERE
-     id = '${userId}'
+        id = '${userId}'
       
       `
     CON.query(QUERY, function (err, user, fields) {
@@ -155,7 +150,13 @@ exports.updateUser = (req, res, next) => {
 
 exports.upfileCv = (req, res, next) => {
 
-    console.log('here') ;
+    /* 
+    *after up pdf file in pdfs  floders  
+    
+    * we will  put the name already get from req  wth the url of local floder
+    pdfs
+      * save it in database
+     */
     const errorMessage = (msg) => {
         res.status(400).json({ message: msg })
     }

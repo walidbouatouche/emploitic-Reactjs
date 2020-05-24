@@ -17,7 +17,7 @@ const Listpage = ({ match }) => {
 
     const dispatch = useDispatch()
 
-         //Get an ID from the home page
+    //Get an ID from the home page
     const { id } = match.params;
 
     useEffect(() => {
