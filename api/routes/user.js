@@ -6,7 +6,7 @@ const multer = require('../_helpers/multer-config');
 // get
 
 ROUTER.get('/getuserbyid/:id', USERCNTRL.getUserById)
-
+ROUTER.get('/getusersbyoffre/:id', USERCNTRL.getUsersByOffre)
 //post
 ROUTER.post('/signup/', USERCNTRL.signup)
 ROUTER.post('/login/', USERCNTRL.login)

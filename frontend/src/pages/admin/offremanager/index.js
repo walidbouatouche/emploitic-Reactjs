@@ -10,6 +10,8 @@ import Search from '../../../compenents/search'
 import More from './compenents/moreoffres';
 import Select from '../../../compenents/select'
 import { _offreAction } from '../../../redux/_actions/offre.action';
+import { _userAction } from '../../../redux/_actions/user.action';
+
 import Button from '../../../compenents/button'
 import categorieoffre from '../../../static/cat.json'
 
@@ -66,16 +68,30 @@ const Offremanager = () => {
         dispatch(_offreAction.updateOffre(data))
 
     }
+    function editOffre(data) {
+        
+        dispatch(_offreAction.updateOffre(data))
+
+    }
+    function getUsersByOffre(id) {
+
+        // get offre postuler by user
+        dispatch(_userAction.getUsersByOffre(id))
+
+    }
+
 
     return (<>
         <Layout>
+
+ 
             <div className="w3-col m8 w3-padding">
 
                 {state.offres.loading && <Spinner />}
                 {state.offres.error && <Alerts.AlertDanger text={state.offres.error} />}
                 {state.offres.listoffres &&
-
-                    <OffreList addOffre={addOffre} editOffre={editOffre} _removeOffre={removeOffre} offrelist={state.offres.listoffres} />}
+                    // state.offres.usersByOffre
+                    <OffreList users={state.user.usersByOffre} getUsersByOffre={getUsersByOffre} addOffre={addOffre} editOffre={editOffre} _removeOffre={removeOffre} offrelist={state.offres.listoffres} />}
                 {state.offres.succes &&
                     <Alerts.Alertsuccess text={"Success!"} />
                 }

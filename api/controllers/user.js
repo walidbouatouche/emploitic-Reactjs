@@ -185,3 +185,32 @@ exports.upfileCv = (req, res, next) => {
     )
 
 }
+
+exports.getUsersByOffre = (req, res, next) => {
+    const errorMessage = (msg) => {
+        res.status(401).json({ message: msg })
+
+    }
+
+    const idOffre = req.params.id;
+
+    const QUERY = `
+    SELECT _exp, _cv_link ,	_cat ,_deplo ,info  ,
+    
+    nom,
+    prenom,
+    adresse	, 
+    phone 
+    from myoffre, user
+    WHERE 
+    myoffre.idoffre =${idOffre}
+    AND  user.id = `+ "`myoffre`.` id_user`"
+    console.log(QUERY)
+    CON.query(QUERY, function (err, result) {
+        if (err) errorMessage(err);
+        res.status(200).json(result)
+    });
+
+
+
+}

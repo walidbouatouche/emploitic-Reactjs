@@ -41,10 +41,10 @@ const Myoffres = () => {
 
   function List({ list }) {
     return (
-      list.map((item => (<div>
-        <li class="w3-padding-16 w3-border-light-gray w3-border-top">
+      list.map((item => (<div key={ item._id}>
+        <li className="w3-padding-16 w3-border-light-gray w3-border-top">
           <Link to={'/offreviewer/' + item._id}>
-            <img src={item.imguri} alt="Image" class="w3-left w3-margin-right" style={{ width: '50px' }} />
+            <img src={item.imguri} alt="Image" className="w3-left w3-margin-right" style={{ width: '50px' }} />
             <span className="w3-large  w3-text-black"> {item.titre}</span>
             <br />
             <span>{item.entreprise}</span>
@@ -55,7 +55,7 @@ const Myoffres = () => {
                   <div className="w3-col  m3  ">
                     <p className="w3-text-gray">  <span className="w3-margin"><FontAwesomeIcon icon={faMapMarkerAlt} /></span> {item.location} </p>
                   </div>
-                  <div class="w3-col  m3">
+                  <div className="w3-col  m3">
                     <p className="w3-text-gray">
                       <span className="w3-margin"><FontAwesomeIcon icon={faClock} /></span>
                       {item.date_d}</p>

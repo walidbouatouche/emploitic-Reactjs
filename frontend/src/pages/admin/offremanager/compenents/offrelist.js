@@ -1,13 +1,13 @@
 import React from 'react'
 
 
-import { faEdit, faTrash, faPlus } from '@fortawesome/free-solid-svg-icons'
+import { faEdit, faTrash, faPlus, faUser } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import categorieoffre from '../../../../static/cat.json'
 import Model from "../../../../compenents/model";
 import Offreform from '../compenents/offreform';
-
-const OffreList = ({ offrelist, _removeOffre, addOffre, editOffre }) => {
+ 
+const OffreList = ({ offrelist, _removeOffre, addOffre, editOffre, users, getUsersByOffre }) => {
 
     function removeOffre(_id) {
         if (window.confirm("Are you sures")) {
@@ -28,6 +28,7 @@ const OffreList = ({ offrelist, _removeOffre, addOffre, editOffre }) => {
                     <th> Offre</th>
                     <th>Edit</th>
                     <th> Remove</th>
+                    <th>Users</th>
                 </tr>
             </thead>
             <tbody>
@@ -48,6 +49,23 @@ const OffreList = ({ offrelist, _removeOffre, addOffre, editOffre }) => {
 
                         </th>
                         <th onClick={() => removeOffre(item._id)} ><FontAwesomeIcon icon={faTrash} /></th>
+
+                        {
+                            // when click we copy direkt  the users in model below 
+                        }
+                        <th>
+                            <Model id={item._id + 'id'} title={<FontAwesomeIcon  onClick={() => getUsersByOffre(item._id)} icon={faUser} />}>
+                                {users && users.map(item => (
+                                    <li key={item.id}> {item.nom}   {item.prenom} :   <a onClick={()=>window.open(item._cv_link)} > Cv Link</a></li>
+                                )
+                                )
+
+                                }
+
+                            </Model>
+
+                        </th>
+
                     </tr>
                 )}
             </tbody>

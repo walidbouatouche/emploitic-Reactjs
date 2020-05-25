@@ -36,7 +36,7 @@ const Navabar = () => {
 
     },
     {
-      id: 2,
+      id: 3,
       title: "admin",
       to: "/admin"
 
@@ -132,13 +132,7 @@ const Navabar = () => {
         </div>
         <div id="navDemo" className=" w3-bar-block  w3-hide w3-hide-large w3-hide-medium">
           <MobilNavabar menu={menu} />
-          <Dropdown title={<FontAwesomeIcon icon={faUser} />} >
-            <ul className="w3-ul ">
-              <Usermenu menu={usersmenu} />
-
-              <li onClick={logout}>LogOut</li>
-            </ul>
-          </Dropdown>
+ 
         </div>
 
       </div>

@@ -1,8 +1,10 @@
 import React  ,{useState ,useEffect}from'react'
-import { Formik, Field, Form, ErrorMessage } from 'formik';
+import { Formik, Field, Form} from 'formik';
 import * as Yup from 'yup';
 import PropTypes from 'prop-types';
- 
+import { Editor } from 'react-draft-wysiwyg';
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+
  // Only the new thing we used was the formic library
                
  
@@ -22,7 +24,13 @@ import PropTypes from 'prop-types';
  
     return(<div className="w3-center" >
 <div className="w3-col  m11 w3-margin-left w3-white w3-padding">
-
+{/* <Editor
+  // editorState={editorState}
+  toolbarClassName="toolbarClassName"
+  wrapperClassName="wrapperClassName"
+  editorClassName="editorClassName"
+   // onEditorStateChange={this.onEditorStateChange}
+/> */}
 <Formik
 enableReinitialize
                 initialValues={{

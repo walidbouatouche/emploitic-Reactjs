@@ -8,6 +8,7 @@ export const _userAction = {
     updateCvFile,
     updateUser,
     getUserByid,
+    getUsersByOffre
 }
 
 
@@ -26,7 +27,7 @@ function signup(data) {
         }).then(() => {
             dispatch({
                 type: userConstants.USER_SIGNUP_SUCCESS,
- 
+
             })
 
         },
@@ -147,4 +148,28 @@ function updateUser(userData) {
             })
     }
 }
+function getUsersByOffre(idOffre) {
+    return dispatch => {
+        dispatch({
+            type: userConstants.GET_USERS_BY_OFFRE_BEGIN,
+        })
 
+        return sendRequest({
+            method: 'GET',
+            url: `/user/getusersbyoffre/${idOffre}`,
+
+        }).then(user => {
+            dispatch({
+                type: userConstants.GET_USERS_BY_OFFRE_SUCCESS,
+                user
+            })
+
+        }, ({ response }) => {
+            dispatch({
+                type: userConstants.GET_USERS_BY_OFFRE_FAIL,
+                error: (response != undefined && response != null) ? response.data.message : "somthing wrong"
+
+            })
+        })
+    }
+}

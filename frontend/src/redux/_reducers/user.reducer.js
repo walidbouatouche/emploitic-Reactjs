@@ -89,11 +89,29 @@ export function user(state = {}, action) {
 
         case userConstants.UPDATE_USER_FAIL:
             return {
-                
+
                 error: action.error
             }
 
+        case userConstants.GET_USERS_BY_OFFRE_BEGIN:
+            return {
 
+                loading: true,
+
+
+            }
+
+        case userConstants.GET_USERS_BY_OFFRE_SUCCESS:
+            return {
+
+                usersByOffre:action.user.data
+            }
+
+        case userConstants.GET_USERS_BY_OFFRE_FAIL:
+            return {
+
+                error: action.error
+            }
         default:
             return state;
     }
