@@ -8,7 +8,6 @@ import Listbycat from './compenents/listbycat'
 import Spinner from '../../../compenents/spinner'
 import { Alerts } from '../../../compenents/alerts'
 
-import { UserAuth } from '../../../_helpers/withauth'
 
 
 const Listpage = ({ match }) => {
@@ -56,4 +55,4 @@ const Listpage = ({ match }) => {
 
 
 
-export default UserAuth(Listpage)
+export default Listpage

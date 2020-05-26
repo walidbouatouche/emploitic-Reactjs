@@ -14,7 +14,7 @@ app.use((req, res, next) => {
 
 app.use(bodyParser.json()); //https://stackoverflow.com/questions/38306569/what-does-body-parser-do-with-express
 
-// acces pullic to all files in pds files
+// acces public to all files in pds files
 app.use('/pdfs', express.static(path.join(__dirname, 'pdfs')));
 app.use('/offre', OFFREROUTE)
 app.use('/user', USERROUTE)

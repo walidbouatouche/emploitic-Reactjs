@@ -8,7 +8,6 @@ import Spinner from '../../../compenents/spinner'
 import { Alerts } from '../../../compenents/alerts'
 import OffreDetail from './compenets/offrevwier'
 
-import { UserAuth } from '../../../_helpers/withauth'
 import Auth from '../../../_helpers/auth'
 const Offredetail = ({ match }) => {
 
@@ -50,7 +49,7 @@ const Offredetail = ({ match }) => {
 
 
 
-export default UserAuth(Offredetail)
+export default Offredetail
 
 
 

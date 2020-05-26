@@ -8,18 +8,22 @@ import List from './pages/user/list';
 import Offreviewer from './pages/user/offredetails';
 import Profil from './pages/user/profil';
 import Myoffre from './pages/user/myoffre';
+import Login from './pages/login';
+import { UserRoute  , AdminRoute} from './_helpers/privateroute'
 const App = () => {
 
   return (
 
     <Router  >
       <Switch>
-        <Route path="/" exact component={Homepage} />
-        <Route path="/list/:id" exact component={List} />
-        <Route path="/offreviewer/:id" exact component={Offreviewer} />
-        <Route path='/admin' exact component={Offremanger} />
-        <Route path="/myprofil" exact component={Profil} />
-        <Route path="/myoffre" exact component={Myoffre} />
+        <UserRoute path="/" exact component={Homepage} />
+        <UserRoute path="/list/:id" exact component={List} />
+        <UserRoute path="/offreviewer/:id" exact component={Offreviewer} />
+        <AdminRoute path='/admin' exact component={Offremanger} />
+        <UserRoute path="/myprofil" exact component={Profil} />
+        <UserRoute path="/myoffre" exact component={Myoffre} />
+        <Route path="/login" exact component={Login} />
+
       </Switch>
     </Router>
 

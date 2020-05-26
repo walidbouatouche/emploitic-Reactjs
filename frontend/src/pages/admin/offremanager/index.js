@@ -15,8 +15,7 @@ import { _userAction } from '../../../redux/_actions/user.action';
 import Button from '../../../compenents/button'
 import categorieoffre from '../../../static/cat.json'
 
-import { AdminAuth } from '../../../_helpers/withauth'
-{
+ {
     //  i wirte  many function name with underscore  just for make the code readable
 }
 const Offremanager = () => {
@@ -114,4 +113,4 @@ const Offremanager = () => {
 }
 
 
-export default AdminAuth(Offremanager)
+export default Offremanager

@@ -6,27 +6,25 @@ import Listofcategorie from '../../../static/cat.json'
 import Upfile from './compenent/upfile'
 import { connect } from 'react-redux'
 import Auth from '../../../_helpers/auth'
-import { UserAuth } from "../../../_helpers/withauth";
-import { Link } from "react-router-dom"
 import Panel from '../../../compenents/panel'
 import { _userAction } from '../../../redux/_actions/user.action'
- 
+
 const updateCvFile = _userAction.updateCvFile,
   getUserByid = _userAction.getUserByid,
   updateUser = _userAction.updateUser;
 
-  //A page about user data
+//A page about user data
 
 
-  // We used the old method for you to diversify only (class)
+// We used the old method for you to diversify only (class)
 class Profilviewer extends Component {
 
 
 
   async componentDidMount() {
 
-//Get the  ID fro;  the storge and call function  from props
-    await this.props.getUserByid(Auth.getUserId()) 
+    //Get the  ID fro;  the storge and call function  from props
+    await this.props.getUserByid(Auth.getUserId())
   }
 
 
@@ -48,7 +46,7 @@ class Profilviewer extends Component {
           {
 
             //update data
-   
+
 
           }
 
@@ -118,7 +116,7 @@ const mapStoreToProps = state => ({
 })
 
 
-export default UserAuth(connect(mapStoreToProps, mapDispatchToProps)(Profilviewer))
+export default connect(mapStoreToProps, mapDispatchToProps)(Profilviewer)
 
 
 

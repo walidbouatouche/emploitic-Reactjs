@@ -7,8 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from "react-router-dom"
 import Layout from '../../../layout/'
 import Auth from '../../../_helpers/auth'
-import { UserAuth } from '../../../_helpers/withauth'
-
+ 
 //A page showing the offers you have requested
  
 
@@ -72,4 +71,4 @@ const Myoffres = () => {
   }
 }
 
-export default UserAuth(Myoffres);
+export default Myoffres

@@ -9,7 +9,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { _userAction } from '../../redux/_actions/user.action';
 import Auth from '../../_helpers/auth'
 
-const LoginOrRegister = () => {
+const LoginOrRegister = ({ history }) => {
 
     const state = useSelector(state => state)
     const dispatch = useDispatch();
@@ -24,18 +24,20 @@ const LoginOrRegister = () => {
     }
 
     function makeAuth() {
-           //  we receive data from backends
+        //  we receive data from backends
         const { token, userId, role } = state.user.userData
-     
+
 
         /* 
         store user details and jwt token in local storage to 
         keep user logged in between page refreshes 
-        */ 
+        */
         Auth.setToken(token);
         Auth.setUserId(userId);
         Auth.setRole(role)
         window.location.reload();
+        history.push('/')
+
     }
 
     return (
@@ -46,12 +48,12 @@ const LoginOrRegister = () => {
             {state.user.error && <Alerts.AlertDanger text={state.user.error} />}
 
             {state.user.succes && <Alerts.Alertsuccess text={" singup Success!"} />}
-           
-           { 
-           // when we receive userData mean: successfully login
-           // we will call funtion makeAuth
-           }
-           
+
+            {
+                // when we receive userData mean: successfully login
+                // we will call funtion makeAuth
+            }
+
             {state.user.userData && (makeAuth.call())}
 
             <br />
