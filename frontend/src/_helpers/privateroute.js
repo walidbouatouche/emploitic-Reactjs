@@ -15,21 +15,17 @@ const testUser = Auth.getRole() === 'user';
 const UserRoute = ({ component: Component_, ...rest }) => {
 
 
-    // only show when logged in
-
     if ((!testAuth)) {
         return (
             <Redirect to='/login' />
         );
 
     }
-    else if (testUser === false && testAdmin === false) {
-
-        return (
-            <Redirect to='/login' />
-        );
-    }
+ 
     else {
+        
+    // only show when logged in
+
         return (
             <div>
                 <Route  {...rest}  render={props=>{
@@ -48,7 +44,6 @@ const UserRoute = ({ component: Component_, ...rest }) => {
 const AdminRoute = ({ component: Component_, ...rest }) => {
 
 
-    // only show when  in
 
 
     if ((testAdmin === false)) {
@@ -57,6 +52,8 @@ const AdminRoute = ({ component: Component_, ...rest }) => {
         );
 
     }
+    
+    // only show when  in
     else if (!testAuth) {
 
         return (

@@ -27,7 +27,7 @@ const Offremanager = () => {
     useEffect(() => {
         /*  
           *  limit number of topics it will increment +4  when admin
-            click showmre
+            click showmore
            * next time i will use  pagination
             */
         getMoreOffre(limit)
@@ -83,7 +83,6 @@ const Offremanager = () => {
     return (<>
         <Layout>
 
- 
             <div className="w3-col m8 w3-padding">
 
                 {state.offres.loading && <Spinner />}

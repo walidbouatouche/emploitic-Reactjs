@@ -9,7 +9,7 @@ import Offreviewer from './pages/user/offredetails';
 import Profil from './pages/user/profil';
 import Myoffre from './pages/user/myoffre';
 import Login from './pages/login';
-import { UserRoute  , AdminRoute} from './_helpers/privateroute'
+import { UserRoute, AdminRoute } from './_helpers/privateroute'
 const App = () => {
 
   return (

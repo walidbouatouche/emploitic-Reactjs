@@ -4,6 +4,8 @@ import LoginOrsingup from './compenets/loginOrsingup'
 
 import Spinner from '../../compenents/spinner'
 
+import { Redirect } from 'react-router-dom';
+
 import { Alerts } from '../../compenents/alerts'
 import { useSelector, useDispatch } from 'react-redux'
 import { _userAction } from '../../redux/_actions/user.action';
@@ -40,7 +42,13 @@ const LoginOrRegister = ({ history }) => {
 
     }
 
+    // if user login  hide login page 
+    if (Auth.isAuth()) {
+        return <Redirect to='/' />
+    }
+
     return (
+
         <div>
 
 

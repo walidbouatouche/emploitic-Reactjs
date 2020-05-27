@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import categorieoffre from '../../../../static/cat.json'
 import Model from "../../../../compenents/model";
 import Offreform from '../compenents/offreform';
- 
+import UserLIst from'./users'
 const OffreList = ({ offrelist, _removeOffre, addOffre, editOffre, users, getUsersByOffre }) => {
 
     function removeOffre(_id) {
@@ -54,12 +54,12 @@ const OffreList = ({ offrelist, _removeOffre, addOffre, editOffre, users, getUse
                             // when click we copy direkt  the users in model below 
                         }
                         <th>
+                        { 
+                           // i add  id   id={item._id + 'id'}  for id
+                        }
                             <Model id={item._id + 'id'} title={<FontAwesomeIcon  onClick={() => getUsersByOffre(item._id)} icon={faUser} />}>
-                                {users && users.map(item => (
-                                    <li key={item.id}> {item.nom}   {item.prenom} :   <a onClick={()=>window.open(item._cv_link)} > Cv Link</a></li>
-                                )
-                                )
-
+                                {users && <UserLIst users={users} /> 
+                                
                                 }
 
                             </Model>
