@@ -7,15 +7,13 @@ exports.signup = (req, res, next) => {
     }
 
 
-
     try {
-        // here I will some validation(sql injection / auth / data validation)
 
         const { mail, password } = req.body.data;
         CON.query(`select mail from user where mail='${mail}'`, (err, result) => {
             if (err) { errorMessage('invalidRequest'); }
             // check if user already  singup
-            if (result.length > 1) {
+            if (result.length > 0) {
                 errorMessage(' Mail Already')
 
             }
@@ -45,7 +43,7 @@ exports.signup = (req, res, next) => {
         CON.query(QUERY, (err, result) => {
             if (err) errorMessage('invalidRequest')
 
-            res.status(200).json({ message: "seccuf" })
+            res.status(200).json({ message: "succefully" })
         })
     }
     catch{
@@ -64,7 +62,7 @@ exports.login = (req, res, next) => {
         const { mail, password } = req.body.data;
         const hash = (password);
         const QUERY = `SELECT * FROM user  WHERE mail='${mail}'   and  _pass='${hash}'  `
-        CON.query(QUERY, function (err, user, fields) {
+        CON.query(QUERY, function (err, user) {
             if (err) throw errorMessage("somthing Wtong");
 
             if (Boolean(user)) {
@@ -135,12 +133,11 @@ exports.updateUser = (req, res, next) => {
        phone='${ phone}' ,
        _cat='${cat}'
       WHERE
-        id = '${userId}'
+      id = '${userId}'
       
       `
     CON.query(QUERY, function (err, user, fields) {
         if (err) errorMessage('invalid request');
-
         res.status(200).json({ "message": true })
 
     }
@@ -196,7 +193,6 @@ exports.getUsersByOffre = (req, res, next) => {
 
     const QUERY = `
     SELECT _exp, _cv_link ,	_cat ,_deplo ,info  ,
-    
     nom,
     prenom,
     adresse	, 

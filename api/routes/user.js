@@ -1,8 +1,9 @@
 const EXPRESS = require('express')
 const ROUTER = EXPRESS.Router();
-
+const AUTH = require('../_helpers/auth') // test if login
+const ISADMIN = require('../_helpers/Isadmin_') // test if admin
 const USERCNTRL = require('../controllers/user')
-const multer = require('../_helpers/multer-config');
+const MULTER = require('../_helpers/multer-config');
 // get
 
 ROUTER.get('/getuserbyid/:id', USERCNTRL.getUserById)
@@ -14,7 +15,7 @@ ROUTER.post('/login/', USERCNTRL.login)
 
 //put
 ROUTER.put('/updateuser/', USERCNTRL.updateUser)
-ROUTER.put('/upcvfile/', multer, USERCNTRL.upfileCv)
+ROUTER.put('/upcvfile/', MULTER, USERCNTRL.upfileCv)
 
 
 module.exports = ROUTER;

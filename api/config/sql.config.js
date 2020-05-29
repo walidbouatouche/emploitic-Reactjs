@@ -8,7 +8,7 @@ const serverInfo = {
     database: 'db'
 }
 
-var con = mysql.createConnection(serverInfo);
+const con = mysql.createConnection(serverInfo);
 con.connect((errors) => {
     if (errors) throw console.log(" Database not valid");
     console.log("Connected !");

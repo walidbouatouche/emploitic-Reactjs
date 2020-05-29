@@ -1,8 +1,5 @@
-
 // connect to SQL
 const CON = require('../config/sql.config');
-
-
 
 exports.getOffreByLimit = (req, res, next) => {
 
@@ -21,7 +18,7 @@ exports.getOffreByLimit = (req, res, next) => {
 
     CON.query(QUERY, (err, result) => {
       if (err) errorMessage('invalidRequest')
-      if (result.length <= 0) {
+      if (result.length < 0) {
         errorMessage("no data")
       }
       res.status(200).json(result)
@@ -266,7 +263,7 @@ exports.postulerOffres = (req, res, next) => {
   const QUERY = 'INSERT INTO  `db`.`myoffre` (` id` ,` id_user` ,`idoffre`)VALUES (NULL , "' + idUser + '","' + id + '")'
 
 
-  console.log(QUERY)
+
 
 
   CON.query(QUERY, function (err, result) {
