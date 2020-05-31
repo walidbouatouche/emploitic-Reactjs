@@ -29,11 +29,13 @@ const LoginOrRegister = ({ history }) => {
         //  we receive data from backends
         const { token, userId, role } = state.user.userData
 
-
         /* 
+        
         store user details and jwt token in local storage to 
         keep user logged in between page refreshes 
+
         */
+
         Auth.setToken(token);
         Auth.setUserId(userId);
         Auth.setRole(role)

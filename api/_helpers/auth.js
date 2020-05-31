@@ -1,8 +1,6 @@
 const jwt = require('jsonwebtoken');
+const _response = require('./_response')
 module.exports = (req, res, next) => {
-    const isErrorMessage = (msg) => {
-        res.status(401).json({ message: msg })
-    }
     const token = req.headers.authorization;
     const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET');
     userId = decodedToken.userId;
@@ -11,6 +9,7 @@ module.exports = (req, res, next) => {
         next()
     }
     else {
-        isErrorMessage('invalid Request');
+        _response(res, 401, { message: 'Unauthorized' })
+
     }
 }

@@ -1,5 +1,4 @@
 const multer = require('multer');
-
 const fileConfigue = {
   destination: (req, file, callback) => {
     callback(null, 'pdfs');
@@ -9,7 +8,6 @@ const fileConfigue = {
     callback(null, Date.now() + name);
   }
 }
-
 const storage = multer.diskStorage(fileConfigue);
 
 module.exports = multer({ storage: storage }).single('pdf');

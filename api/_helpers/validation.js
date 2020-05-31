@@ -1,3 +1,4 @@
+
 function validateRequest(next, schema, body) {
     const options = {
         abortEarly: false, // include all errors
@@ -7,7 +8,7 @@ function validateRequest(next, schema, body) {
 
     const { error } = schema.validate(body, options);
     if (error) {
-        console.log(error);
+
 
     } else {
 

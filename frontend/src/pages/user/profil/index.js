@@ -23,7 +23,7 @@ class Profilviewer extends Component {
 
   async componentDidMount() {
 
-    //Get the  ID fro;  the storge and call function  from props
+    //Get the  ID from  the storge and call function  from props
     await this.props.getUserByid(Auth.getUserId())
   }
 

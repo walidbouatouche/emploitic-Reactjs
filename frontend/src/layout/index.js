@@ -3,7 +3,7 @@ import Menu from '../compenents/navigation'
 import Rightside from '../compenents/rightside'
 import Footer from '../compenents/footer'
 //The main layout that appears on all pages
-const Layout = ({children}) => {
+const Layout = ({ children }) => {
   return (
     <>
       <Menu />

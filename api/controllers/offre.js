@@ -1,106 +1,45 @@
 // connect to SQL
 const CON = require('../config/sql.config');
+const _response = require('../_helpers/_response')
 
 exports.getOffreByLimit = (req, res, next) => {
 
-  const errorMessage = (msg) => {
-    res.status(401).json({ message: msg })
-  }
-
-
-
-  try {
-    // here I will some validation(sql injection / auth / data validation)
-
-    const { limit } = req.params;
-    const QUERY = `SELECT * FROM OFFRE limit ${limit}   `
-
-
-    CON.query(QUERY, (err, result) => {
-      if (err) errorMessage('invalidRequest')
-      if (result.length < 0) {
-        errorMessage("no data")
-      }
-      res.status(200).json(result)
-    })
-  }
-  catch{
-
-  }
+  const { limit } = req.params;
+  const QUERY = `SELECT * FROM OFFRE limit ${limit}   `
+  CON.query(QUERY, (err, result) => {
+    if (err) _response(res, 401, { message: 'invalidRequest' });
+    if (result.length < 0) {
+      _response(res, 401, { message: 'no data' })
+    }
+    _response(res, 200, result)
+  })
 }
-
-
 
 
 
 exports.searchOffre = (req, res, next) => {
 
-  const errorMessage = (msg) => {
-    res.status(401).json({ message: msg });
-  }
-  try {
-
-    // here I will some validation(sql injection / auth / data validation)
-
-
-    // get char from url
-    const { char } = req.params;
-    const QUERY = `SELECT * FROM OFFRE WHERE titre like '%${char}%'`
+  // get char from url
+  const { char } = req.params;
+  const QUERY = `SELECT * FROM OFFRE WHERE titre like '%${char}%'`
+  CON.query(QUERY, (err, result) => {
+    if (err) _response(res, 401, { message: 'invalidRequest' });// errer sql syntax
+    _response(res, 200, result)
+  })
 
 
-    CON.query(QUERY, (err, result) => {
-      if (err) errorMessage('invalidRequest'); // errer sql syntax
-      res.status(200).json(result)
-    })
-  }
-  catch{
-    invalidRequest()
-
-  }
 }
 
 
 
 
 exports.getOffreByCat = (req, res, next) => {
-  try {
-    const errorMessage = (msg) => {
-      res.status(401).json({ message: msg })
-    }
 
-    // here I will some validation(sql injection / auth / data validation)
-
-    const { catId } = req.params;
-    const QUERY = `SELECT * FROM offre  WHERE cat='${catId}'`
-    CON.query(QUERY, (err, result) => {
-      if (err) errorMessage('invalidRequest')
-      res.status(200).json(result)
-    });
-  }
-  catch{
-    invalidRequest()
-  }
-}
-
-
-
-
-exports.deleteOffreById = (req, res, next) => {
-
-  const errorMessage = (msg) => {
-    res.status(401).json({ message: msg })
-  }
-
-  // here I will some validation(sql injection / auth / data validation)
-
-
-  const { id } = req.params;
-  const QUERY = `DELETE  FROM offre  WHERE _id='${id}'`
-
+  const { catId } = req.params;
+  const QUERY = `SELECT * FROM offre  WHERE cat='${catId}'`
   CON.query(QUERY, (err, result) => {
-    if (err) errorMessage('invalidRequest');
-
-    res.status(200).json(result)
+    if (err) _response(res, 401, { message: 'invalidRequest' });
+    _response(res, 200, result)
   });
 
 }
@@ -108,26 +47,32 @@ exports.deleteOffreById = (req, res, next) => {
 
 
 
+exports.deleteOffreById = (req, res, next) => {
+
+  const { id } = req.params;
+  const QUERY = `DELETE  FROM offre  WHERE _id='${id}'`
+  CON.query(QUERY, (err, result) => {
+    if (err) _response(res, 401, { message: 'invalidRequest' });
+    _response(res, 200, result)
+  });
+
+}
+
 exports.addOffre = (req, res, next) => {
 
-  const errorMessage = (msg) => {
-    res.status(401).json({ message: msg })
-  }
+  const active = true;
+  const {
+    cat,
+    date_d,
+    date_f,
+    description,
+    entreprise,
+    imguri,
+    location,
+    titre,
+    type } = req.body.data
 
-  try {
-    const active = true;
-    const {
-      cat,
-      date_d,
-      date_f,
-      description,
-      entreprise,
-      imguri,
-      location,
-      titre,
-      type } = req.body.data
-
-    const QUERY = `
+  const QUERY = `
   INSERT INTO
     offre
     ( _id,
@@ -153,29 +98,22 @@ exports.addOffre = (req, res, next) => {
       '${type}',
       '${cat}',
       '${location}'  ) `;
+  CON.query(QUERY, (error) => {
+    if (error) {
+      _response(res, 401, { message: 'invalidRequest' })
+    }
+    _response(res, 200, { message: " succefully !!" })
 
-    CON.query(QUERY, (error) => {
-      if (error) {
-        errorMessage(" Something wrong")
 
-      }
-      res.status(200).json({ message: " succefully !!" })
+  })
 
-    })
-  }
-  catch{
-    errorMessage(" Something wrong")
 
-  }
 }
 
 
 exports.updateOffre = (req, res, next) => {
 
-  const errorMessage = (msg) => {
-    res.status(401).json({ message: msg })
 
-  }
   const
     {
       cat,
@@ -189,7 +127,6 @@ exports.updateOffre = (req, res, next) => {
       type,
       _id,
       active
-
     } = req.body.data
   const QUERY = ` 
   UPDATE OFFRE SET
@@ -208,94 +145,61 @@ exports.updateOffre = (req, res, next) => {
   `;
 
   console.log(QUERY)
-
   CON.query(QUERY, (error, result) => {
-    if (error) errorMessage("somthing wrong");
-    res.status(200).json({ message: "succefuly" })
+    console.log(error)
+    if (error) _response(res, 401, { message: 'invalidRequest' });
+    _response(res, 200, { message: " succefully !!" })
   })
-
 }
 
 
 exports.getOffreById = (req, res, next) => {
 
-  const errorMessage = (msg) => {
-    res.status(401).json({ message: msg })
-  }
+  const { id } = req.params;
+  const QUERY = `SELECT * FROM OFFRE WHERE _id=${id} `
+  CON.query(QUERY, (err, result) => {
+    if (err) _response(res, 401, { message: 'invalidRequest' });
+    if (result.length <= 0) {
+      _response(res, 401, { message: 'no Data' });
+    }
 
-  try {
-    // here I will some validation(sql injection / auth / data validation)
-
-    const { id } = req.params;
-    const QUERY = `SELECT * FROM OFFRE WHERE _id=${id} `
-
-
-    CON.query(QUERY, (err, result) => {
-      if (err) errorMessage('invalidRequest')
-      if (result.length <= 0) {
-        errorMessage("no data")
-      }
-      res.status(200).json(result)
-    })
-  }
-  catch{
-
-  }
+    _response(res, 200, result)
+  })
 }
 
-
-
-
-
-
 exports.postulerOffres = (req, res, next) => {
+
   const { id, idUser } = req.body;
-
-  const errorMessage = (msg) => {
-    res.status(401).json({ message: msg })
-
-  }
-
-
-
-
-
   const QUERY = 'INSERT INTO  `db`.`myoffre` (` id` ,` id_user` ,`idoffre`)VALUES (NULL , "' + idUser + '","' + id + '")'
-
-
-
-
-
   CON.query(QUERY, function (err, result) {
-    if (err) errorMessage(err);
-    res.status(200).json("succes")
+    if (err) _response(res, 401, { message: 'Error' });
+    _response(res, 200, { message: " succefully !!" })
   });
-
-
-
 }
 
 
 
 exports.getMyoffres = (req, res, next) => {
-  const errorMessage = (msg) => {
-    res.status(401).json({ message: msg })
-
-  }
-
 
   const idUser = req.params.id;
-
-
   const QUERY = 'SELECT  * from myoffre, offre WHERE   `myoffre`.` id_user` =' + `${idUser}` + ' AND  `offre`.`_id` = `myoffre`.`idoffre`'
-  console.log(QUERY)
-  CON.query(QUERY, function (err, result) {
-    if (err) errorMessage(err);
-    res.status(200).json(result)
+
+  CON.query(QUERY, (err, result) => {
+    if (err) _response(res, 401, { message: 'Error' });;
+    _response(res, 200, result)
   });
 
 
 
+}
+
+exports.getOffreNumber = (req, res, next) => {
+
+  const QUERY = "SELECT count(*) from offre "
+  CON.query(QUERY, (err, result) => {
+    if (err) _response(res, 401, { message: 'Error' });
+    _response(res, 200, result)
+  })
 }
 
 

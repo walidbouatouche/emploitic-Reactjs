@@ -15,14 +15,15 @@ import { _userAction } from '../../../redux/_actions/user.action';
 import Button from '../../../compenents/button'
 import categorieoffre from '../../../static/cat.json'
 
- {
-    //  i wirte  many function name with underscore  just for make the code readable
+const incrementByLimit = 4; //  that mean  ++4 (*_*)
+
+{
+    //  i wrote  many function name with underscore  just for make the code readable
 }
 const Offremanager = () => {
-
     const state = useSelector(state => state)
     const dispatch = useDispatch();
-    const [limit, setLimit] = useState(4)
+    const [limit, setLimit] = useState(incrementByLimit)
 
     useEffect(() => {
         /*  
@@ -31,29 +32,34 @@ const Offremanager = () => {
            * next time i will use  pagination
             */
         getMoreOffre(limit)
+        dispatch(_offreAction.getOffreNumber())
 
     }, [])
 
     function getMoreOffre(limit) {
 
+        if (limit >= (state.offres.nbr + incrementByLimit)) {
+            return false;
+        }
         dispatch(_offreAction.getMoreOffre(limit))
-        setLimit(limit + 4);
+        setLimit(limit + incrementByLimit);
+
+
     }
 
 
     function removeOffre(_id) {
         dispatch(_offreAction.removeOffre(_id))
-
+        getMoreOffre(incrementByLimit)
     }
     function searchOffre(char) {
         //  char: text query get from child
         dispatch(_offreAction.searchOffres(char.trim()))
-        setLimit(4);
+
 
     }
     function filterOffre(id) {
         dispatch(_offreAction.getCatById(id))
-        setLimit(4);
 
     }
     function addOffre(data) {
@@ -61,17 +67,18 @@ const Offremanager = () => {
         // deleting property we dont need to add
         delete data._id
         dispatch(_offreAction.addOffre(data))
+        getMoreOffre(incrementByLimit)
+
 
     }
     function editOffre(data) {
+
         dispatch(_offreAction.updateOffre(data))
+        getMoreOffre(incrementByLimit)
+
 
     }
-    function editOffre(data) {
-        
-        dispatch(_offreAction.updateOffre(data))
 
-    }
     function getUsersByOffre(id) {
 
         // get offre postuler by user
@@ -84,7 +91,7 @@ const Offremanager = () => {
         <Layout>
 
             <div className="w3-col m8 w3-padding">
-
+                {state.offres.nbr && `  Nbr of Topics :${state.offres.nbr}`}
                 {state.offres.loading && <Spinner />}
                 {state.offres.error && <Alerts.AlertDanger text={state.offres.error} />}
                 {state.offres.listoffres &&
@@ -93,14 +100,16 @@ const Offremanager = () => {
                 {state.offres.succes &&
                     <Alerts.Alertsuccess text={"Success!"} />
                 }
-                <More _moreOffre={getMoreOffre} limit={limit} />
+                {!(limit >= (state.offres.nbr + incrementByLimit)) ? <More _moreOffre={getMoreOffre} limit={limit} /> : null}
             </div>
             <div className="w3-col m4 ">
                 <Panel title="filter">
 
                     <Search searchOffre={searchOffre} _placeholder={'search offre'} />
                     <Select filterOffre={filterOffre} _title={'Choose your offre'} _data={categorieoffre} />
-                    <Button title="Rest" onClick={() => getMoreOffre(4)} /><br />
+
+
+                    {<Button title="Rest" onClick={() => getMoreOffre(4)} />}
                 </Panel>
 
 

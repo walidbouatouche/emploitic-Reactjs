@@ -10,7 +10,8 @@ export const _offreAction = {
     updateOffre,
     getOffreById,
     postulerOffre,
-    getMyOffre
+    getMyOffre,
+    getOffreNumber
 }
 
 
@@ -61,7 +62,7 @@ function searchOffres(char = 'a') {
             error => {
                 dispatch({
                     type: offreConstants.GET_ALL_OFFRES_FAILURE,
-                    error: error
+                    error: "somthing Wrong"
                 })
 
             }
@@ -229,7 +230,6 @@ function postulerOffre(id, idUser) {
             dispatch({
                 type: offreConstants.POSTULER_OFFRES_SUCCESS,
 
-
             })
 
         }
@@ -255,7 +255,6 @@ function postulerOffre(id, idUser) {
 
 function getMyOffre(id) {
 
-
     return dispatch => {
         dispatch({
             type: offreConstants.GET_MY_OFFRES_BEGIN
@@ -279,3 +278,36 @@ function getMyOffre(id) {
     }
 }
 
+
+function getOffreNumber() {
+    return dispatch => {
+
+        dispatch({
+            type: offreConstants.NBR_OFFRES_BEGIN
+
+        })
+        return sendRequest(
+   {         method: 'GET',
+            url:'/offre/getoffrenumber' }
+
+        ).then(
+            (nbr) => {
+                dispatch({
+                    type: offreConstants.NBR_OFFRES_SUCCESS,
+                    nbr
+                })
+            },
+            () => {
+                dispatch({
+                    type: offreConstants.NBR_OFFRES_FAIL,
+                    error: "somthing Wrong"
+                })
+            }
+
+
+
+        )
+
+
+    }
+}

@@ -10,6 +10,7 @@ ROUTER.get('/getoffrebylimit/:limit', OFFRECNTRL.getOffreByLimit);
 ROUTER.get('/getoffrebycat/:catId', OFFRECNTRL.getOffreByCat);
 ROUTER.get('/searchoffre/:char', OFFRECNTRL.searchOffre);
 ROUTER.get('/getmyoffre/:id', OFFRECNTRL.getMyoffres);
+ROUTER.get('/getoffrenumber', OFFRECNTRL.getOffreNumber)
 // post methods
 ROUTER.post('/addoffre', OFFRECNTRL.addOffre)
 ROUTER.post('/postuleroffres', AUTH, OFFRECNTRL.postulerOffres)
