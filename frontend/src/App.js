@@ -14,7 +14,7 @@ const App = () => {
 
   return (
 
-    <Router  >
+    <Router >
       <Switch>
         <UserRoute path="/" exact component={Homepage} />
         <UserRoute path="/list/:id" exact component={List} />
@@ -23,7 +23,7 @@ const App = () => {
         <UserRoute path="/myprofil" exact component={Profil} />
         <UserRoute path="/myoffre" exact component={Myoffre} />
         <Route path="/login" exact component={Login} />
-
+        <Route exact component={Homepage} />
       </Switch>
     </Router>
 

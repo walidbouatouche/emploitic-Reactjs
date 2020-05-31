@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Layout from '../layout'
 import { TouchableOpacity, TextInput, View, StyleSheet, ScrollView, Text } from "react-native"
-import Sendrequest from '../services/sendrequest'
+import sendRequest from '../services/sendrequest'
 import Auth from '../services/auth'
 import { Actions } from 'react-native-router-flux';
 
@@ -17,14 +17,15 @@ const Login = () => {
   const login = () => {
     const _mail = mail;
     const _password = password;
-    alert(_password);
-    Sendrequest('/api/user/_data/', 'POST', JSON.stringify({ mail: _mail, password: _password })).then(res => {
+   // 
+    sendRequest('/api/user/_data/', 'POST', JSON.stringify({ mail: _mail, password: _password })).then(res => {
 
       res.json().then((response) => {
         const { token, userId } = response
+        
         //  we receive data from backend
+
         // store user details and jwt token in local storage to keep user logged in between page refreshes
-        // قم بتخزين تفاصيل المستخدم ورمز jwt المميز في التخزين المحلي للحفاظ على تسجيل دخول المستخدم بين تحديثات الصفحة
         Auth.setToken(token);
         Auth.setUserId(userId);
         window.location.reload();

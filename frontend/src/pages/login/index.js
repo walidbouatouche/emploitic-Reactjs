@@ -30,12 +30,10 @@ const LoginOrRegister = ({ history }) => {
         const { token, userId, role } = state.user.userData
 
         /* 
-        
         store user details and jwt token in local storage to 
         keep user logged in between page refreshes 
 
         */
-
         Auth.setToken(token);
         Auth.setUserId(userId);
         Auth.setRole(role)
@@ -51,9 +49,10 @@ const LoginOrRegister = ({ history }) => {
 
     return (
 
-        <div>
-
-
+        <div className="w3-text-center ">
+            <br />
+            <br />
+            <h1>Welcom To login page</h1>
             {state.user.loading && <Spinner />}
             {state.user.error && <Alerts.AlertDanger text={state.user.error} />}
 
@@ -69,20 +68,11 @@ const LoginOrRegister = ({ history }) => {
             <br />
             <br />
             <LoginOrsingup loginOrsingup={singup} action={'singup'} />
-
             <LoginOrsingup loginOrsingup={login} action={'login'} />
-
         </div>
 
 
     )
-
-
-
-
-
-
 }
-
 
 export default LoginOrRegister

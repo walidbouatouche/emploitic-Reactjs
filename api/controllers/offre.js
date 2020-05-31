@@ -203,3 +203,16 @@ exports.getOffreNumber = (req, res, next) => {
 }
 
 
+
+exports.getOffreByLimitAndCat = (req, res, next) => {
+  // get offre by id and limit of course
+  const { limit, id } = req.params;
+  const QUERY = `SELECT * FROM OFFRE  _id=${id} limit ${limit} `
+  CON.query(QUERY, (err, result) => {
+    if (err) _response(res, 401, { message: 'invalidRequest' });
+    if (result.length < 0) {
+      _response(res, 401, { message: 'no data' })
+    }
+    _response(res, 200, result)
+  })
+}

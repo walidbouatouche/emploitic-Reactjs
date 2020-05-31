@@ -17,7 +17,7 @@ const DropDown = ({ title, children, id }) => {
 
 
         <div className="w3-dropdown-click">
-            <button onClick={myFunction} className="w3-button w3-black">{title}</button>
+            <button onClick={myFunction} className="w3-button  w3-text-orange">{title}</button>
             <div id="Demo" className="w3-dropdown-content w3-bar-block w3-card-4 w3-animate-zoom">
                 {children}
             </div>

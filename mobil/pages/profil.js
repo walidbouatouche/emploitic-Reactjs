@@ -7,35 +7,15 @@ import Auth from '../services/auth';
 import { ListItem } from 'react-native-elements';
 
 //A page about user data
-//صفحة خاص ببيانات المستخدم
+
 const Profil = (props) => {
-  const [myoffres, setMyoffres] = useState([{}]);
   useEffect(() => {
-    sendRequest(`/api/user/data/${Auth.getUserId()}`, 'GET', false).then(res => {
-      res.json().then((response) => {
-        console.log(response);
-        setMyoffres(response);
-      })
-    }).catch(e => {
-      alert("something Wrong");
-    })
 
   }, [])
   return (
     <ScrollView>
       <Layout>
-        { //  just  a simple page
-        }
-        {
-          myoffres.map((item) => (
-            <ListItem
-              key={item.mail}
-              title={item.nom}
-              subtitle={item.prenom}
-              bottomDivider
-            />
-          ))
-        }
+
       </Layout>
     </ScrollView>
   )

@@ -80,7 +80,6 @@ const Offremanager = () => {
     }
 
     function getUsersByOffre(id) {
-
         // get offre postuler by user
         dispatch(_userAction.getUsersByOffre(id))
 
@@ -91,11 +90,10 @@ const Offremanager = () => {
         <Layout>
 
             <div className="w3-col m8 w3-padding">
-                {state.offres.nbr && `  Nbr of Topics :${state.offres.nbr}`}
                 {state.offres.loading && <Spinner />}
                 {state.offres.error && <Alerts.AlertDanger text={state.offres.error} />}
                 {state.offres.listoffres &&
-                    // state.offres.usersByOffre
+       
                     <OffreList users={state.user.usersByOffre} getUsersByOffre={getUsersByOffre} addOffre={addOffre} editOffre={editOffre} _removeOffre={removeOffre} offrelist={state.offres.listoffres} />}
                 {state.offres.succes &&
                     <Alerts.Alertsuccess text={"Success!"} />
@@ -103,13 +101,16 @@ const Offremanager = () => {
                 {!(limit >= (state.offres.nbr + incrementByLimit)) ? <More _moreOffre={getMoreOffre} limit={limit} /> : null}
             </div>
             <div className="w3-col m4 ">
+                
                 <Panel title="filter">
-
                     <Search searchOffre={searchOffre} _placeholder={'search offre'} />
                     <Select filterOffre={filterOffre} _title={'Choose your offre'} _data={categorieoffre} />
-
-
                     {<Button title="Rest" onClick={() => getMoreOffre(4)} />}
+                 <p className="w3-text-black">
+                 {state.offres.nbr && `  Nbr of Topics :${state.offres.nbr}`}
+
+                 </p>
+
                 </Panel>
 
 

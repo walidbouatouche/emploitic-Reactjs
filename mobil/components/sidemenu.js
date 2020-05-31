@@ -29,9 +29,9 @@ const sideMenu = () => {
   ]
 
 
-  const logout= () =>{
+  const logout = () => {
     Auth.clearAll();
-    window.location.reload();
+    //window.location.reload();
     Actions.jump("home")
   }
   return (
@@ -60,14 +60,14 @@ const sideMenu = () => {
           ))
         }
 
-<ListItem
-              onPress={logout}
-              key={0}
-              leftAvatar={<Icon name="close" color="#FF4500"></Icon>}
-              title="logout"
-              bottomDivider
-              chevron={{ color: '#FF4500' }}
-            />
+        <ListItem
+          onPress={logout}
+          key={0}
+          leftAvatar={<Icon name="close" color="#FF4500"></Icon>}
+          title="logout"
+          bottomDivider
+          chevron={{ color: '#FF4500' }}
+        />
       </View>
     </ScrollView>
   )

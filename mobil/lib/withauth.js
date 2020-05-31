@@ -12,11 +12,6 @@ const HocAuth = (HocComponent) => {
       and show the receiving page from props if it is true
       */
 
-            /*
-             false التحقق من وجود التوكن اظهار صفحة الدخول اذا كان
-              وإظهار الصفحة المستقبل من props اذا كان true 
-               */
-
             if (!Auth.isAuth()) {
                 return (
                     <Login {...this.props}></Login>
