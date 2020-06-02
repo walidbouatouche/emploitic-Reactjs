@@ -13,9 +13,7 @@ import { Alerts } from '../../../compenents/alerts'
 const Listpage = ({ match }) => {
 
     const state = useSelector(state => state)
-
     const dispatch = useDispatch()
-
     //Get an ID from the home page
     const { id } = match.params;
 

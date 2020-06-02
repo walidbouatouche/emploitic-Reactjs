@@ -33,7 +33,7 @@ function getOffreById(id) {
         },
             () => {
                 dispatch({
-                    type: offreConstants.GET_MORE_FAILURE,
+                    type: offreConstants.GET_OFFRE_BY_ID_FAILURE,
                     error: "somthing Wrong"
                 })
             }
@@ -127,7 +127,7 @@ function getCatById(catId) {
 }
 
 
-function getMoreOffre(limit = 4) {
+function getMoreOffre(limit = 4) { // by limit
     return dispatch => {
         dispatch({
             type: offreConstants.GET_MORE_REQUEST

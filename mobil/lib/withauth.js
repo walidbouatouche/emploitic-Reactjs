@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Auth from '../services/auth';
+import Auth from '../_helpers/auth';
 import Login from '../pages/login'
-//صفحة تسعمل فقط من اجل المصادقة
+
 //A page used only for authentication             /*https://www.javatpoint.com/react-higher-order-components/
 
 const HocAuth = (HocComponent) => {

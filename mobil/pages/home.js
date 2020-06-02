@@ -1,17 +1,15 @@
 import React from "react";
 import Layout from '../layout'
-import { ScrollView } from "react-native"
+import { ScrollView, Text } from "react-native"
 import lists from '../static/cat.json'
 import { ListItem } from 'react-native-elements'
-import { Actions, ActionConst } from 'react-native-router-flux';
+import { Actions } from 'react-native-router-flux';
 
 //The first page that the user sees
 
 const Home = () => {
   const jumpTo = (id) => {
-
     Actions.jump("list", { id });
-
   }
   return (
     <ScrollView>
@@ -22,8 +20,7 @@ const Home = () => {
               onPress={() => jumpTo(item.id)}
               key={item.id}
               leftAvatar={{ source: { uri: item.imguri } }}
-              title={item.title}
-              subtitle={item.title}
+              title={<Text style={{ marginLeft: 20 }}>{item.title}</Text>}
               bottomDivider
 
             />

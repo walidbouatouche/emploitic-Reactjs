@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Layout from '../layout'
 import { TouchableOpacity, TextInput, View, StyleSheet, ScrollView, Text } from "react-native"
-import sendRequest from '../services/sendrequest'
-import Auth from '../services/auth'
 import { Actions } from 'react-native-router-flux';
 
 const Login = () => {
@@ -15,25 +13,7 @@ const Login = () => {
     setMail(text)
   }
   const login = () => {
-    const _mail = mail;
-    const _password = password;
-   // 
-    sendRequest('/api/user/_data/', 'POST', JSON.stringify({ mail: _mail, password: _password })).then(res => {
 
-      res.json().then((response) => {
-        const { token, userId } = response
-        
-        //  we receive data from backend
-
-        // store user details and jwt token in local storage to keep user logged in between page refreshes
-        Auth.setToken(token);
-        Auth.setUserId(userId);
-        window.location.reload();
-
-      })
-    }).catch(e => {
-      alert("somthing Worng")
-    })
   }
   return (
     <ScrollView>

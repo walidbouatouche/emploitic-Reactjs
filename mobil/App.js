@@ -8,16 +8,19 @@ import Singup from './pages/singup'
 import { Router, Scene, Drawer } from 'react-native-router-flux'
 import MenuIcon from './components/menuIcon'
 import Sidemenu from './components/sidemenu'
- /* We are completely  use to our project 
- * https://github.com/aksonov/react-native-router-flux
- */
- /*  نحن نستخدم مشروعنا بالكامل 
- * https://github.com/aksonov/react-native-router-flux
- */
+import { Provider } from 'react-redux'
+import { store } from './_helpers/store'
+/* We are completely  use to our project 
+* https://github.com/aksonov/react-native-router-flux
+*/
+/*  
+* https://github.com/aksonov/react-native-router-flux
+*/
 
 const App = () => {
   return (
     <Router navigationBarStyle={{ backgroundColor: '#FF4500' }}  >
+
       <Scene key="root">
         <Drawer hideNavBar={true}
           key="drawer"
@@ -37,8 +40,15 @@ const App = () => {
           <Scene backButtonTintColor="#FFFFFF" titleStyle={{ color: '#FFFFFF', }}
             key="singup" component={Singup} title="Singup" />
         </Drawer>
-        
-        <Scene titleStyle={{ color: '#FFFFFF', }}
+        {
+          /*
+   
+          * this routong use Outer from drawer 
+          * cause Drawer disabled params nav
+          
+           */
+        }
+        <Scene   titleStyle={{ color: '#FFFFFF', }}
           key="list" component={List} title="List" />
         <Scene titleStyle={{ color: '#FFFFFF', }}
           key="offreviewer" component={Offreviewer} title="Offreviewer" />
@@ -50,8 +60,12 @@ const App = () => {
 
 }
 
+const AppWithStore = () => {
+  return (<Provider store={store}>
+    <App />
+  </Provider>)
+}
 
 
 
-export default App
-
+export default AppWithStore;

@@ -1,17 +1,22 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Layout from '../layout'
-import { ScrollView } from "react-native"
-import { Actions } from 'react-native-router-flux';
+import { ScrollView, Text, Button } from "react-native"
 
-//The code is clear and simple
-// الكود واضح وبسيط
-const Offreviewer = (props) => {
-  useEffect(() => {
 
-  }, [])
+
+const Offreviewer = ({ offre }) => {
+
   return (
     <ScrollView>
       <Layout>
+        <Text style={{ fontSize: 15, color: 'orange' }} >
+          {offre.titre}
+        </Text>
+        <Text >
+          {offre.description}
+        </Text>
+
+        <Button title={'Postuler'} ></Button>
       </Layout>
     </ScrollView>
   )

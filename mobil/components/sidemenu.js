@@ -3,7 +3,7 @@ import { View, Text, ScrollView, ImageBackground } from 'react-native'
 import { img } from '../images/imageside'
 import { ListItem, Icon } from 'react-native-elements'
 import { Actions } from 'react-native-router-flux';
-import Auth from '../services/auth'
+import Auth from '../_helpers/auth'
 const sideMenu = () => {
 
   const menu = [
@@ -38,7 +38,7 @@ const sideMenu = () => {
     <ScrollView>
       <View>
         <ImageBackground
-          style={{ height: 200 }}
+          style={{ height: 150 }}
           source={{ uri: img }}
         >
           <Text
@@ -52,10 +52,11 @@ const sideMenu = () => {
             <ListItem
               onPress={() => Actions.jump(item.to)}
               key={item.id}
-              leftAvatar={<Icon name={item.icon} color="#FF4500"></Icon>}
+              leftAvatar={<Icon  style={{marginRight:20}} name={item.icon} color="#FF4500"></Icon>}
               title={item.title}
+      
               bottomDivider
-              chevron={{ color: '#FF4500' }}
+ 
             />
           ))
         }
@@ -63,12 +64,14 @@ const sideMenu = () => {
         <ListItem
           onPress={logout}
           key={0}
-          leftAvatar={<Icon name="close" color="#FF4500"></Icon>}
+          leftAvatar={<Icon  style={{marginRight:20}}  type="font-awesome"  name="power-off" color="#FF4500"></Icon>}
           title="logout"
           bottomDivider
-          chevron={{ color: '#FF4500' }}
+      
         />
       </View>
+ 
+
     </ScrollView>
   )
 

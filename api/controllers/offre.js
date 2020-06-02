@@ -159,9 +159,7 @@ exports.getOffreById = (req, res, next) => {
   const QUERY = `SELECT * FROM OFFRE WHERE _id=${id} `
   CON.query(QUERY, (err, result) => {
     if (err) _response(res, 401, { message: 'invalidRequest' });
-    if (result.length <= 0) {
-      _response(res, 401, { message: 'no Data' });
-    }
+     
 
     _response(res, 200, result)
   })

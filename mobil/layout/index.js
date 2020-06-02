@@ -4,7 +4,7 @@ import { View } from "react-native"
 const Layout = (props) => {
 
     return (
-        <View>
+        <View > 
             {props.children}
         </View>
 
