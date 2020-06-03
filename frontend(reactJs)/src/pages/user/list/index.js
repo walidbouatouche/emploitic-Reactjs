@@ -8,8 +8,6 @@ import Listbycat from './compenents/listbycat'
 import Spinner from '../../../compenents/spinner'
 import { Alerts } from '../../../compenents/alerts'
 
-
-
 const Listpage = ({ match }) => {
 
     const state = useSelector(state => state)

@@ -9,10 +9,12 @@ import OffreList from './compenents/offrelist';
 import Search from '../../../compenents/search'
 import More from './compenents/moreoffres';
 import Select from '../../../compenents/select'
+import Button from '../../../compenents/button'
+
 import { _offreAction } from '../../../redux/_actions/offre.action';
 import { _userAction } from '../../../redux/_actions/user.action';
 
-import Button from '../../../compenents/button'
+
 import categorieoffre from '../../../static/cat.json'
 
 const incrementByLimit = 4; //  that mean  ++4 (*_*)
@@ -21,9 +23,11 @@ const incrementByLimit = 4; //  that mean  ++4 (*_*)
     //  i wrote  many function name with underscore  just for make the code readable
 }
 const Offremanager = () => {
+
     const state = useSelector(state => state)
     const dispatch = useDispatch();
     const [limit, setLimit] = useState(incrementByLimit)
+
 
     useEffect(() => {
         /*  

@@ -5,9 +5,7 @@ const Menuicon = () => {
    return (
       <Icon
          name='menu'
-         color='#FFFFFF' />
-   )
-
+         color='#FFFFFF' /> )
 }
 
 

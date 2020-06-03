@@ -9,13 +9,9 @@ import { ListItem } from 'react-native-elements'
 import { Actions } from 'react-native-router-flux';
 
 const List = ({ id }) => {
+
   const dispatch = useDispatch();
   const state = useSelector(state => state)
-
-  const jumpTo = (offre) => {
-    // for show the details of offre we will send object offre 
-    Actions.jump("offreviewer", { offre });
-  }
 
 
   useEffect(() => {
@@ -26,6 +22,13 @@ const List = ({ id }) => {
     dispatch(_offreAction.getOffreByCat(id))
 
   }, [])
+
+  const jumpTo = (offre) => {
+    // for show the details of offre we will send object offre 
+    Actions.jump("offreviewer", { offre });
+  }
+
+
   return (
     <ScrollView>
       <Layout>

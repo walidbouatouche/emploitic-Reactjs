@@ -19,14 +19,11 @@ const updateCvFile = _userAction.updateCvFile,
 // We used the old method for you to diversify only (class)
 class Profilviewer extends Component {
 
-
-
   async componentDidMount() {
 
     //Get the  ID from  the storge and call function  from props
     await this.props.getUserByid(Auth.getUserId())
   }
-
 
   updateUserInfo = (userData) => {
     this.props.updateUser(userData);

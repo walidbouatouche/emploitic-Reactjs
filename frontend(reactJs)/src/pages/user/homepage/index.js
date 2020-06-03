@@ -1,8 +1,9 @@
 import React from 'react'
+
 import Layout from '../../../layout/index'
 import categorieoffre from '../../../static/cat.json'
 import List from './compenets/listhome'
- 
+
 //The first page that the user sees
 
 const Home = () => {
@@ -18,13 +19,8 @@ const Home = () => {
                     <List list={categorieoffre} />
                 </ul>
             </div>
-
         </Layout>
     )
-
-
-
-
 
 }
 
