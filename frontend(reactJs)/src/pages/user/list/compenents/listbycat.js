@@ -3,6 +3,8 @@ import { faMapMarkerAlt, faClock, faBookmark } from '@fortawesome/free-solid-svg
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from "react-router-dom"
 
+
+// compenent show list of offres by categoreis
 const Listlist = ({ list }) => {
 
     return (

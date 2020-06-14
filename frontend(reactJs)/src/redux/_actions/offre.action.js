@@ -11,7 +11,10 @@ export const _offreAction = {
     getOffreById,
     postulerOffre,
     getMyOffre,
-    getOffreNumber
+    getOffreNumber,
+    getNumberOffresByCat,
+    getOffreByCatWithPagination
+
 }
 
 /*  
@@ -46,11 +49,11 @@ function getOffreById(id) {
 
 
 
-//  const GET_ALL_OFFRES_REQUEST  meant search and get all
+//  const  SEARCH_OFFRES_REQUEST  meant search and get all
 function searchOffres(char = 'a') {
     return dispatch => {
         dispatch({
-            type: offreConstants.GET_ALL_OFFRES_REQUEST
+            type: offreConstants. SEARCH_OFFRES_REQUEST
         })
         return sendRequest({
             method: 'GET',
@@ -58,13 +61,13 @@ function searchOffres(char = 'a') {
         }).then(
             offre => {
                 dispatch({
-                    type: offreConstants.GET_ALL_OFFRES_SUCCESS,
+                    type: offreConstants. SEARCH_OFFRES_SUCCESS,
                     offre
                 })
             },
             error => {
                 dispatch({
-                    type: offreConstants.GET_ALL_OFFRES_FAILURE,
+                    type: offreConstants. SEARCH_OFFRES_FAILURE,
                     error: "somthing Wrong"
                 })
 
@@ -312,5 +315,71 @@ function getOffreNumber() {
         )
 
 
+    }
+}
+
+
+
+function getNumberOffresByCat(catId) {
+    return dispatch => {
+
+        dispatch({
+            type: offreConstants.NBR_OFFRES_C_BEGIN
+
+        })
+        return sendRequest(
+            {
+                method: 'GET',
+                url: '/offre/getoffrenumberbycat/' + catId
+            }
+
+        ).then(
+            (nbr) => {
+                dispatch({
+                    type: offreConstants.NBR_OFFRES_C_SUCCESS,
+                    nbr
+                })
+            },
+            () => {
+                dispatch({
+                    type: offreConstants.NBR_OFFRES_C_FAIL,
+                    error: "somthing Wrong"
+                })
+            }
+
+
+
+        )
+
+
+    }
+}
+
+
+
+
+function getOffreByCatWithPagination(skip, catId , limit) { // by limit
+
+    const data = JSON.stringify({ catId, skip ,limit })
+    return dispatch => {
+        dispatch({
+            type: offreConstants.GET_OFFRES_PAGINATION_C_BEGIN
+        })
+        return sendRequest({
+            method: 'GET',
+            url: `/offre/getOffrebycatwithpagination/${data}`
+        }).then((offre) => {
+            dispatch({
+                type: offreConstants.GET_OFFRES_PAGINATION_C_SUCCESS,
+                offre
+            })
+        },
+            () => {
+                dispatch({
+                    type: offreConstants.GET_OFFRES_PAGINATION_C_FAIL,
+                    error: "somthing Wrong"
+                })
+            }
+        )
     }
 }

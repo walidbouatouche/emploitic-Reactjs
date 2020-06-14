@@ -6,15 +6,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 const FileUpload = ({ updateCvFile, _cv_link, userId }) => {
 
 
-//  we  useref  for open input but by click on other button 
-  const inputFile = useRef(null); 
+  //  we  useref  for open input but by click on other button 
+  const inputFile = useRef(null);
   const onButtonClick = () => { inputFile.current.click(); };
   const onChange = (e) => {
     const formData = new FormData(); // userid + file
-  
+
     formData.append('pdf', e.target.files[0]) // get file from input
     formData.append('userId', userId)  // get use id 
-   
+
     updateCvFile(formData);
   }
   const openCv = () => {

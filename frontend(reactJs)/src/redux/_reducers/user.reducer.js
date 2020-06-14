@@ -2,7 +2,7 @@ import { userConstants } from '../_canstants/user.constants'
 
 
 export function user(state = {}, action) {
-
+ console.log(action)
     switch (action.type) {
         case userConstants.USER_SIGNUP_REQUEST:
             return {
@@ -55,9 +55,7 @@ export function user(state = {}, action) {
 
         case userConstants.GET_USER_BY_ID_BEGIN:
             return {
-
                 loading: true,
-
             }
 
         case userConstants.GET_USER_BY_ID_SUCCESS:

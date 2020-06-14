@@ -9,6 +9,8 @@ import { Alerts } from '../../../compenents/alerts'
 import OffreDetail from './compenets/offrevwier'
 
 import Auth from '../../../_helpers/auth'
+
+// page show a content of offre 
 const Offredetail = ({ match }) => {
 
 
@@ -21,7 +23,7 @@ const Offredetail = ({ match }) => {
     }, [])
 
     const postuler = (id) => {
-
+          
         dispatch(_offreAction.postulerOffre(id, Auth.getUserId()))
     }
 
@@ -30,14 +32,14 @@ const Offredetail = ({ match }) => {
             <div className=" w3-margin">
                 <br />
                 <ul className="w3-ul w3-hoverable w3-white">
-                    {state.offres.loading && <Spinner />}
+
                     {state.offres.error && <Alerts.AlertDanger text={state.offres.error} />}
-                    {state.offres.offredetail &&
-                        <OffreDetail postulerOffre={postuler} list={state.offres.offredetail} />}
+
                     {state.offres.succes &&
                         <Alerts.Alertsuccess text={"Success!"} />
                     }
-
+                    {state.offres.offredetail &&
+                        <OffreDetail postulerOffre={postuler} list={state.offres.offredetail} />}
 
                 </ul>
             </div>

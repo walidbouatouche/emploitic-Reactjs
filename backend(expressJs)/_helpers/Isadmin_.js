@@ -1,3 +1,5 @@
+
+// midelleware  check if is request from Admin(role==admin)
 const jwt = require('jsonwebtoken');
 const CON = require('../config/sql.config')
 const _response = require('./_response')

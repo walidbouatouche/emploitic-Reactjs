@@ -19,6 +19,7 @@ const Home = () => {
                     <List list={categorieoffre} />
                 </ul>
             </div>
+
         </Layout>
     )
 

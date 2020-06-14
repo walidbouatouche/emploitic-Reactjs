@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import PropTypes from 'prop-types';
 
 const Loginorsingup = ({ loginOrsingup, action }) => {
 
@@ -21,7 +20,7 @@ const Loginorsingup = ({ loginOrsingup, action }) => {
     return (<div >
 
         <form onSubmit={_loginOrsingup} className="w3-white w3-padding w3-col m5 w3-margin-left"  >
-        <h1> {action} </h1>
+            <h1> {action} </h1>
             <label>Email</label>
             <input onChange={handleEmail} required type="email" className="w3-input w3-border" />
             <label>Password</label>

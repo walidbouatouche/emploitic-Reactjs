@@ -1,3 +1,6 @@
+
+// midelleware for Auth
+
 const jwt = require('jsonwebtoken');
 const _response = require('./_response')
 module.exports = (req, res, next) => {

@@ -6,7 +6,7 @@ import { Helmet } from "react-helmet"
 //The main layout that appears on all pages
 const Layout = ({ children }) => {
   return (
-    <>
+    <div >
       <Helmet>
         <title>Emploitik</title>
       </Helmet>
@@ -18,7 +18,7 @@ const Layout = ({ children }) => {
         {/* <Rightside /> */}
       </div>
       <Footer />
-    </>
+    </div>
   );
 
 }

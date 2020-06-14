@@ -1,6 +1,7 @@
 const CON = require('../config/sql.config');
 const jwt = require('jsonwebtoken'); // token for login
 const _response = require('../_helpers/_response')
+
 exports.signup = (req, res, next) => {
 
     const { mail, password } = req.body.data;
@@ -147,7 +148,7 @@ exports.upfileCv = (req, res, next) => {
 exports.getUsersByOffre = (req, res, next) => {
     const idOffre = req.params.id;
     const QUERY = `
-    SELECT _exp, _cv_link ,	_cat ,_deplo ,info  ,
+    SELECT    id , _exp, _cv_link ,	_cat ,_deplo ,info  ,
     nom,
     prenom,
     adresse	, 

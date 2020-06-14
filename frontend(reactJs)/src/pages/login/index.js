@@ -48,11 +48,10 @@ const LoginOrRegister = ({ history }) => {
     }
 
     return (
-
         <div className="w3-text-center ">
             <br />
             <br />
-            <h1>Welcom To login page</h1>
+            <h1 className="w3-text-center " >Welcom To login page</h1>
             {state.user.loading && <Spinner />}
             {state.user.error && <Alerts.AlertDanger text={state.user.error} />}
 
@@ -67,8 +66,20 @@ const LoginOrRegister = ({ history }) => {
 
             <br />
             <br />
-            <LoginOrsingup loginOrsingup={singup} action={'singup'} />
-            <LoginOrsingup loginOrsingup={login} action={'login'} />
+           
+           
+    
+ <LoginOrsingup loginOrsingup={singup} action={'singup'} />
+ <LoginOrsingup loginOrsingup={login} action={'login'} />
+         <form className="w3-white w3-padding w3-col m5 w3-margin-left"  >
+
+                <p> forget password</p>
+                <input required type="email" className="w3-input w3-border" />
+             <br />
+            <button className="w3-button w3-orange w3-text-white"> Send</button>
+
+</form>
+
         </div>
 
 

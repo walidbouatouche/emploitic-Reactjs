@@ -36,7 +36,7 @@ class _Auth {
 
 
     clearAll() {
-            // remove user from local storage to log user out
+        // remove user from local storage to log user out
 
         this._token = "";
         localStorage.clear()
@@ -44,10 +44,22 @@ class _Auth {
 
     isAuth() {
 
-
         return Boolean(this._token)
     }
 
+
+    tokenIsExpire() {
+        /*
+         the next time we will do it 
+         function test if token is valide not expire when user 
+         is login in frentend but is logout in backend(token expire)
+         we will logout . this function call by soket or by call it
+         every load .... -_-......
+       
+        */
+
+
+    }
 
 }
 

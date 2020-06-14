@@ -3,20 +3,20 @@ import { offreConstants } from '../_canstants/offres.constants'
 export function offres(state = {}, action) {
     console.log(state)
     switch (action.type) {
-        case offreConstants.GET_ALL_OFFRES_REQUEST:
+        case offreConstants. SEARCH_OFFRES_REQUEST:
             return {
                 ...state,
                 loading: true
             };
 
-        case offreConstants.GET_ALL_OFFRES_SUCCESS:
+        case offreConstants. SEARCH_OFFRES_SUCCESS:
             return {
                 ...state,
                 listoffres: action.offre.data,
                 loading: false
             }
 
-        case offreConstants.GET_ALL_OFFRES_FAILURE:
+        case offreConstants. SEARCH_OFFRES_FAILURE:
             return {
                 error: action.error
             }
@@ -33,7 +33,6 @@ export function offres(state = {}, action) {
                 loading: false,
                 nbr: newNbr
             }
-
         case offreConstants.REMOVE_OFFRES_FAILURE:
             return {
                 error: action.error
@@ -73,7 +72,6 @@ export function offres(state = {}, action) {
             return {
                 error: action.error
             }
-
         case offreConstants.ADD_OFFRE_REQUEST:
             return {
                 ...state,
@@ -81,7 +79,6 @@ export function offres(state = {}, action) {
             };
 
         case offreConstants.ADD_OFFRE_SUCCESS:
-
             const _newNbr = state['nbr'] + 1;
 
             return {
@@ -90,15 +87,14 @@ export function offres(state = {}, action) {
                 nbr: _newNbr
             }
 
-
         case offreConstants.UPDATE_OFFRE_FAILURE:
             return {
-            
+
                 error: action.error
             }
         case offreConstants.UPDATE_OFFRE_REQUEST:
             return {
-                ...state ,
+                ...state,
                 loading: true
             };
 
@@ -131,25 +127,27 @@ export function offres(state = {}, action) {
 
         case offreConstants.POSTULER_OFFRES_BEGIN:
             return {
+                ...state,
                 loading: true
             };
 
         case offreConstants.POSTULER_OFFRES_SUCCESS:
             return {
-                succes: true
+                ...state,
+                succes: true,
+                loading: false
             }
 
         case offreConstants.POSTULER_OFFRES_FAIL:
             return {
+                ...state,
+                loading: false,
                 error: action.error
             }
 
-
         case offreConstants.GET_MY_OFFRES_BEGIN:
             return {
-
                 loading: true,
-
             }
         case offreConstants.GET_MY_OFFRES_SUCCESS:
             return {
@@ -158,14 +156,12 @@ export function offres(state = {}, action) {
             }
         case offreConstants.GET_MY_OFFRES_FAIL:
             return {
-
                 error: action.error
             }
         case offreConstants.NBR_OFFRES_BEGIN:
             return {
 
                 //  loading: true,
-
             }
         case offreConstants.NBR_OFFRES_SUCCESS:
             // index 0
@@ -178,6 +174,38 @@ export function offres(state = {}, action) {
                 error: action.error
             }
 
+        case offreConstants.GET_OFFRES_PAGINATION_C_BEGIN:
+            return {
+                ...state,
+                loading: true,
+            }
+        case offreConstants.GET_OFFRES_PAGINATION_C_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                offreByPgn: action.offre.data
+            }
+        case offreConstants.GET_OFFRES_PAGINATION_C_SUCCESS:
+            return {
+                ...state,
+                error: action.error
+            }
+        case offreConstants.NBR_OFFRES_C_BEGIN:
+            return {
+                ...state,
+                loading: true
+            }
+        case offreConstants.NBR_OFFRES_C_SUCCESS:
+            // index 0
+            return {
+                ...state,
+                loading: false,
+                nbrPgn: action.nbr.data[0]['count(*)']
+            }
+        case offreConstants.NBR_OFFRES_C_FAIL:
+            return {
+                error: action.error
+            }
 
         default:
             return state;

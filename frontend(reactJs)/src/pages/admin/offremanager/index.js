@@ -20,7 +20,11 @@ import categorieoffre from '../../../static/cat.json'
 const incrementByLimit = 4; //  that mean  ++4 (*_*)
 
 {
-    //  i wrote  many function name with underscore  just for make the code readable
+    /*
+     many function name with underscore  
+    just for make the code readable 
+
+    */
 }
 const Offremanager = () => {
 
@@ -31,9 +35,10 @@ const Offremanager = () => {
 
     useEffect(() => {
         /*  
-          *  limit number of topics it will increment +4  when admin
-            click showmore
-           * next time i will use  pagination
+          *  limit number of topics it will increment +4 
+           (you can use other ) when adminclick showmore
+
+
             */
         getMoreOffre(limit)
         dispatch(_offreAction.getOffreNumber())
@@ -102,8 +107,7 @@ const Offremanager = () => {
                 {!(limit >= (state.offres.nbr + incrementByLimit)) ? <More _moreOffre={getMoreOffre} limit={limit} /> : null}
             </div>
             <div className="w3-col m4 ">
-
-                <Panel title="filter">
+                <Panel title="Recherche general">
                     <Search searchOffre={searchOffre} _placeholder={'search offre'} />
                     <Select filterOffre={filterOffre} _title={'Choose your offre'} _data={categorieoffre} />
                     {<Button title="Rest" onClick={() => getMoreOffre(4)} />}
@@ -111,12 +115,9 @@ const Offremanager = () => {
                         {state.offres.nbr && `  Nbr of Topics :${state.offres.nbr}`}
 
                     </p>
-
                 </Panel>
 
-
             </div>
-
         </Layout>
 
     </>)

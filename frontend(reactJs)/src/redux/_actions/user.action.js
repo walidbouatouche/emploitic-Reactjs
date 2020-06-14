@@ -12,10 +12,7 @@ export const _userAction = {
 }
 
 
-
 function signup(data) {
-
-
     return dispatch => {
         dispatch({
             type: userConstants.USER_SIGNUP_REQUEST
@@ -29,7 +26,6 @@ function signup(data) {
                 type: userConstants.USER_SIGNUP_SUCCESS,
 
             })
-
         },
             ({ response }) => {
                 dispatch({
@@ -41,8 +37,8 @@ function signup(data) {
     }
 }
 
-function login(data) {
 
+function login(data) {
 
     return dispatch => {
         dispatch({
@@ -57,12 +53,11 @@ function login(data) {
                 type: userConstants.USER_LOGIN_SUCCESS,
                 user
             })
-
         },
             ({ response }) => {
                 dispatch({
                     type: userConstants.USER_LOGIN_FAILURE,
-                    error: (response != undefined && response != null) ? response.data.message : "somthing wrong"
+                    error: response?.data?.message ?? "pass or mail no valid"
                 })
             }
         )
@@ -97,7 +92,9 @@ function updateCvFile(formData, id) {
     }
 }
 
+
 function getUserByid(id) {
+
     return dispatch => {
         dispatch({
             type: userConstants.GET_USER_BY_ID_BEGIN,
@@ -108,6 +105,7 @@ function getUserByid(id) {
             url: `/user/getuserbyid/${id}`,
 
         }).then(user => {
+
             dispatch({
                 type: userConstants.GET_USER_BY_ID_SUCCESS,
                 user
@@ -148,6 +146,7 @@ function updateUser(userData) {
             })
     }
 }
+
 function getUsersByOffre(idOffre) {
     return dispatch => {
         dispatch({

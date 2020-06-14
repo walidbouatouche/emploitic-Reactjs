@@ -159,40 +159,46 @@ exports.getOffreById = (req, res, next) => {
   const QUERY = `SELECT * FROM OFFRE WHERE _id=${id} `
   CON.query(QUERY, (err, result) => {
     if (err) _response(res, 401, { message: 'invalidRequest' });
-     
+
 
     _response(res, 200, result)
   })
 }
 
 exports.postulerOffres = (req, res, next) => {
-
   const { id, idUser } = req.body;
-  const QUERY = 'INSERT INTO  `db`.`myoffre` (` id` ,` id_user` ,`idoffre`)VALUES (NULL , "' + idUser + '","' + id + '")'
+  let QUERY = `SELECT * FROM  myoffre where idoffre='${id}' AND  \` id_user\`='${idUser}'`
   CON.query(QUERY, function (err, result) {
     if (err) _response(res, 401, { message: 'Error' });
-    _response(res, 200, { message: " succefully !!" })
+    if (result.length > 0) {
+      _response(res, 401, { message: ' offre Already postuler' });
+
+    }
+    else {
+      QUERY = 'INSERT INTO  `db`.`myoffre` (` id` ,` id_user` ,`idoffre`)VALUES (NULL , "' + idUser + '","' + id + '")'
+      CON.query(QUERY, function (err, result) {
+        if (err) _response(res, 401, { message: 'Error' });
+        _response(res, 200, { message: " succefully !!" })
+      });
+    }
   });
+
+
 }
 
 
-
 exports.getMyoffres = (req, res, next) => {
-
   const idUser = req.params.id;
   const QUERY = 'SELECT  * from myoffre, offre WHERE   `myoffre`.` id_user` =' + `${idUser}` + ' AND  `offre`.`_id` = `myoffre`.`idoffre`'
-
   CON.query(QUERY, (err, result) => {
     if (err) _response(res, 401, { message: 'Error' });;
     _response(res, 200, result)
   });
 
-
-
 }
 
-exports.getOffreNumber = (req, res, next) => {
 
+exports.getOffreNumber = (req, res, next) => {
   const QUERY = "SELECT count(*) from offre "
   CON.query(QUERY, (err, result) => {
     if (err) _response(res, 401, { message: 'Error' });
@@ -213,4 +219,37 @@ exports.getOffreByLimitAndCat = (req, res, next) => {
     }
     _response(res, 200, result)
   })
+
 }
+
+
+// for pagination in frontend
+exports.getNumberOffresByCat = (req, res, next) => {
+  const { catId } = req.params;
+  const QUERY = `SELECT count(*) FROM offre  WHERE cat='${catId}'`
+ 
+  CON.query(QUERY, (err, result) => {
+    if (err) _response(res, 401, { message: 'invalidRequest' });
+    _response(res, 200, result)
+  });
+
+}
+
+
+
+exports.getOffreByCatWithPagination = (req, res, next) => {
+  const { data } = req.params;
+  _data = JSON.parse(data);
+  const { catId, skip , limit } = _data;
+  console.log(_data)
+  const QUERY = `SELECT * FROM offre  WHERE cat='${catId}' limit ${skip},${limit}`
+  CON.query(QUERY, (err, result) => {
+    if (err) _response(res, 401, { message: 'invalidRequest' });
+    _response(res, 200, result)
+  });
+
+}
+//
+
+
+

@@ -15,13 +15,7 @@ import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
  const Editfrom =({userinfo,list,updateUser ,userId }) =>{
 
-    Editfrom.propTypes = {
-        updateUser: PropTypes.func.isRequired,
-        list: PropTypes.array.isRequired ,
-        userinfo:PropTypes.object.isRequired ,
-        userId:PropTypes.string.isRequired
-      };
- 
+
     return(<div className="w3-center" >
 <div className="w3-col  m11 w3-margin-left w3-white w3-padding">
 {/* <Editor

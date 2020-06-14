@@ -7,7 +7,7 @@ Enzyme.configure({ Adapter: new Adapter() })
 
 
 beforeEach()
-it(' Model  commpent render correctly', () => {
+it(' navigation commpent render correctly', () => {
   const wrapper = shallow(<Navigation />)
   expect(toJson(wrapper)).toMatchSnapshot();
 });

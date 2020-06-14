@@ -7,7 +7,7 @@ Enzyme.configure({ Adapter: new Adapter() })
 
 
 beforeEach()
-it(' Model  commpent render correctly', () => {
+it('  select commpent render correctly', () => {
     const wrapper = shallow(<Select />)
     expect(toJson(wrapper)).toMatchSnapshot();
 });

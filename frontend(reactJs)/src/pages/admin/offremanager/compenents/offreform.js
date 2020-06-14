@@ -5,11 +5,15 @@ import * as Yup from 'yup';
   
 
  const AddEditfrom =({ offreinfo ,list ,addEditOffre }) =>{
+
+    // set default value 
   let  [imguri=offreinfo.imguri,setImgUri]=useState()
     let dt= new Date() ;
     
 
     function showImagEvent(uri){
+
+        // convert selected image to base and assigment to uri 
      setImgUri(uri)
 
     }
@@ -17,7 +21,7 @@ import * as Yup from 'yup';
     return(<div className="w3-center" >
  <div className="w3-col  m11 w3-margin-left w3-white w3-padding">
  <Formik  
-enableReinitialize
+                enableReinitialize
                 initialValues={{
                     _id:offreinfo._id || '' ,
                     titre: offreinfo.titre || '',
@@ -25,7 +29,7 @@ enableReinitialize
                     description: offreinfo.description || '',
                     location:offreinfo.location  || '',
                     type:offreinfo.type  || '',
-                    cat:offreinfo.cat  || '',
+                    cat:offreinfo.cat  || '6',
                     date_d: offreinfo.date_d  ||   `${dt.getFullYear()}-${dt.getMonth()< 9 ? '0'+(dt.getMonth()+1):dt.getMonth()+1}-${dt.getDate()}`,
                     date_f:offreinfo.date_f  || `${dt.getFullYear()}-${dt.getMonth()< 9 ? '0'+(dt.getMonth()+1):dt.getMonth()+1}-${dt.getDate()}`,
                 }}
@@ -94,7 +98,6 @@ enableReinitialize
 
                 }
 
-
             
             }
                     
@@ -107,45 +110,40 @@ enableReinitialize
                             <Field name="location" as="textarea"   className={'w3-input w3-border' + (errors.location && touched.location ? ' w3-border w3-border-red' : '')} />
                             {errors.location && touched.location ? (<div className="w3-text-red">{errors.location}</div>) : null}
 
-<br />                        </div>
+                                  <br />                      
+                                </div>
 
 
-<div >
-<br />                        </div>
-
-<div >
+                                <div >
+                               <br />                  
+                             </div>
+                              <div >
                             <label htmlFor="type"> Type</label>
                             <Field name="type" as="textarea" className={'w3-input w3-border' + (errors. type && touched. type ? ' w3-border w3-border-red' : '')} />
                             {errors.type && touched.type? (<div className="w3-text-red">{errors.type}</div>) : null}
 
-<br />                        </div>
-
-
+                             <br />                      
+                            </div>
                            
-<div >
+                          <div >
                             <label htmlFor="date_d"> date start</label>
                             <Field name="date_d"  type='date'  className={'w3-input w3-border' + (errors. date_d && touched. date_d ? ' w3-border w3-border-red' : '')} />
                             {errors.date_d && touched.date_d? (<div className="w3-text-red">{errors.date_d}</div>) : null}
- <br />                        </div>
+                                   <br />                      
+                                </div>
                   
-<div >
+                                    <div >
                             <label htmlFor="date_f"> date end</label>
                             <Field name="date_f" type='date' className={'w3-input w3-border' + (errors.date_f && touched. date_f? ' w3-border w3-border-red' : '')} />
                             {errors.date_f && touched.date_f? (<div className="w3-text-red">{errors.date_f}</div>) : null}
 
-<br />                        </div>
-
-
-
-
-
+                              <br />                    
+                           </div>
 
                         <div >
                             <button type="submit"     className="w3-button w3-orange w3-text-white" >Save</button>
                             <button type="reset"    className="w3-button w3-gray w3-margin w3-text-white">Reset</button>
                         </div>
-
-                        
 
                     </Form>
                 )}

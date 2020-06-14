@@ -7,7 +7,7 @@ Enzyme.configure({ Adapter: new Adapter() })
 
 
 beforeEach()
-it(' Model  commpent render correctly', () => {
+it(' spinner render correctly', () => {
     const wrapper = shallow(<Spinner />)
     expect(toJson(wrapper)).toMatchSnapshot();
 });

@@ -13,7 +13,7 @@ const updateCvFile = _userAction.updateCvFile,
   getUserByid = _userAction.getUserByid,
   updateUser = _userAction.updateUser;
 
-//A page about user data
+// here can user update his infos
 
 
 // We used the old method for you to diversify only (class)
@@ -40,12 +40,6 @@ class Profilviewer extends Component {
           <h4 className="w3-margin">Vous infos</h4>
         </div>
         <div className="w3-col m8">
-          {
-
-            //update data
-
-
-          }
 
           <Editform userId={Auth.getUserId()}
             updateUser={this.updateUserInfo} list={Listofcategorie}
@@ -68,6 +62,7 @@ class Profilviewer extends Component {
 
           <Panel title="up Your cv">
             <Upfile
+
               userId={Auth.getUserId()}
               updateCvFile={this.updateCvFile}
               _cv_link={
@@ -85,6 +80,12 @@ class Profilviewer extends Component {
                   this.props.state.user.user.url : this.props.state.user.user[0]._cv_link
                   ) : ""
               }
+            /*   
+             * [0] the data comme as array  with 1 object 
+             * for target the properties we must use target by array-like
+       
+            */
+
             />
           </Panel>
 

@@ -39,7 +39,7 @@ const OffreList = ({ offrelist, _removeOffre, addOffre, editOffre, users, getUse
                             <Model id={item._id} title={<FontAwesomeIcon icon={faEdit} />}>
                                 {
 
-                                    // I think that is not best practice to use her model !
+                                    // I think that is not best practice to use her model  *_* !!!!
 
 
                                 }
@@ -51,13 +51,13 @@ const OffreList = ({ offrelist, _removeOffre, addOffre, editOffre, users, getUse
                         <th onClick={() => removeOffre(item._id)} ><FontAwesomeIcon icon={faTrash} /></th>
 
                         {
-                            // when click we copy direkt  the users in model below 
+                            // when click we copy direct  the users in model below 
                         }
                         <th>
                         { 
                            // i add  id   id={item._id + 'id'}  for id
                         }
-                            <Model id={item._id + 'id'} title={<FontAwesomeIcon  onClick={() => getUsersByOffre(item._id)} icon={faUser} />}>
+                            <Model  id={item._id + 'id'} title={<FontAwesomeIcon  onClick={() => getUsersByOffre(item._id)} icon={faUser} />}>
                                 {users && <UserLIst users={users} /> 
                                 
                                 }

@@ -1,12 +1,13 @@
-import React from'react'
+import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFilePdf} from '@fortawesome/free-solid-svg-icons'
+import { faFilePdf } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router-dom'
 
 
-const UsersList = ({users}) => {
+const UsersList = ({ users }) => {
 
-   return (<div>
-    UsersList
+    return (<div>
+        UsersList
    	 <table className="w3-table-all w3-width w3-margin-top">
 
             <thead>
@@ -19,28 +20,31 @@ const UsersList = ({users}) => {
             </thead>
             <tbody>
                 {users.map(item =>
-                    <tr key={item._id} >
+                    <tr key={item.id} >
                         <th>{item.nom}</th>
-                        <th>{item.nom}</th>
-                        <th  >
+                        <th>{item.prenom}</th>
+                        <th>
 
-                      <a onClick={()=>window.open(item._cv_link)} > 
+                            <a onClick={() => window.open(item._cv_link)} >
 
-<FontAwesomeIcon icon={faFilePdf} />
-                      </a>
+                                <FontAwesomeIcon icon={faFilePdf} />
+                            </a>
 
 
                         </th>
- 
+
                         <th>
-                        profil
+                            <Link className="w3-text-black" to={`/userprofil/${item.id}`}  >
+                                Profil
+   s
+                            </Link>
                         </th>
 
                     </tr>
                 )}
             </tbody>
-</table>
-   	</div>)
+        </table>
+    </div>)
 
 
 }

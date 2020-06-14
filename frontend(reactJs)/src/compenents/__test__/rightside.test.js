@@ -7,7 +7,7 @@ Enzyme.configure({ Adapter: new Adapter() })
 
 
 beforeEach()
-it(' Model  commpent render correctly', () => {
+it(' rightSide commpent render correctly', () => {
     const wrapper = shallow(<Rightside />)
     expect(toJson(wrapper)).toMatchSnapshot();
 });
