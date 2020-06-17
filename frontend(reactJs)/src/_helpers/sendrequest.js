@@ -9,6 +9,27 @@ const sendRequest = (config) => {
     "authorization": Auth.getToken()
   }
 
-  return axios(config)
+  return new Promise((resolve, reject) => {
+
+    axios(config).then((data) => {
+      resolve(data)
+    }).catch((e) => {
+      console.log(e)
+      if (e.response && e.response.status === 500) {
+        Auth.clearAll() // logout if token not valid Or token expired
+       
+      }
+      else {
+   console.log(e)
+        reject(e)
+      }
+
+    })
+
+
+  })
+
+
+
 }
 export default sendRequest

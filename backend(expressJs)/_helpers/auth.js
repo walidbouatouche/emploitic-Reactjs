@@ -7,8 +7,9 @@ module.exports = (req, res, next) => {
     const token = req.headers.authorization;
     const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET');
     userId = decodedToken.userId;
-
+    console.log(userId)
     if (parseInt(userId)) {
+        console.log('connected')
         next()
     }
     else {

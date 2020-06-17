@@ -66,19 +66,19 @@ const LoginOrRegister = ({ history }) => {
 
             <br />
             <br />
-           
-           
-    
- <LoginOrsingup loginOrsingup={singup} action={'singup'} />
- <LoginOrsingup loginOrsingup={login} action={'login'} />
-         <form className="w3-white w3-padding w3-col m5 w3-margin-left"  >
+
+
+
+            <LoginOrsingup loginOrsingup={singup} action={'singup'} />
+            <LoginOrsingup loginOrsingup={login} action={'login'} />
+            <form className="w3-white w3-padding w3-col m5 w3-margin-left"  >
 
                 <p> forget password</p>
                 <input required type="email" className="w3-input w3-border" />
-             <br />
-            <button className="w3-button w3-orange w3-text-white"> Send</button>
+                <br />
+                <button className="w3-button w3-orange w3-text-white"> Send</button>
 
-</form>
+            </form>
 
         </div>
 

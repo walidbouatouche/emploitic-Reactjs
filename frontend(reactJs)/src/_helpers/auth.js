@@ -40,6 +40,7 @@ class _Auth {
 
         this._token = "";
         localStorage.clear()
+        window.location.reload();
     }
 
     isAuth() {
@@ -48,18 +49,7 @@ class _Auth {
     }
 
 
-    tokenIsExpire() {
-        /*
-         the next time we will do it 
-         function test if token is valide not expire when user 
-         is login in frentend but is logout in backend(token expire)
-         we will logout . this function call by soket or by call it
-         every load .... -_-......
-       
-        */
-
-
-    }
+  
 
 }
 

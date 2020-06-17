@@ -43,7 +43,7 @@ const Navabar = () => {
     // remove user from local storage to log user out
     if (window.confirm("Are you sure !!")) {
       Auth.clearAll();
-      window.location.reload()
+
     }
   }
 

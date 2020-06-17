@@ -5,9 +5,13 @@
 */
 
 function _response(res, _status, msg) {
+    try {
+        res.status(_status).json(msg)
+    }
+    catch  {
+        return false;
+    }
 
-    res.status(_status).json(msg)
-    return false;
 }
 
 module.exports = _response

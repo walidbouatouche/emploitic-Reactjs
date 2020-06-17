@@ -18,6 +18,7 @@
     "mongoose-unique-validator": "^2.0.3",
     "multer": "^1.4.2",
     "mysql": "^2.18.1",
+    "nodemailer": "^6.4.8",
     "validator": "^13.0.0"
   }
 }

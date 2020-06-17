@@ -9,7 +9,7 @@ exports.signup = (req, res, next) => {
         if (err) { _response(res, 401, { message: 'invalidRequest' }); }
         // check if user already  singup
         if (result.length > 0) {
-            _response(res, 401, { message: 'Mail Already' });
+            _response(res, 400, { message: 'Mail Already' });
         }
     })
 
