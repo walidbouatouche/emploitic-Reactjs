@@ -15,12 +15,12 @@ const sendRequest = (config) => {
       resolve(data)
     }).catch((e) => {
       console.log(e)
-      if (e.response && e.response.status === 500) {
+      if (e.response && (e.response.status === 500 || e.response.status === 401)) {
         Auth.clearAll() // logout if token not valid Or token expired
-       
+
       }
       else {
-   console.log(e)
+        console.log(e)
         reject(e)
       }
 
