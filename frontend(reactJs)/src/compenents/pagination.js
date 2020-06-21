@@ -11,11 +11,7 @@ const Pagination = ({ _count, limit, _skip }) => {
     }
 
     for (let nbr = 0; nbr < _count; nbr += limit) {
-        if (_count <= limit ) {
-            // hide pagination compenents if limit and number is the same
-            return false;
 
-        }
         items.push(
             <a
                 key={nbr} onClick={() => skip(nbr)}
@@ -26,10 +22,10 @@ const Pagination = ({ _count, limit, _skip }) => {
     }
 
 
-    return (<div className="w3-padding">
-
-        {items}
-    </div>)
+    return (
+        <div className="w3-padding">
+            {items}
+        </div>)
 
 
 }

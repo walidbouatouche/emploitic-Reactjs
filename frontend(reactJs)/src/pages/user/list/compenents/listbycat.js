@@ -11,8 +11,8 @@ const Listlist = ({ list }) => {
         list.map((item => (<div key={item._id}>
             <li className="w3-padding-16 w3-border-light-gray w3-border-top">
                 <Link to={'/offreviewer/' + item._id}>
-                    <img src={item.imguri} alt="Image" className="w3-left w3-margin-right" style={{ width: '50px' }} />
-                    <span className="w3-large  w3-text-black"> {item.titre}</span>
+                    {item.imguri && <img src={item.imguri} alt="Image" className="w3-left w3-margin-right" style={{ width: '50px' }} />
+                    }                    <span className="w3-large  w3-text-black"> {item.titre}</span>
                     <br />
                     <span>{item.entreprise}</span>
                     <div className="w3-row">

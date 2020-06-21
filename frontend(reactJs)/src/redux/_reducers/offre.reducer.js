@@ -3,20 +3,20 @@ import { offreConstants } from '../_canstants/offres.constants'
 export function offres(state = {}, action) {
     console.log(state)
     switch (action.type) {
-        case offreConstants. SEARCH_OFFRES_REQUEST:
+        case offreConstants.SEARCH_OFFRES_REQUEST:
             return {
                 ...state,
                 loading: true
             };
 
-        case offreConstants. SEARCH_OFFRES_SUCCESS:
+        case offreConstants.SEARCH_OFFRES_SUCCESS:
             return {
                 ...state,
                 listoffres: action.offre.data,
                 loading: false
             }
 
-        case offreConstants. SEARCH_OFFRES_FAILURE:
+        case offreConstants.SEARCH_OFFRES_FAILURE:
             return {
                 error: action.error
             }
@@ -147,15 +147,17 @@ export function offres(state = {}, action) {
 
         case offreConstants.GET_MY_OFFRES_BEGIN:
             return {
+                ...state,
                 loading: true,
             }
         case offreConstants.GET_MY_OFFRES_SUCCESS:
             return {
-
+                ...state,
                 offres: action.offre.data
             }
         case offreConstants.GET_MY_OFFRES_FAIL:
             return {
+                ...state,
                 error: action.error
             }
         case offreConstants.NBR_OFFRES_BEGIN:
@@ -177,7 +179,8 @@ export function offres(state = {}, action) {
         case offreConstants.GET_OFFRES_PAGINATION_C_BEGIN:
             return {
                 ...state,
-                loading: true,
+                offreByPgn: [{}],
+                loading: true
             }
         case offreConstants.GET_OFFRES_PAGINATION_C_SUCCESS:
             return {

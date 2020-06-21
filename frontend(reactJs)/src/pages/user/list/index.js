@@ -67,7 +67,7 @@ const Listpage = ({ match }) => {
             {
                 // skip  use for pagination 
             }
-            {state.offres.nbrPgn &&
+          {state.offres.nbrPgn > limit &&
                 <Pagination
                     _count={state.offres.nbrPgn}
                     limit={limit}

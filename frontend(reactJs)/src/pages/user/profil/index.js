@@ -7,6 +7,8 @@ import Upfile from './compenent/upfile'
 import { connect } from 'react-redux'
 import Auth from '../../../_helpers/auth'
 import Panel from '../../../compenents/panel'
+import { Alerts } from '../../../compenents/alerts'
+import Spinner from '../../../compenents/spinner'
 import { _userAction } from '../../../redux/_actions/user.action'
 
 const updateCvFile = _userAction.updateCvFile,
@@ -40,7 +42,8 @@ class Profilviewer extends Component {
           <h4 className="w3-margin">Vous infos</h4>
         </div>
         <div className="w3-col m8">
-
+          {this.props.state.user.loading && <Spinner />}
+          {this.props.state.user.succes && <Alerts.Alertsuccess text={'succes'} />}
           <Editform userId={Auth.getUserId()}
             updateUser={this.updateUserInfo} list={Listofcategorie}
             userinfo={

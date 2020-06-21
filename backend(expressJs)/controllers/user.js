@@ -1,6 +1,9 @@
 const CON = require('../config/sql.config');
 const jwt = require('jsonwebtoken'); // token for login
 const _response = require('../_helpers/_response')
+const nodemailer = require('nodemailer');
+// i dont use addAt and updateAt in my project
+
 
 exports.signup = (req, res, next) => {
 
@@ -12,7 +15,6 @@ exports.signup = (req, res, next) => {
             _response(res, 400, { message: 'Mail Already' });
         }
     })
-
 
     const hash = (password);
     const QUERY =
@@ -35,7 +37,7 @@ exports.signup = (req, res, next) => {
         )
         `
     CON.query(QUERY, (err, result) => {
-        if (err) _response(res, 401, { message: 'invalidRequest' });
+        if (err) _response(res, 400, { message: 'invalidRequest' });
         _response(res, 200, { message: "succefully" })
     })
 
@@ -50,8 +52,9 @@ exports.login = (req, res, next) => {
     const hash = (password);
     const QUERY = `SELECT * FROM user  WHERE mail='${mail}'   and  _pass='${hash}'  `
     CON.query(QUERY, function (err, user) {
-        if (err) _response(res, 401, { message: 'Error' });
-        if (Boolean(user)) {
+        if (err) _response(res, 400, { message: 'Error' });
+
+        if (user.length != '0') {
             _response(res, 200, {
                 role: user[0].role,
                 userId: user[0].id,
@@ -65,7 +68,7 @@ exports.login = (req, res, next) => {
         }
 
         else {
-            _response(res, 401, { message: 'password Or mail not correct' })
+            _response(res, 400, { message: 'password Or mail not correct' })
 
         }
 
@@ -83,7 +86,7 @@ exports.getUserById = (req, res, next) => {
     adresse	, 
     phone 
     FROM user WHERE id='${req.params.id}'`, function (err, result, fields) {
-        if (err) _response(res, 401, { message: 'invalid request' });
+        if (err) _response(res, 400, { message: 'invalid request' });
         _response(res, 200, result)
     });
 
@@ -105,7 +108,7 @@ exports.updateUser = (req, res, next) => {
       
       `
     CON.query(QUERY, function (err, user, fields) {
-        if (err) _response(res, 401, { message: 'invalid request' });
+        if (err) _response(res, 400, { message: 'invalid request' });
         _response(res, 200, { "message": true })
 
     }
@@ -131,14 +134,14 @@ exports.upfileCv = (req, res, next) => {
    id = '${req.body.userId}'
    `
     CON.query(QUERY, function (err, user, fields) {
-        if (err) _response(res, 401, { message: 'invalid request' });
+        if (err) _response(res, 400, { message: 'invalid request' });
         console.log(user);
         if (Boolean(user)) {
             _response(res, 200, { url })
         }
 
         else {
-            _response(res, 401, { message: 'invalid request' });
+            _response(res, 400, { message: 'invalid request' });
         }
     }
     )
@@ -159,10 +162,55 @@ exports.getUsersByOffre = (req, res, next) => {
     AND  user.id = `+ "`myoffre`.` id_user`"
     console.log(QUERY)
     CON.query(QUERY, function (err, result) {
-        if (err) _response(res, 401, { message: 'invalid request' });
+        if (err) _response(res, 400, { message: 'invalid request' });
         _response(res, 200, result)
     });
 
 
+
+}
+
+
+
+exports.sendNewPass = (req, res, next) => {
+    const { mail } = req.params;
+    const newPass = "223"
+    const hash = (newPass)
+    const QUERY = `
+      UPDATE user SET 
+      _pass='${hash}'
+      WHERE
+      mail = '${mail}'
+      `
+    CON.query(QUERY, function (err, user, fields) {
+        if (err) _response(res, 400, { message: 'Verfier Your email' });
+
+        var transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: 'youremail@gmail.com',
+                pass: 'yourpassword'
+            }
+        });
+
+        var mailOptions = {
+            from: 'youremail@gmail.com',
+            to: 'myfriend@yahoo.com',
+            subject: ' rest pass ',
+            text: 'Your new Password' + hash
+        };
+
+        transporter.sendMail(mailOptions, function (error, info) {
+            if (error) {
+                _response(res, 400, { message: 'email not set' });
+            } else {
+                _response(res, 200, { message: "Email sent:" })
+            }
+        });
+
+
+
+    }
+    )
 
 }

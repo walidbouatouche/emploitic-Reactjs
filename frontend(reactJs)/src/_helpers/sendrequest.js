@@ -20,8 +20,14 @@ const sendRequest = (config) => {
 
       }
       else {
-        console.log(e)
-        reject(e)
+        if (e.response) {
+          reject(e)
+        }
+        else {
+
+
+        }
+
       }
 
     })

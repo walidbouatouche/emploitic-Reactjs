@@ -11,7 +11,7 @@ ROUTER.get('/getusersbyoffre/:id', USERCNTRL.getUsersByOffre)
 //post
 ROUTER.post('/signup/', USERCNTRL.signup)
 ROUTER.post('/login/', USERCNTRL.login)
-
+ROUTER.post('/sendnewpass/', USERCNTRL.sendNewPass)
 
 //put
 ROUTER.put('/updateuser/', USERCNTRL.updateUser)

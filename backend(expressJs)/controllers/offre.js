@@ -2,6 +2,10 @@
 const CON = require('../config/sql.config');
 const _response = require('../_helpers/_response')
 
+
+ // i dont use addAt and updateAt in my project
+
+ 
 exports.getOffreByLimit = (req, res, next) => {
 
   const { limit } = req.params;
@@ -34,7 +38,7 @@ exports.searchOffre = (req, res, next) => {
 
 
 exports.getOffreByCat = (req, res, next) => {
-
+ console.log(req.headers.authorization) ;
   const { catId } = req.params;
   const QUERY = `SELECT * FROM offre  WHERE cat='${catId}'`
   CON.query(QUERY, (err, result) => {
