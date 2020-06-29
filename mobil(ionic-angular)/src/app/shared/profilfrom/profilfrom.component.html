@@ -1,0 +1,171 @@
+
+Your cv
+
+change pdf
+<input type="file"  (change)="updateCv($event)" />
+<a *ngIf="userInfo"  (click)="openCv()">open</a>
+
+
+<form *ngIf="userInfo" [formGroup]="validation_form" (ngSubmit)=" getDataFromForm(validation_form.value)">
+
+
+  <p>nom</p>
+ 
+  <div class="ion-text-center">
+    <input  class=" w3-input w3-border w3-border-gray-light" style="width: 90%;" type="text"
+      formControlName="nom" required>
+  </div>
+
+
+  <div class="validation-errors">
+    <ng-container *ngFor=" let validation of  validation_messages.nom">
+      <div class="w3-text-red" *ngIf="validation_form.get('nom').hasError(validation.type)
+&& ( validation_form.get('nom').dirty || validation_form.get('nom').touched)
+
+
+">
+        {{ validation.message}}
+      </div>
+
+    </ng-container>
+  </div>
+  <br>
+
+
+  <p>prenom</p>
+  <div class="ion-text-center"> <input  class=" w3-input w3-border w3-border-gray-light"
+      style="width: 90%;" type=" text" formControlName="prenom" required>
+  </div>
+
+
+  <div class="validation-errors">
+    <ng-container *ngFor=" let validation of validation_messages.prenom">
+      <div class="w3-text-red" *ngIf=" validation_form.get('prenom').hasError(validation.type)
+
+&&(validation_form.get('prenom').dirty || validation_form.get('prenom').touched)
+">
+
+
+        {{ validation.message}}
+      </div>
+
+
+    </ng-container>
+
+  </div>
+  <br>
+
+
+  <p>phone</p>
+  <div class="ion-text-center"> <input class=" w3-input w3-border w3-border-gray-light"
+      style="width: 90%;" type="number" formControlName="phone" required>
+  </div>
+
+
+  <div class="validation-errors">
+    <ng-container *ngFor=" let validation of validation_messages.phone">
+      <div class="w3-text-red" *ngIf=" validation_form.get('phone').hasError(validation.type)
+
+&&(validation_form.get('phone').dirty || validation_form.get('phone').touched)
+">
+
+
+        {{ validation.message}}
+      </div>
+
+
+    </ng-container>
+
+  </div>
+  <br>
+
+
+  <p>adresse(short text)</p>
+  <div class="ion-text-center"> <input  class=" w3-input w3-border w3-border-gray-light"
+      style="width: 90%;" type=" text" formControlName="adresse" required>
+  </div>
+
+
+  <div class="validation-errors">
+    <ng-container *ngFor=" let validation of validation_messages.adresse">
+      <div class="w3-text-red" *ngIf=" validation_form.get('adresse').hasError(validation.type)
+
+&&(validation_form.get('adresse').dirty || validation_form.get('adresse').touched)
+">
+
+
+        {{ validation.message}}
+      </div>
+
+
+    </ng-container>
+
+  </div>
+  <br>
+
+
+  <p>experience(short text)</p>
+  <div class="ion-text-center"> <input   class=" w3-input w3-border w3-border-gray-light"
+      style="width: 90%;" type=" text" formControlName="experience" required>
+  </div>
+
+
+  <div class="validation-errors">
+    <ng-container *ngFor=" let validation of validation_messages.experience">
+      <div class="w3-text-red" *ngIf=" validation_form.get('experience').hasError(validation.type)
+
+&&(validation_form.get('experience').dirty || validation_form.get('experience').touched)
+">
+
+
+        {{ validation.message}}
+      </div>
+
+
+    </ng-container>
+
+  </div>
+
+  <br>
+
+
+  <p>deplom(short text)</p>
+  <div class="ion-text-center"> <input  class=" w3-input w3-border w3-border-gray-light"
+      style="width: 90%;" type=" text" formControlName="deplom" required>
+  </div>
+
+
+  <div class="validation-errors">
+    <ng-container *ngFor=" let validation of validation_messages.deplom">
+      <div class="w3-text-red" *ngIf=" validation_form.get('deplom').hasError(validation.type)
+
+&&(validation_form.get('deplom').dirty || validation_form.get('deplom').touched)
+">
+
+
+        {{ validation.message}}
+      </div>
+
+
+    </ng-container>
+
+  </div>
+
+
+  <br>
+
+
+  <button type="submit" class="w3-button w3-orange w3-text-white" [disabled]="!validation_form.valid">
+    Update
+  </button>
+<br />
+ 
+
+
+</form>
+<br/>
+<button  class="w3-button w3-gray w3-text-white" onclick="window.location.reload()">
+  rest
+</button>
+
+

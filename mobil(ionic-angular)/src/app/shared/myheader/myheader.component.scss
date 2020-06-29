@@ -1,0 +1,28 @@
+.header {
+    background:#ff5722;
+
+    height: 80%;
+    border-top: 10px solid black ;
+     
+  
+}
+ion-icon{
+    font-size: 30px;
+    color: white;
+}
+span{
+    color:white ;
+    margin-top: auto;
+    margin-right: auto;
+
+}
+.animate{
+    -webkit-transform: rotate(40deg);
+    -moz-transform: rotate(40deg);
+    -o-transform: rotate(40deg);
+    -ms-transform: rotate(40deg);
+    transform: rotate(40deg);
+  }
+  ion-icon{
+      color:white;
+  }

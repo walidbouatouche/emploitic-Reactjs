@@ -1,0 +1,28 @@
+<ion-app>
+  <ion-menu (ionWillOpen)="menuOpened()" style="opacity: 0.9; " side="start">
+    <ion-header class="head ion-text-center">
+      <ion-toolbar color="white">
+        <br>
+        <br>
+        <br>
+        <span class="storage">Emploitic</span>
+        <br>
+        <br>
+        <br>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list lines="none">
+        <ion-item *ngFor=" let item of menu " class="white" (click)='item._function()'>
+          <ion-icon name={{item.icon}}> </ion-icon> {{item.title}}
+        </ion-item>
+        <ion-item *ngIf="iconLoginStatus==true  " class="white" (click)='  logout() '>
+          <ion-icon name="log-out"> </ion-icon> logout
+        </ion-item>
+      </ion-list>
+
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet main></ion-router-outlet>
+
+</ion-app>

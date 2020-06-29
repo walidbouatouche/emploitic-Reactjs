@@ -1,0 +1,42 @@
+ion-icon{
+    margin-right: 20px;
+    font-size: 110%;
+}
+
+ion-item{
+    height: 10%;
+}
+
+ion-item {
+    background: transparent;
+ --background:transparent; 
+  /* fallback for old browsers */
+  border-bottom: 1px solid  white;
+  padding: 5px;
+}
+ion-list{
+    background: transparent;
+    --background:transparent; 
+}
+
+ion-content{
+    --background: #ff5722 ;
+   }
+
+.white{
+    color:white;
+}
+
+.head{
+	background:url(/assets/bgg.jpeg);
+	height:30%;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+ border-top:3px solid #ff5722 ;
+
+}
+
+ .storage{
+     color:white ;
+     font-size: 20px;
+ }
