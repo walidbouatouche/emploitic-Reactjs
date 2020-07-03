@@ -9,7 +9,7 @@ import { Alerts } from '../../../compenents/alerts'
 import OffreDetail from './compenets/offrevwier'
 
 import Auth from '../../../_helpers/auth'
-
+ 
 // page show a content of offre 
 const Offredetail = ({ match }) => {
 
@@ -23,7 +23,9 @@ const Offredetail = ({ match }) => {
     }, [])
 
     const postuler = (id) => {
-          
+        if (!Auth.isAuth()) {
+   alert(" You must login for postuler")
+         }
         dispatch(_offreAction.postulerOffre(id, Auth.getUserId()))
     }
 

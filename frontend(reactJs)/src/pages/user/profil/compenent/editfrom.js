@@ -1,11 +1,10 @@
 import React  ,{useState ,useEffect}from'react'
 import { Formik, Field, Form} from 'formik';
 import * as Yup from 'yup';
-import PropTypes from 'prop-types';
-import { Editor } from 'react-draft-wysiwyg';
-import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
-
- // Only the new thing we used was the formic library
+import Exp from'./sub-compenent/exp'
+import Item from'./sub-compenent/item'
+import Accordion from'../../../../compenents/accordion'
+ // Only the new thing we used was the formiK library
                
  
  /*   https://jaredpalmer.com/formik/      */
@@ -13,18 +12,40 @@ import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
  /* https://jasonwatmore.com/post/2020/04/20/react-formik-combined-add-edit-create-update-form-example */
 
 
- const Editfrom =({userinfo,list,updateUser ,userId }) =>{
+ const Editfrom =({userinfo,list,updateUser ,userId ,location }) =>{
+  const [exp,setExp]=useState(JSON.parse(userinfo._exp))
+  const [deplo,setDeplo]=useState(JSON.parse(userinfo._deplo))
 
+    function getOneFieldDeplo(newFlied){
+         let newDeplo= Object.assign([],deplo)
+         newDeplo.push(newFlied)
+         setDeplo(newDeplo)
+    
+         
+    }
+   function removeDeplo(index){
+ 
+    let newDeplo=Object.assign([],deplo)
+    newDeplo.splice(index,1)
+     setDeplo(newDeplo)
+    }
 
+    function getOneFieldExp(newFlied){
+        let newExp = Object.assign([],exp)
+        newExp.push(newFlied)
+        setExp(newExp)
+   
+        
+   }
+  function removeExp(index){
+
+   let newExp=Object.assign([],exp)
+    newExp.splice(index,1)
+    setExp(newExp)
+   }
     return(<div className="w3-center" >
 <div className="w3-col  m11 w3-margin-left w3-white w3-padding">
-{/* <Editor
-  // editorState={editorState}
-  toolbarClassName="toolbarClassName"
-  wrapperClassName="wrapperClassName"
-  editorClassName="editorClassName"
-   // onEditorStateChange={this.onEditorStateChange}
-/> */}
+   
 <Formik
 enableReinitialize
                 initialValues={{
@@ -32,8 +53,6 @@ enableReinitialize
                     prenom: userinfo.prenom || '',
                     phone: userinfo.phone || '',
                     adresse:userinfo.adresse  || '',
-                    experience:userinfo._exp || '',
-                    deplom:userinfo._deplo  || '',
                     cat:userinfo._cat  || ''
           
                 }}
@@ -46,30 +65,30 @@ enableReinitialize
                 .required('phone is required'),
                 adresse: Yup.string()
                 .required('adresse is required'),
-                experience: Yup.string()
-                .required(' experience is required'),
-                deplom: Yup.string()
-                .required(' deplom is required'),
+              
                 })}
                 onSubmit={fields => {
-                    updateUser({...fields,userId})
+                    const info= userinfo.info
+                    let experience=JSON.stringify(exp)
+                    let  deplom=JSON.stringify(deplo)
+                    updateUser({...fields,userId,info,experience,deplom})
                              
                 }}
                 render={({ errors, status, touched }) => (
                     <Form>
                         <div >
-                            <label htmlFor="nom">nom</label>
+                            <label htmlFor="nom">Nom</label>
                             <Field name="nom" type="text" className={'w3-input w3-border' + (errors.nom && touched.nom? ' w3-border w3-border-red' : '')} />
                             {errors.nom && touched.nom ? (<div className="w3-text-red">{errors.nom}</div>) : null}
                             <br />
                         </div>
                         <div >
-                            <label htmlFor="prenom">prenom</label>
+                            <label htmlFor="prenom">Prenom</label>
                             <Field name="prenom" type="text" className={'w3-input w3-border' + (errors.prenom && touched.prenom ? ' w3-border w3-border-red' : '')} />
                             {errors.prenom && touched.prenom? (<div className="w3-text-red">{errors.prenom}</div>) : null}
                                  <br />                        </div>
                         <div >
-                            <label htmlFor="phone">phone</label>
+                            <label htmlFor="phone">Phone</label>
                             <Field name="phone" type="number" className={'w3-input w3-border' + (errors.phone && touched.phone ? ' w3-border w3-border-red' : '')} />
                             {errors.phone && touched.phone? (<div className="w3-text-red">{"mus number"}</div>) : null}
                          <br />                        </div>
@@ -96,34 +115,51 @@ enableReinitialize
                                 <div >
                                 <br />  
                             <label htmlFor="adresse">adresse</label>
-                            <Field name="adresse" as="textarea"   className={'w3-input w3-border' + (errors.adresse && touched.adresse ? ' w3-border w3-border-red' : '')} />
+                            <Field name="adresse" as="select"   className={'w3-input w3-border' + (errors.adresse && touched.adresse ? ' w3-border w3-border-red' : '')} >
+                            
+                            {
+                location.map((item)=>    
+                  
+                    <option    key={item.id}value={item.label}>{item.label}</option>)
+
+                }                </Field>
+
                             {errors.adresse && touched.adresse ? (<div className="w3-text-red">{errors.adresse}</div>) : null}
 
 <br />                        </div>
+<div className="w3-border w3-margin">
 
 
+ <Exp getOneField={getOneFieldExp} title={'Experience'}  /> 
+{exp.map((item,index)=>
+ <Accordion key={index}   title={item.title} id={index+'Exp'}>
+      <Item   id={index} item={item} _getId={removeExp} />
+ </Accordion>
+
+)}
+
+</div>
+<div className="w3-border w3-margin">
+
+
+ <Exp getOneField={getOneFieldDeplo} title={'Deplome'}  /> 
+{deplo.map((item,index)=>
+ <Accordion key={index}  title={item.title} id={index + 'Depl'}>
+      <Item   id={index} item={item} _getId={removeDeplo} />
+ </Accordion>
+
+)}
+
+</div> 
 <div >
-                            <label htmlFor="experience">  experience(short text)</label>
-                            <Field   name="experience"  as="textarea" className={'w3-input w3-border' + (errors.experience && touched.experience ? ' w3-border w3-border-red' : '')} />
-                            {errors.experience && touched.experience ? (<div className="w3-text-red">{errors.experience}</div>) : null}
-
-<br />                        </div>
-
-<div >
-                            <label htmlFor="deplom"> diplome(short text)</label>
-                            <Field name="deplom" as="textarea" className={'w3-input w3-border' + (errors. deplom && touched. deplom ? ' w3-border w3-border-red' : '')} />
-                            {errors.deplom && touched.deplom? (<div className="w3-text-red">{errors.deplom}</div>) : null}
-
-<br />                        </div>
-                           
-                        <div >
-                            <button type="submit"     className="w3-button w3-orange w3-text-white" >Save</button>
-                            <button type="reset"    className="w3-button w3-gray w3-margin w3-text-white">Reset</button>
-                        </div>
+ <button type="submit"     className="w3-button w3-orange w3-text-white" >Save</button>
+                         </div>
                     </Form>
                 )}
             />
         </div>
+
+    
     </div>)
 }
 

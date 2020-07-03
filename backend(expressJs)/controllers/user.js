@@ -2,7 +2,7 @@ const CON = require('../config/sql.config');
 const jwt = require('jsonwebtoken'); // token for login
 const _response = require('../_helpers/_response')
 const nodemailer = require('nodemailer');
-// i dont use addAt and updateAt in my project
+
 var store = require('store')
 
 exports.signup = (req, res, next) => {
@@ -15,7 +15,7 @@ exports.signup = (req, res, next) => {
             _response(res, 400, { message: 'Mail Already' });
         }
     })
-
+    const info = JSON.stringify([{ creatAt: new Date(), updateAt: new Date() }]);
     const hash = (password);
     const QUERY =
         `INSERT INTO  user (
@@ -33,7 +33,7 @@ exports.signup = (req, res, next) => {
         mail 
         )
         VALUES (
-        '${hash}',  '',  '',  '',  '',  '','','','','','user','${mail}'
+        '${hash}', '[]',  '',  '',  '[]', '${info}','','','','','user','${mail}'
         )
         `
     CON.query(QUERY, (err, result) => {
@@ -99,7 +99,11 @@ exports.getUserById = (req, res, next) => {
 }
 
 exports.updateUser = (req, res, next) => {
-    const { experience, cat, deplom, userId, nom, prenom, adresse, phone } = req.body
+    const { info, experience, cat, deplom, userId, nom, prenom, adresse, phone } = req.body
+    const newInfo = JSON.parse(info);
+    // update only the update date
+    newInfo[0].updateAt = new Date()
+
     const QUERY = `
       UPDATE user SET 
        _exp= '${experience}' ,
@@ -108,7 +112,8 @@ exports.updateUser = (req, res, next) => {
        prenom ='${prenom}',
        adresse	='${adresse}',
        phone='${ phone}' ,
-       _cat='${cat}'
+       _cat='${cat}',
+       info='${JSON.stringify(newInfo)}'
       WHERE
       id = '${userId}'
       

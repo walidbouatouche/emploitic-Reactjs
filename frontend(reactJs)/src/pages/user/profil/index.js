@@ -3,7 +3,8 @@ import React, { Component } from 'react'
 import Layout from '../../../layout'
 import Editform from './compenent/editfrom'
 import Listofcategorie from '../../../static/cat.json'
-import Upfile from './compenent/upfile'
+import location from '../../../static/location.json'
+
 import { connect } from 'react-redux'
 import Auth from '../../../_helpers/auth'
 import Panel from '../../../compenents/panel'
@@ -11,6 +12,9 @@ import { Alerts } from '../../../compenents/alerts'
 import Spinner from '../../../compenents/spinner'
 import { _userAction } from '../../../redux/_actions/user.action'
 
+import Upfile from './compenent/upfile'
+
+import UpdateInfo from './compenent/updateInfo'
 const updateCvFile = _userAction.updateCvFile,
   getUserByid = _userAction.getUserByid,
   updateUser = _userAction.updateUser;
@@ -44,8 +48,9 @@ class Profilviewer extends Component {
         <div className="w3-col m8">
           {this.props.state.user.loading && <Spinner />}
           {this.props.state.user.sucess && <Alerts.Alertsuccess text={'succes'} />}
-          <Editform userId={Auth.getUserId()}
+         {  this.props.state.user.user &&  <Editform userId={Auth.getUserId()}
             updateUser={this.updateUserInfo} list={Listofcategorie}
+            location={location}
             userinfo={
               (
                 this.props.state.user.user != null
@@ -58,7 +63,7 @@ class Profilviewer extends Component {
                 this.props.state.user.user[0] != undefined
               ) ? this.props.state.user.user[0] : " "
 
-            } />
+            } />}
         </div>
 
         <div className="w3-col m4">
@@ -91,8 +96,16 @@ class Profilviewer extends Component {
 
             />
           </Panel>
+          <Panel title="Update info ">
+          {(
+            this.props.state.user.user != null
 
+            &&
+            this.props.state.user.user != undefined
 
+          ) ? <UpdateInfo userUpdateInfo={this.props.state.user.user[0].info} /> : null}
+      
+      </Panel>
         </div>
       </Layout>
     </>)

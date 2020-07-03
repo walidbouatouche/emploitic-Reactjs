@@ -41,7 +41,7 @@ const Navabar = () => {
 
   function logout() {
     // remove user from local storage to log user out
-   
+
     if (window.confirm("Are you sure !!")) {
       Auth.clearAll();
 
@@ -96,7 +96,16 @@ const Navabar = () => {
     </div>)
   }
 
+  if (!Auth.isAuth()) {
+    return (<div className="w3-white w3-padding ">
+      <Link to='/login'>
+        <FontAwesomeIcon className="w3-text-red" icon={Icon.faUser} />
+      </Link>
+      <Link className="w3-padding" to='/'>
+Home      </Link>
+    </div>)
 
+  }
   return (
 
     <div>

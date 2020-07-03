@@ -7,11 +7,17 @@
 function _response(res, _status, msg) {
     try {
         res.status(_status).json(msg)
+   
     }
     catch  {
+        /* 
+        * here handel All Htpp Errors  with 
+        * return  flase stop evrey things and let the server running
+        
+        */
         return false;
     }
-    
+
 
 }
 

@@ -10,7 +10,8 @@ const fileConfigue = {
     callback(null, 'pdfs');
   },
   filename: (req, file, callback) => {
-    const decodedToken = jwt.verify(req.headers.authorization, 'RANDOM_TOKEN_SECRET');
+    const token = req.headers.authorization;
+    const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET');
     const userId = decodedToken.userId;
     const name = userId + '.pdf';
     callback(null, name);

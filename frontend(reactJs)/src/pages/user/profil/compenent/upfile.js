@@ -25,6 +25,7 @@ const FileUpload = ({ updateCvFile, _cv_link, userId, token }) => {
       token
     }
     const _data = JSON.stringify(data)
+
     window.open('http://localhost:3000/pdf/' + _data);
   }
 

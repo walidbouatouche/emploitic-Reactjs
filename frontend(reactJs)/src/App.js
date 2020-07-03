@@ -11,15 +11,16 @@ import Profil from './pages/user/profil';
 import Myoffre from './pages/user/myoffre';
 import Login from './pages/login';
 import { UserRoute, AdminRoute } from './_helpers/privateroute'
+
 const App = () => {
 
   return (
 
     <Router >
       <Switch>
-        <UserRoute path="/" exact component={Homepage} />
-        <UserRoute path="/list/:id" exact component={List} />
-        <UserRoute path="/offreviewer/:id" exact component={Offreviewer} />
+        <Route path="/" exact component={Homepage} />
+        <Route path="/list/:id" exact component={List} />
+        <Route path="/offreviewer/:id" exact component={Offreviewer} />
         <AdminRoute path='/admin' exact component={Offremanger} />
         <AdminRoute path='/userprofil/:id' exact component={userprofil} />
         <UserRoute path="/myprofil" exact component={Profil} />
