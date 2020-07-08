@@ -1,7 +1,7 @@
 import axios from 'axios'
 import Auth from './auth'
 //https://github.com/axios/axios
- 
+
 const URL = 'http://localhost:3000'
 
 
@@ -19,7 +19,7 @@ const sendRequest = (config) => {
     }).catch((e) => {
       console.log(e)
       if (e.response && (e.response.status === 500 || e.response.status === 401)) {
-        Auth.clearAll() // logout if token not valid Or token expired
+       // Auth.clearAll() // logout if token not valid Or token expired
 
       }
       else {

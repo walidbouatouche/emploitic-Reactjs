@@ -42,13 +42,13 @@ class Profilviewer extends Component {
     return (<>
       <Layout>
         <br />
-        <div className="w3-margin w3-padding w3-white w3-light-green">
-          <h4 className="w3-margin">Vous infos</h4>
+        <div className="w3-margin w3-padding w3-white ">
+          <h4 className="w3-margin">Vos infos</h4>
         </div>
         <div className="w3-col m8">
           {this.props.state.user.loading && <Spinner />}
           {this.props.state.user.sucess && <Alerts.Alertsuccess text={'succes'} />}
-         {  this.props.state.user.user &&  <Editform userId={Auth.getUserId()}
+          {this.props.state.user.user && <Editform userId={Auth.getUserId()}
             updateUser={this.updateUserInfo} list={Listofcategorie}
             location={location}
             userinfo={
@@ -68,7 +68,7 @@ class Profilviewer extends Component {
 
         <div className="w3-col m4">
 
-          <Panel title="up Your cv">
+          <Panel title={<h6 className="w3-text-white">Your cv</h6>} >
             <Upfile
               token={Auth.getToken()}
               userId={Auth.getUserId()}
@@ -96,16 +96,16 @@ class Profilviewer extends Component {
 
             />
           </Panel>
-          <Panel title="Update info ">
-          {(
-            this.props.state.user.user != null
+          <Panel title={<h6 className="w3-text-white">update info</h6>}>
+            {(
+              this.props.state.user.user != null
 
-            &&
-            this.props.state.user.user != undefined
+              &&
+              this.props.state.user.user != undefined
 
-          ) ? <UpdateInfo userUpdateInfo={this.props.state.user.user[0].info} /> : null}
-      
-      </Panel>
+            ) ? <UpdateInfo userUpdateInfo={this.props.state.user.user[0].info} /> : null}
+
+          </Panel>
         </div>
       </Layout>
     </>)

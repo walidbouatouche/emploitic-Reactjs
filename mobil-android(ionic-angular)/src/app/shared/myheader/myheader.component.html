@@ -1,0 +1,19 @@
+<div class="w3-black" style="height: 2%; ">
+
+</div>
+<div [class]="class">
+<!--      <ng-content></ng-content> 
+ -->
+  <!--
+  <img src="/assets/head.png" />
+   -->
+  <ion-icon *ngIf="!show" style=" -webkit-transform: rotate(40deg);
+    -moz-transform: rotate(40deg);
+    -o-transform: rotate(40deg);
+    -ms-transform: rotate(40deg);
+    transform: rotate(40deg);" name="{{icon}}">
+  </ion-icon>
+  <ion-icon *ngIf="show" name="{{icon}}" (click)="onClick()"></ion-icon>
+  <span  style="margin-left: 30%; padding:10px "> {{ title}}</span>
+  <br> 
+</div>

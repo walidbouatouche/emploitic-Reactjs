@@ -10,7 +10,7 @@ import { Route, Redirect } from 'react-router-dom';
 
 const testAuth = Auth.isAuth();
 const testAdmin = Auth.getRole() === 'admin';
-const testUser = Auth.getRole() === 'user';
+const testRecruiter = Auth.getRole() === 'r';
 
 const UserRoute = ({ component: Component_, ...rest }) => {
 
@@ -21,17 +21,17 @@ const UserRoute = ({ component: Component_, ...rest }) => {
         );
 
     }
- 
+
     else {
-        
-    // only show when logged in
+
+        // only show when logged in
 
         return (
             <div>
-                <Route  {...rest}  render={props=>{
+                <Route  {...rest} render={props => {
 
                     return <Component_ {...props}></Component_>
-                }}/>
+                }} />
             </div>
 
         );
@@ -52,7 +52,7 @@ const AdminRoute = ({ component: Component_, ...rest }) => {
         );
 
     }
-    
+
     // only show when  in
     else if (!testAuth) {
 
@@ -63,10 +63,10 @@ const AdminRoute = ({ component: Component_, ...rest }) => {
     else {
         return (
             <div>
-                <Route  {...rest}  render={props=>{
+                <Route  {...rest} render={props => {
 
                     return <Component_ {...props}></Component_>
-                }}/>
+                }} />
             </div>
 
         );
@@ -84,4 +84,46 @@ const AdminRoute = ({ component: Component_, ...rest }) => {
 }
 
 
-export { UserRoute, AdminRoute }
+const RecruiterRoute = ({ component: Component_, ...rest }) => {
+
+
+
+
+    if ((testRecruiter === false)) {
+        return (
+            <Redirect to='/login' />
+        );
+
+    }
+
+    // only show when  in
+    else if (!testAuth) {
+
+        return (
+            <Redirect to='/login' />
+        );
+    }
+    else {
+        return (
+            <div>
+                <Route  {...rest} render={props => {
+
+                    return <Component_ {...props}></Component_>
+                }} />
+            </div>
+
+        );
+
+    }
+
+
+
+
+
+
+
+
+
+}
+
+export { UserRoute, AdminRoute ,RecruiterRoute }

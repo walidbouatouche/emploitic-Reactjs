@@ -1,15 +1,25 @@
 // connect to SQL
 const CON = require('../config/sql.config');
 const _response = require('../_helpers/_response')
-  var store = require('store')
 
- // i dont use addAt and updateAt in my project
 
- 
+// Recruter  acess methodes 
+exports.searchOffre = (req, res, next) => {
+  const { userId } = req
+  const { char } = req.params;
+  const QUERY = `SELECT * FROM offre WHERE userId=${userId} and titre like '%${char}%'`
+  CON.query(QUERY, (err, result) => {
+    if (err) _response(res, 400, { message: 'invalidRequest' });// errer sql syntax
+    _response(res, 200, result)
+  })
+
+
+}
+
 exports.getOffreByLimit = (req, res, next) => {
-
+  const { userId } = req
   const { limit } = req.params;
-  const QUERY = `SELECT * FROM offre limit ${limit}   `
+  const QUERY = `SELECT * FROM offre where userId=${userId} `
   CON.query(QUERY, (err, result) => {
     if (err) _response(res, 400, { message: 'invalidRequest' });
     if (result.length < 0) {
@@ -21,40 +31,11 @@ exports.getOffreByLimit = (req, res, next) => {
 
 
 
-exports.searchOffre = (req, res, next) => {
-
-  // get char from url
-  const { char } = req.params;
-  const QUERY = `SELECT * FROM offre WHERE titre like '%${char}%'`
-  CON.query(QUERY, (err, result) => {
-    if (err) _response(res, 400, { message: 'invalidRequest' });// errer sql syntax
-    _response(res, 200, result)
-  })
-
-
-}
-
-
-
-
-exports.getOffreByCat = (req, res, next) => {
- console.log(req.headers.authorization) ;
-  const { catId } = req.params;
-  const QUERY = `SELECT * FROM offre  WHERE cat='${catId}'`
-  CON.query(QUERY, (err, result) => {
-    if (err) _response(res, 400, { message: 'invalidRequest' });
-    _response(res, 200, result)
-  });
-
-}
-
-
-
 
 exports.deleteOffreById = (req, res, next) => {
-
+  const { userId } = req
   const { id } = req.params;
-  const QUERY = `DELETE  FROM offre  WHERE _id='${id}'`
+  const QUERY = `DELETE  FROM offre  WHERE _id='${id}' And userId= ${userId}`
   CON.query(QUERY, (err, result) => {
     if (err) _response(res, 400, { message: 'invalidRequest' });
     _response(res, 200, result)
@@ -75,6 +56,7 @@ exports.addOffre = (req, res, next) => {
     location,
     titre,
     type } = req.body.data
+  const { userId } = req
 
   const QUERY = `
   INSERT INTO
@@ -89,7 +71,9 @@ exports.addOffre = (req, res, next) => {
       active,
       type,
       cat,
-      location )
+      location ,
+      userId
+      )
       VALUES 
     ('', 
       '${titre}',
@@ -101,7 +85,8 @@ exports.addOffre = (req, res, next) => {
       '${active}',
       '${type}',
       '${cat}',
-      '${location}'  ) `;
+      '${location}' ,
+      '${userId}' ) `;
   CON.query(QUERY, (error) => {
     if (error) {
       _response(res, 400, { message: 'invalidRequest' })
@@ -117,7 +102,7 @@ exports.addOffre = (req, res, next) => {
 
 exports.updateOffre = (req, res, next) => {
 
-
+  const { userId } = req
   const
     {
       cat,
@@ -146,15 +131,30 @@ exports.updateOffre = (req, res, next) => {
   location='${location}'
   WHERE
   _id=${_id}
+  and userId=${userId} 
   `;
 
-  console.log(QUERY)
+
   CON.query(QUERY, (error, result) => {
     console.log(error)
     if (error) _response(res, 400, { message: 'invalidRequest' });
     _response(res, 200, { message: " succefully !!" })
   })
 }
+
+
+// user acess methodes 
+exports.getOffreByCat = (req, res, next) => {
+  console.log(req.headers.authorization);
+  const { catId } = req.params;
+  const QUERY = `SELECT * FROM offre  WHERE cat='${catId}'`
+  CON.query(QUERY, (err, result) => {
+    if (err) _response(res, 400, { message: 'invalidRequest' });
+    _response(res, 200, result)
+  });
+
+}
+
 
 
 exports.getOffreById = (req, res, next) => {
@@ -203,7 +203,8 @@ exports.getMyoffres = (req, res, next) => {
 
 
 exports.getOffreNumber = (req, res, next) => {
-  const QUERY = "SELECT count(*) from offre "
+  const { userId } = req
+  const QUERY = `SELECT count(*) from offre  where userId=${userId}`
   CON.query(QUERY, (err, result) => {
     if (err) _response(res, 400, { message: 'Error' });
     _response(res, 200, result)
@@ -231,7 +232,7 @@ exports.getOffreByLimitAndCat = (req, res, next) => {
 exports.getNumberOffresByCat = (req, res, next) => {
   const { catId } = req.params;
   const QUERY = `SELECT count(*) FROM offre  WHERE cat='${catId}'`
- 
+
   CON.query(QUERY, (err, result) => {
     if (err) _response(res, 400, { message: 'invalidRequest' });
     _response(res, 200, result)
@@ -239,14 +240,11 @@ exports.getNumberOffresByCat = (req, res, next) => {
 
 }
 
-
-
 exports.getOffreByCatWithPagination = (req, res, next) => {
 
-  store.set('user', { name:'Marcus' })
   const { data } = req.params;
   _data = JSON.parse(data);
-  const { catId, skip , limit } = _data;
+  const { catId, skip, limit } = _data;
   console.log(_data)
   const QUERY = `SELECT * FROM offre  WHERE cat='${catId}' limit ${skip},${limit}`
   CON.query(QUERY, (err, result) => {
@@ -256,6 +254,37 @@ exports.getOffreByCatWithPagination = (req, res, next) => {
 
 }
 //
+
+exports.getOffreSame = (req, res, next) => {
+
+  const idOffre = req.params.id;
+
+  let QUERY = `SELECT  * from myoffre, offre WHERE  \`offre\`.\`_id\` ='${idOffre}' AND  \`offre\`.\`_id\` = \`myoffre\`.\`idoffre\` limit 1 `
+
+  CON.query(QUERY, (err, result) => {
+    if (err) _response(res, 400, { message: 'Error' });
+    console.log(result.length)
+    if (result.length === 0) {
+      _response(res, 200, []);
+
+    }
+    else {
+      const idUser = result[0][' id_user'];
+      QUERY = 'SELECT  * from myoffre, offre WHERE   `myoffre`.` id_user` =' + `${idUser}` + ' AND  `offre`.`_id` = `myoffre`.`idoffre` limit 4'
+      CON.query(QUERY, (err, result) => {
+        if (err) _response(res, 400, { message: 'Error' });;
+        _response(res, 200, result)
+      });
+    }
+
+  });
+
+
+}
+
+
+
+
 
 
 

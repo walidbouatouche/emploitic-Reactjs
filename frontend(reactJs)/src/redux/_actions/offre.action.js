@@ -13,8 +13,8 @@ export const _offreAction = {
     getMyOffre,
     getOffreNumber,
     getNumberOffresByCat,
-    getOffreByCatWithPagination
-
+    getOffreByCatWithPagination ,
+    getOffreSame 
 }
 
 /*  
@@ -53,7 +53,7 @@ function getOffreById(id) {
 function searchOffres(char = 'a') {
     return dispatch => {
         dispatch({
-            type: offreConstants. SEARCH_OFFRES_REQUEST
+            type: offreConstants.SEARCH_OFFRES_REQUEST
         })
         return sendRequest({
             method: 'GET',
@@ -61,13 +61,13 @@ function searchOffres(char = 'a') {
         }).then(
             offre => {
                 dispatch({
-                    type: offreConstants. SEARCH_OFFRES_SUCCESS,
+                    type: offreConstants.SEARCH_OFFRES_SUCCESS,
                     offre
                 })
             },
             error => {
                 dispatch({
-                    type: offreConstants. SEARCH_OFFRES_FAILURE,
+                    type: offreConstants.SEARCH_OFFRES_FAILURE,
                     error: "somthing Wrong"
                 })
 
@@ -358,9 +358,9 @@ function getNumberOffresByCat(catId) {
 
 
 
-function getOffreByCatWithPagination(skip, catId , limit) { // by limit
+function getOffreByCatWithPagination(skip, catId, limit) { // by limit
 
-    const data = JSON.stringify({ catId, skip ,limit })
+    const data = JSON.stringify({ catId, skip, limit })
     return dispatch => {
         dispatch({
             type: offreConstants.GET_OFFRES_PAGINATION_C_BEGIN
@@ -377,6 +377,35 @@ function getOffreByCatWithPagination(skip, catId , limit) { // by limit
             () => {
                 dispatch({
                     type: offreConstants.GET_OFFRES_PAGINATION_C_FAIL,
+                    error: "somthing Wrong"
+                })
+            }
+        )
+    }
+}
+
+
+
+
+
+function getOffreSame(idOffre) {
+
+    return dispatch => {
+        dispatch({
+            type: offreConstants.GET_SAME_OFFRES_BEGIN
+        })
+        return sendRequest({
+            method: 'GET',
+            url: `/offre/sameoffres/${idOffre}`
+        }).then((offre) => {
+            dispatch({
+                type: offreConstants.GET_SAME_OFFRES_SUCCESS,
+                offre
+            })
+        },
+            () => {
+                dispatch({
+                    type: offreConstants.GET_SAME_OFFRES_FAIL,
                     error: "somthing Wrong"
                 })
             }

@@ -179,7 +179,7 @@ export function offres(state = {}, action) {
         case offreConstants.GET_OFFRES_PAGINATION_C_BEGIN:
             return {
                 ...state,
-                offreByPgn: [{}],
+                offreByPgn: [],
                 loading: true
             }
         case offreConstants.GET_OFFRES_PAGINATION_C_SUCCESS:
@@ -206,6 +206,24 @@ export function offres(state = {}, action) {
                 nbrPgn: action.nbr.data[0]['count(*)']
             }
         case offreConstants.NBR_OFFRES_C_FAIL:
+            return {
+                error: action.error
+            }
+
+
+        case offreConstants.GET_SAME_OFFRES_BEGIN:
+            return {
+                ...state,
+                loading: true
+            }
+        case offreConstants.GET_SAME_OFFRES_SUCCESS:
+            // index 0
+            return {
+                ...state,
+                loading: false,
+                offresSame: action.offre.data
+            }
+        case offreConstants.GET_SAME_OFFRES_FAIL:
             return {
                 error: action.error
             }

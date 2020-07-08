@@ -2,12 +2,13 @@
 // connect to Database
 const mysql = require('mysql');
 const serverInfo = {
-host: 'localhost',
+    host: 'localhost',
     user: 'root',
     password: 'root',
     database: 'db'
-
 }
+
+
 
 const con = mysql.createConnection(serverInfo);
 con.connect((errors) => {

@@ -97,19 +97,20 @@ const Navabar = () => {
   }
 
   if (!Auth.isAuth()) {
-    return (<div className="w3-white w3-padding ">
-      <Link to='/login'>
-        <FontAwesomeIcon className="w3-text-red" icon={Icon.faUser} />
-      </Link>
+    return (<div className="w3-white w3-padding " style={{ borderBottom: '1px solid orange' }}>
+
       <Link className="w3-padding" to='/'>
-Home      </Link>
+        Home      </Link>
+      <Link to='/login' className="w3-right">
+        <FontAwesomeIcon className="w3-text-orange" icon={Icon.faUser} />
+      </Link>
     </div>)
 
   }
   return (
 
     <div>
-      <div className="w3-top w3-padding w3-white  ">
+      <div style={{ borderBottom: '1px solid orange' }} className="w3-top w3-padding w3-white  ">
         <div className="w3-bar" id="myNavbar">
           <a
             className="w3-bar-item w3-button w3-orange w3-hide-medium w3-hide-large w3-right"
@@ -123,10 +124,11 @@ Home      </Link>
             <Dropdown title={<FontAwesomeIcon icon={Icon.faUser} />} >
               <ul className="w3-ul ">
                 <Usermenu menu={usersmenu} />
-                {Auth.getRole() === 'admin' ? <Link to='/admin' className="w3-bar-item w3-button w3-hover-orange   ">
+                 
+                {Auth.getRole() === 'r' ? <Link to='/recruiterArea' className="w3-bar-item w3-button w3-hover-orange   ">
                   <FontAwesomeIcon style={{ marginRight: '20px' }} icon={Icon.faCog} />
 
-                  Admin
+                  Recruiter Area
             </Link> : null}
                 <a onClick={logout} className="w3-bar-item w3-button w3-hover-orange   ">
                   <FontAwesomeIcon style={{ marginRight: '20px' }} icon={Icon.faPowerOff} />

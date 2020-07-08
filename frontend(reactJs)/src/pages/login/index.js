@@ -11,7 +11,7 @@ import Model from '../../compenents/model'
 import { useSelector, useDispatch } from 'react-redux'
 import { _userAction } from '../../redux/_actions/user.action';
 import Auth from '../../_helpers/auth'
-
+import Layout from'../../layout/index'
 import PasswordRest from './compenets/passwordRest'
 
 const LoginOrRegister = ({ history }) => {
@@ -60,7 +60,9 @@ const LoginOrRegister = ({ history }) => {
     }
 
     return (
-        <div className="w3-text-center ">
+        <Layout>
+
+        <div className="w3-text-center  w3-padding">
             <br />
             <br />
             <div style={{ width: '50%', marginRight: "auto", marginLeft: "auto" }} className=" w3-border w3-white  w3-text-center  ">
@@ -99,7 +101,8 @@ const LoginOrRegister = ({ history }) => {
             </div>
 
         </div>
-
+            
+        </Layout>
     )
 }
 

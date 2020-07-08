@@ -3,7 +3,6 @@ const jwt = require('jsonwebtoken'); // token for login
 const _response = require('../_helpers/_response')
 const nodemailer = require('nodemailer');
 
-var store = require('store')
 
 exports.signup = (req, res, next) => {
 
@@ -55,15 +54,13 @@ exports.login = (req, res, next) => {
         if (err) _response(res, 400, { message: 'Error' });
 
         if (user.length != '0') {
-            store.clearAll();
+        
             const token = jwt.sign(
                 { userId: user[0].id },
                 'RANDOM_TOKEN_SECRET',
                 { expiresIn: '24h' }
             )
-            store.set('user', {
-                token
-            })
+     
 
             _response(res, 200, {
                 role: user[0].role,
@@ -100,6 +97,7 @@ exports.getUserById = (req, res, next) => {
 
 exports.updateUser = (req, res, next) => {
     const { info, experience, cat, deplom, userId, nom, prenom, adresse, phone } = req.body
+     console.log(req.body)
     const newInfo = JSON.parse(info);
     // update only the update date
     newInfo[0].updateAt = new Date()

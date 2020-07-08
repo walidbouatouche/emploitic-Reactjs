@@ -1,7 +1,7 @@
 import React  ,{useState ,useEffect}from'react'
 import { Formik, Field, Form} from 'formik';
 import * as Yup from 'yup';
-import Exp from'./sub-compenent/exp'
+import ExpOrDepl from'./sub-compenent/expOrdepl'
 import Item from'./sub-compenent/item'
 import Accordion from'../../../../compenents/accordion'
  // Only the new thing we used was the formiK library
@@ -11,11 +11,14 @@ import Accordion from'../../../../compenents/accordion'
 
  /* https://jasonwatmore.com/post/2020/04/20/react-formik-combined-add-edit-create-update-form-example */
 
-
+ // walid@dd.fr
+ //walid@dd.fr
  const Editfrom =({userinfo,list,updateUser ,userId ,location }) =>{
+
   const [exp,setExp]=useState(JSON.parse(userinfo._exp))
   const [deplo,setDeplo]=useState(JSON.parse(userinfo._deplo))
-
+  const label={fontWeight:'bold',padding:'5px'}
+  const borderRaduis={borderRadius:'10px'}
     function getOneFieldDeplo(newFlied){
          let newDeplo= Object.assign([],deplo)
          newDeplo.push(newFlied)
@@ -24,10 +27,14 @@ import Accordion from'../../../../compenents/accordion'
          
     }
    function removeDeplo(index){
- 
+ if(window.confirm("Are you sure")){
+
+
     let newDeplo=Object.assign([],deplo)
     newDeplo.splice(index,1)
      setDeplo(newDeplo)
+
+    }
     }
 
     function getOneFieldExp(newFlied){
@@ -38,13 +45,15 @@ import Accordion from'../../../../compenents/accordion'
         
    }
   function removeExp(index){
-
+    if(window.confirm("Are you sure")){
    let newExp=Object.assign([],exp)
     newExp.splice(index,1)
     setExp(newExp)
+
+    }
    }
-    return(<div className="w3-center" >
-<div className="w3-col  m11 w3-margin-left w3-white w3-padding">
+    return(<div className="w3-center " >
+<div style={{...borderRaduis ,background:"white"}} className="w3-col w3-margin  m11   w3-padding w  w3-border w3-border-orange">
    
 <Formik
 enableReinitialize
@@ -77,23 +86,23 @@ enableReinitialize
                 render={({ errors, status, touched }) => (
                     <Form>
                         <div >
-                            <label htmlFor="nom">Nom</label>
+                            <label   style={label} htmlFor="nom">Nom</label>
                             <Field name="nom" type="text" className={'w3-input w3-border' + (errors.nom && touched.nom? ' w3-border w3-border-red' : '')} />
                             {errors.nom && touched.nom ? (<div className="w3-text-red">{errors.nom}</div>) : null}
                             <br />
                         </div>
                         <div >
-                            <label htmlFor="prenom">Prenom</label>
+                            <label   style={label} htmlFor="prenom">Prenom</label>
                             <Field name="prenom" type="text" className={'w3-input w3-border' + (errors.prenom && touched.prenom ? ' w3-border w3-border-red' : '')} />
                             {errors.prenom && touched.prenom? (<div className="w3-text-red">{errors.prenom}</div>) : null}
                                  <br />                        </div>
                         <div >
-                            <label htmlFor="phone">Phone</label>
+                            <label  style={label} htmlFor="phone">Phone</label>
                             <Field name="phone" type="number" className={'w3-input w3-border' + (errors.phone && touched.phone ? ' w3-border w3-border-red' : '')} />
                             {errors.phone && touched.phone? (<div className="w3-text-red">{"mus number"}</div>) : null}
                          <br />                        </div>
                         <div >
-                            <label htmlFor="phone">Domain</label>
+                            <label   style={label} htmlFor="phone">Domain</label>
                             <br  />
                         <Field as="select" name="cat" >
 
@@ -114,7 +123,7 @@ enableReinitialize
 
                                 <div >
                                 <br />  
-                            <label htmlFor="adresse">adresse</label>
+                            <label   style={label} htmlFor="adresse">Adresse</label>
                             <Field name="adresse" as="select"   className={'w3-input w3-border' + (errors.adresse && touched.adresse ? ' w3-border w3-border-red' : '')} >
                             
                             {
@@ -127,29 +136,32 @@ enableReinitialize
                             {errors.adresse && touched.adresse ? (<div className="w3-text-red">{errors.adresse}</div>) : null}
 
 <br />                        </div>
-<div className="w3-border w3-margin">
+
+<hr />
+<div className=" w3-margin w3-white"  >
 
 
- <Exp getOneField={getOneFieldExp} title={'Experience'}  /> 
+ <ExpOrDepl getOneField={getOneFieldExp} title={'Experience'}  /> 
 {exp.map((item,index)=>
- <Accordion key={index}   title={item.title} id={index+'Exp'}>
+ <Accordion key={index}   title={index+1+'.'+item.title} id={index+'Exp'}>
       <Item   id={index} item={item} _getId={removeExp} />
  </Accordion>
 
 )}
 
 </div>
-<div className="w3-border w3-margin">
+<hr />
+<div className="  w3-margin  w3-white"  >
 
 
- <Exp getOneField={getOneFieldDeplo} title={'Deplome'}  /> 
+ <ExpOrDepl getOneField={getOneFieldDeplo} title={'Deplome'}  /> 
 {deplo.map((item,index)=>
- <Accordion key={index}  title={item.title} id={index + 'Depl'}>
+ <Accordion key={index}  title={index+1+'.'+item.title} id={index + 'Depl'}>
       <Item   id={index} item={item} _getId={removeDeplo} />
  </Accordion>
 
 )}
-
+<hr />
 </div> 
 <div >
  <button type="submit"     className="w3-button w3-orange w3-text-white" >Save</button>

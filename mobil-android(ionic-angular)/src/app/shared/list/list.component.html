@@ -1,0 +1,12 @@
+<ul class="w3-ul w3-hoverable w3-white">
+
+  <li (click)="jumpTo(item.id)" class="w3-padding-8 w3-hover-grayscale" *ngFor="let item of cat">
+    <a>
+      <img src={{item.imguri}} alt="Image" class="w3-left w3-margin-right" style="width: 50px " />
+      <span class="w3-large w3-text-black"> {{item.title}}</span>
+      <br />
+
+    </a>
+    <br>
+  </li>
+  <ul>

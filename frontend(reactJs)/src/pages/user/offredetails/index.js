@@ -10,6 +10,7 @@ import OffreDetail from './compenets/offrevwier'
 
 import Auth from '../../../_helpers/auth'
  
+import ListSame from'../list/compenents/listbycat'
 // page show a content of offre 
 const Offredetail = ({ match }) => {
 
@@ -19,12 +20,14 @@ const Offredetail = ({ match }) => {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(_offreAction.getOffreById(id))
-
-    }, [])
+        dispatch(_offreAction.getOffreSame(id))
+ 
+    }, [id])
 
     const postuler = (id) => {
         if (!Auth.isAuth()) {
    alert(" You must login for postuler")
+   return false ;
          }
         dispatch(_offreAction.postulerOffre(id, Auth.getUserId()))
     }
@@ -44,6 +47,14 @@ const Offredetail = ({ match }) => {
                         <OffreDetail postulerOffre={postuler} list={state.offres.offredetail} />}
 
                 </ul>
+         
+            </div>
+          
+            <div className="w3-padding">
+                <p className="w3-orange w3-text-white  w3-padding-16" style={{width:"50%"}}> Les candidats ayant postulé à cette offre ont également postulé à ces offres</p>
+                <ul className="w3-ul w3-hoverable w3-white">
+                {state.offres.offresSame  &&  <ListSame list={state.offres.offresSame}></ListSame>}
+             </ul>
             </div>
         </Layout>
 

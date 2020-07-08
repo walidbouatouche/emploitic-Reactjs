@@ -9,7 +9,7 @@ const Listlist = ({ list }) => {
 
     return (
         list.map((item => (<div key={item._id}>
-            <li className="w3-padding-16 w3-border-light-gray w3-border-top">
+            <li className=" w3-border w3-padding-16 w3-border-light-gray w3-border-top">
                 <Link to={'/offreviewer/' + item._id}>
                     {item.imguri && <img src={item.imguri} alt="Image" className="w3-left w3-margin-right" style={{ width: '50px' }} />
                     }                    <span className="w3-large  w3-text-black"> {item.titre}</span>

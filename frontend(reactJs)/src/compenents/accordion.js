@@ -10,9 +10,9 @@ const Accordion = ({ title, children, id }) => {
         }
     }
 
-    return (<div className="w3-margin">
+    return (<div className="w3-margin " style={{borderRadius:'10px'}}>
         <div onClick={() => myFunction(id)} className="w3-text-white w3-green  w3-padding">{title}</div>
-        <div id={id} className="w3-hide w3-container w3-center ">
+        <div id={id} className=" w3-border w3-hide w3-container w3-center ">
 
             {children}
 

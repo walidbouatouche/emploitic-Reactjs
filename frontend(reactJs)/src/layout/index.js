@@ -13,6 +13,7 @@ const Layout = ({ children }) => {
       <Menu />
       <div className="w3-row">
         <div className="w3-col   w3-margin-top">
+          <br  />
           {children}
         </div>
         {/* <Rightside /> */}
