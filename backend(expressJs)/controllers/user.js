@@ -29,10 +29,11 @@ exports.signup = (req, res, next) => {
         adresse	, 
         phone ,
         role ,
-        mail 
+        mail ,
+        entrpName
         )
         VALUES (
-        '${hash}', '[]',  '',  '',  '[]', '${info}','','','','','user','${mail}'
+        '${hash}', '[]',  '',  '',  '[]', '${info}','','','','','user','${mail}',''
         )
         `
     CON.query(QUERY, (err, result) => {
@@ -87,7 +88,9 @@ exports.getUserById = (req, res, next) => {
     nom,
     prenom,
     adresse	, 
-    phone 
+    phone  ,
+    mail ,
+    entrpName
     FROM user WHERE id='${req.params.id}'`, function (err, result, fields) {
         if (err) _response(res, 400, { message: 'invalid request' });
         _response(res, 200, result)
@@ -96,7 +99,7 @@ exports.getUserById = (req, res, next) => {
 }
 
 exports.updateUser = (req, res, next) => {
-    const { info, experience, cat, deplom, userId, nom, prenom, adresse, phone } = req.body
+    const { info,  entrpName,experience, cat, deplom, userId, nom, prenom, adresse, phone } = req.body
      console.log(req.body)
     const newInfo = JSON.parse(info);
     // update only the update date
@@ -111,7 +114,8 @@ exports.updateUser = (req, res, next) => {
        adresse	='${adresse}',
        phone='${ phone}' ,
        _cat='${cat}',
-       info='${JSON.stringify(newInfo)}'
+       info='${JSON.stringify(newInfo)}',
+       entrpName='${entrpName}'
       WHERE
       id = '${userId}'
       
@@ -224,6 +228,23 @@ exports.sendNewPass = (req, res, next) => {
 
 }
 
-exports.logout = () => {
-    store.clearAll();
+ 
+
+
+
+exports.getCv= (req, res, next) => {
+    const idUser= req.userId ;
+     const cv = idUser+'.pdf';
+    res.sendFile(cv, { root: './pdfs' });
+
+
+
+}
+exports.getCvR= (req, res, next) => {
+    const data= req.data;
+    //  const cv = idUser+'.pdf';
+    // res.sendFile(cv, { root: './pdfs' });
+
+
+
 }

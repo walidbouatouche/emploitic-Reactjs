@@ -4,6 +4,7 @@ import { _userAction } from '../../../redux/_actions/user.action'
 import Spinner from '../../../compenents/spinner'
 import Panel from '../../../compenents/panel'
 import Layout from '../../../layout'
+
 const UserInfo = ({ match }) => {
     const state = useSelector(state => state)
     const dispatch = useDispatch();

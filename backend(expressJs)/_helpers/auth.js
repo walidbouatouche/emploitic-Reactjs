@@ -9,7 +9,7 @@ module.exports = (req, res, next) => {
     userId = decodedToken.userId;
     console.log(userId)
     if (parseInt(userId)) {
-        res.userId=userId ;
+        req.userId=userId ;
         console.log('connected')
         next()
     }

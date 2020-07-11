@@ -8,66 +8,70 @@ import { UxService } from '../../services/ux/ux.service'
   styleUrls: ['./myprofil.page.scss'],
 })
 export class MyprofilPage implements OnInit {
- _userInfo:any ;
+  _userInfo: any;
   constructor(
     public authService: AuthService,
     public ux: UxService
   ) { }
 
   ngOnInit() {
-    
+
   }
 
 
   updateUser(userData) {
-    if(confirm("are you sure")){
+    if (confirm("are you sure")) {
 
- 
+
+      this.ux.showLoadingController();
+      this.authService.updateUser(userData).then(
+        ({ data }: any) => {
+          this.ux.hideLoadingController();
+          if (data.message) {
+            this.ux.showToastController("update good !!", 'success')
+            this.ux.refrechPage() 
+          }
+
+        }
+        , ({ response }) => {
+          const message = (response != undefined && response != null) ? response.data.message : "somthing wrong";
+          this.ux.hideLoadingController();
+          this.ux.showToastController(message, 'success')
+          this.ux.refrechPage()
+
+        });
+
+    }
+
+  }
+
+
+  async ionViewWillEnter() {
+    this.ux.prepareLoadingController("Loading...");
+  }
+
+  upCvPdf(formData) {
+
+    console.log(formData)
+
     this.ux.showLoadingController();
-    this.authService.updateUser(userData ).then(
+    this.authService.updateCvFile(formData).then(
       ({ data }: any) => {
         this.ux.hideLoadingController();
-        if(data.message){
-          this.ux.showToastController("update good !!",'success')
+        if (data.message) {
+          this.ux.showToastController("update Cv ", 'success')
+          this.ux.refrechPage()
         }
+
 
       }
       , ({ response }) => {
         const message = (response != undefined && response != null) ? response.data.message : "somthing wrong";
         this.ux.hideLoadingController();
-        this.ux.showToastController(message,'success')
+        this.ux.showToastController(message, 'danger')
       });
 
-         }
 
-  }
-
-  
-  async ionViewWillEnter() {
-    this.ux.prepareLoadingController("Loading...");
-  }
-
-  upCvPdf(formData){
-  
-console.log(formData) 
- 
-      this.ux.showLoadingController();
-      this.authService.updateCvFile(formData).then(
-        ({ data }: any) => {
-          this.ux.hideLoadingController();
-          if(data.message){
-            this.ux.showToastController("update Cv ",'success')
-          }
-          window.location.reload()
-  
-        }
-        , ({ response }) => {
-          const message = (response != undefined && response != null) ? response.data.message : "somthing wrong";
-          this.ux.hideLoadingController();
-          this.ux.showToastController(message,'danger')
-        });
-  
-           
   }
 
 }

@@ -3,16 +3,33 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFilePdf } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
 import Auth from '../../../../_helpers/auth'
-
-const UsersList = ({ users }) => {
+import sendRequest from '../../../../_helpers/sendrequest'
+const UsersList = ({ users, idOffre }) => {
     const openCv = (userId) => {
         // scure_files
+        // downloa d pdf from url  with secure  !!
         const data = {
             userId,
-            token: Auth.getToken()
+            token: Auth.getToken(),
+            idOffre
         }
         const _data = JSON.stringify(data)
-        window.open('http://localhost:3000/_pdf/' + _data);
+
+
+        sendRequest({
+            method: 'GET',
+            url: `/user/_cv/` + _data,
+            responseType: 'blob',
+        }).then((response) => {
+            const url = window.URL.createObjectURL(new Blob([response.data]));
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', userId + '.pdf');
+            document.body.appendChild(link);
+            link.click();
+
+        }
+        )
     }
     return (<div>
         UsersList

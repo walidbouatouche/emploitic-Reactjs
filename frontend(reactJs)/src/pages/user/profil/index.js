@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import Layout from '../../../layout'
-import Editform from './compenent/editfrom'
+import Editform from './compenents/editfrom'
 import Listofcategorie from '../../../static/cat.json'
 import location from '../../../static/location.json'
 
@@ -12,9 +12,9 @@ import { Alerts } from '../../../compenents/alerts'
 import Spinner from '../../../compenents/spinner'
 import { _userAction } from '../../../redux/_actions/user.action'
 
-import Upfile from './compenent/upfile'
+import Upfile from './compenents/upfile'
 
-import UpdateInfo from './compenent/updateInfo'
+import UpdateInfo from './compenents/updateInfo'
 const updateCvFile = _userAction.updateCvFile,
   getUserByid = _userAction.getUserByid,
   updateUser = _userAction.updateUser;

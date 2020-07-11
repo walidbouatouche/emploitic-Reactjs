@@ -6,6 +6,8 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Router } from "@angular/router";
 import { LogoutService } from './_helpers/logout/logout.service'
 import { AuthService } from './services/auth/auth.service'
+import { MyheaderComponent } from './shared/myheader/myheader.component'
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -13,6 +15,7 @@ import { AuthService } from './services/auth/auth.service'
 })
 export class AppComponent {
   iconLoginStatus: boolean;
+  @ViewChild(MyheaderComponent, { static: true }) private MyheaderComponent: MyheaderComponent;
   menu: any = [{
     id: 1,
     title: "home",
@@ -101,10 +104,11 @@ export class AppComponent {
   }
   menuOpened() {
     this.iconLoginStatus = this.authService.isLogin();
-   }
-
-  menuClosed(){
     
+  }
+
+  menuClosed() {
+
 
   }
 }

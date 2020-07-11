@@ -3,7 +3,7 @@ import { faMapMarkerAlt, faBookmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
-const Offrevwier = ({ list, postulerOffre }) => {
+const Offrevwier = ({ list, postulerOffre, Auth }) => {
 
     const _postulerOffre = (id) => {
         postulerOffre(id)
@@ -11,7 +11,7 @@ const Offrevwier = ({ list, postulerOffre }) => {
     return (
         list.map((item => (<div key={item._id}>
             <li className="w3-padding-16 w3-border-light-gray w3-border-top">
-                <button onClick={() => _postulerOffre(item._id)} className="w3-button w3-orange w3-text-white w3-right">Postuler</button>
+              { Auth.getRole()=='user' && <button onClick={() => _postulerOffre(item._id)} className="w3-button w3-orange w3-text-white w3-right">Postuler</button>}
                 <img src={item.imguri} alt="Image" className="w3-left w3-margin-right" style={{ width: '50px' }} />
                 <span className="w3-large"> {item.titre}</span>
                 <br />

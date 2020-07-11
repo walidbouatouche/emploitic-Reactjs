@@ -1,8 +1,7 @@
 import React, { useRef } from 'react'
 import { faDownload, faEdit } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
-
+import sendRequest from '../../../../_helpers/sendrequest'
 const FileUpload = ({ updateCvFile, _cv_link, userId, token }) => {
 
 
@@ -18,15 +17,21 @@ const FileUpload = ({ updateCvFile, _cv_link, userId, token }) => {
     updateCvFile(formData);
   }
   const openCv = () => {
-    // scure_files
-    const data = {
-      userId: userId,
-      cv: userId + '.pdf',
-      token
-    }
-    const _data = JSON.stringify(data)
+    // downlaod pdf from url  with secure  !!
+    sendRequest({
+      method: 'GET',
+      url: `/user/cv/`,
+      responseType: 'blob',
+    }).then((response) => {
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', userId + '.pdf');
+      document.body.appendChild(link);
+      link.click();
 
-    window.open('http://localhost:3000/pdf/' + _data);
+    }
+    )
   }
 
   return (

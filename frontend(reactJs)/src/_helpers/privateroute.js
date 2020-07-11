@@ -8,14 +8,14 @@ import { Route, Redirect } from 'react-router-dom';
         and show the receiving page from props if it is true
         */
 
-const testAuth = Auth.isAuth();
+const testUser = Auth.getRole() === 'user';
 const testAdmin = Auth.getRole() === 'admin';
 const testRecruiter = Auth.getRole() === 'r';
 
 const UserRoute = ({ component: Component_, ...rest }) => {
 
 
-    if ((!testAuth)) {
+    if ((!testUser)) {
         return (
             <Redirect to='/login' />
         );
@@ -54,12 +54,7 @@ const AdminRoute = ({ component: Component_, ...rest }) => {
     }
 
     // only show when  in
-    else if (!testAuth) {
-
-        return (
-            <Redirect to='/login' />
-        );
-    }
+ 
     else {
         return (
             <div>
@@ -97,12 +92,7 @@ const RecruiterRoute = ({ component: Component_, ...rest }) => {
     }
 
     // only show when  in
-    else if (!testAuth) {
-
-        return (
-            <Redirect to='/login' />
-        );
-    }
+ 
     else {
         return (
             <div>
@@ -126,4 +116,4 @@ const RecruiterRoute = ({ component: Component_, ...rest }) => {
 
 }
 
-export { UserRoute, AdminRoute ,RecruiterRoute }
+export { UserRoute, AdminRoute, RecruiterRoute }

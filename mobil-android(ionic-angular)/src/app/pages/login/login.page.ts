@@ -70,13 +70,7 @@ export class LoginPage implements OnInit {
       return false;
     }
     if (!goodPassword(this.user.password)) {
-      this.ux.showToastController(`
-      * The password string will start this way
-    	* The string must contain at least 1 lowercase alphabetical character
-      * The string must contain at least 1 uppercase alphabetical character
-      * The string must contain at least 1 numeric character
-      * The string must contain at least one special character
-  	  * The string must be eight characters or longer`, 'danger')
+      this.ux.showToastController(`password  must be eight characters or longer with number and alphabetical character`, 'danger')
       return false;
     }
     this.ux.showLoadingController();

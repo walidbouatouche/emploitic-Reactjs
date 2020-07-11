@@ -19,7 +19,7 @@ exports.searchOffre = (req, res, next) => {
 exports.getOffreByLimit = (req, res, next) => {
   const { userId } = req
   const { limit } = req.params;
-  const QUERY = `SELECT * FROM offre where userId=${userId} `
+  const QUERY = `SELECT * FROM offre where userId=${userId} limit ${limit} `
   CON.query(QUERY, (err, result) => {
     if (err) _response(res, 400, { message: 'invalidRequest' });
     if (result.length < 0) {
@@ -115,7 +115,8 @@ exports.updateOffre = (req, res, next) => {
       titre,
       type,
       _id,
-      active
+      active ,
+      entrpName
     } = req.body.data
   const QUERY = ` 
   UPDATE OFFRE SET
@@ -129,6 +130,7 @@ exports.updateOffre = (req, res, next) => {
   type='${type}',
   cat='${cat}',
   location='${location}'
+  entrpName='${entrpName}'
   WHERE
   _id=${_id}
   and userId=${userId} 

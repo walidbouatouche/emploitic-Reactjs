@@ -1,8 +1,8 @@
 import React  ,{useState ,useEffect}from'react'
 import { Formik, Field, Form} from 'formik';
 import * as Yup from 'yup';
-import ExpOrDepl from'./sub-compenent/expOrdepl'
-import Item from'./sub-compenent/item'
+import ExpOrDepl from'./sub-compenents/expOrdepl'
+import Item from'./sub-compenents/item'
 import Accordion from'../../../../compenents/accordion'
  // Only the new thing we used was the formiK library
                
@@ -80,7 +80,8 @@ enableReinitialize
                     const info= userinfo.info
                     let experience=JSON.stringify(exp)
                     let  deplom=JSON.stringify(deplo)
-                    updateUser({...fields,userId,info,experience,deplom})
+                    let   entrpName=""
+                    updateUser({...fields,entrpName,userId,info,experience,deplom})
                              
                 }}
                 render={({ errors, status, touched }) => (

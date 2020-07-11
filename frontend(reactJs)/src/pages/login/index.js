@@ -1,6 +1,6 @@
 import React from 'react'
 
-import LoginOrsingup from './compenets/loginOrsingup'
+import LoginOrsingup from './compenents/loginOrsingup'
 
 import Spinner from '../../compenents/spinner'
 
@@ -12,7 +12,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { _userAction } from '../../redux/_actions/user.action';
 import Auth from '../../_helpers/auth'
 import Layout from'../../layout/index'
-import PasswordRest from './compenets/passwordRest'
+import PasswordRest from './compenents/passwordRest'
 
 const LoginOrRegister = ({ history }) => {
 

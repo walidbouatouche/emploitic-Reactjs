@@ -13,6 +13,8 @@ export class ProfilfromComponent implements OnInit {
   userInfo: any;
   validation_form: FormGroup;  //https://angular.io/guide/form-validation
   _add_product: any;
+  depls: any = [];
+  exps: any = [];
   validation_messages = {
     nom: [
       { type: "required", message: "required" },
@@ -59,28 +61,6 @@ export class ProfilfromComponent implements OnInit {
         message: " max:50 "
       }
 
-    ],
-    experience: [
-      { type: "required", message: "required." },
-      {
-        type: "minlength",
-        message: " min:10"
-      }, {
-        type: "maxlength",
-        message: " max:200 "
-      }
-
-    ],
-    deplom: [
-      { type: "required", message: "required." },
-      {
-        type: "minlength",
-        message: " min:10"
-      }, {
-        type: "maxlength",
-        message: " max:200 "
-      }
-
     ]
 
   }
@@ -88,7 +68,9 @@ export class ProfilfromComponent implements OnInit {
   constructor(public authService: AuthService, public formbuilder: FormBuilder) {
     this.authService.getUserByid(userInfo.getUserId()).then(({ data }) => {
       this.userInfo = data[0]
-      console.log(this.userInfo)
+
+      this.exps = JSON.parse(this.userInfo._exp)
+      this.depls = JSON.parse(this.userInfo._deplo)
       const numericNumberReg = '^-?[0-9]\\d*(\\.\\d{1,2})?$';
       this.validation_form = this.formbuilder.group({
         nom: new FormControl(this.userInfo.nom,
@@ -122,23 +104,6 @@ export class ProfilfromComponent implements OnInit {
             Validators.required,
             Validators.maxLength(50),
             Validators.minLength(5)
-
-          ]
-          )),
-        experience: new FormControl(this.userInfo._exp,
-          Validators.compose([
-            // Validators.required,
-            // Validators.maxLength(200),
-            // Validators.minLength(5)
-
-          ]
-          ))
-        ,
-        deplom: new FormControl(this.userInfo._deplo,
-          Validators.compose([
-            // Validators.required,
-            // Validators.maxLength(200),
-            // Validators.minLength(5)
 
           ]
           ))
@@ -182,9 +147,33 @@ export class ProfilfromComponent implements OnInit {
       token
     }
     const _data = JSON.stringify(data)
-   
-    // window.open('http://localhost:3000/pdf/' + _data);
-    window.open('https://gentle-ridge-67558.herokuapp.com/pdf/' + _data);
+
+    window.open('http://localhost:3000/pdf/' + _data);
+    // window.open('https://gentle-ridge-67558.herokuapp.com/pdf/' + _data);
+
+  }
+
+  removeItemExp(idExp) {
+
+    if (window.confirm("Are you sure exp")) {
+
+
+      let newExp = Object.assign([], this.exps)
+      newExp.splice(idExp, 1)
+      this.exps = Object.assign([], newExp)
+
+    }
+
+
+  }
+  removeItemDeplo(idDepl) {
+    if (window.confirm("Are you sure deplo")) {
+
+      let newDeplo = Object.assign([], this.depls)
+      newDeplo.splice(idDepl, 1)
+      this.depls = Object.assign([], newDeplo)
+
+    }
 
   }
 

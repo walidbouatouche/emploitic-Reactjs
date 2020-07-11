@@ -4,7 +4,7 @@ import * as Yup from 'yup';
  import  ShowImage from'../../../../_helpers/imageTo64'
   
 
- const AddEditfrom =({ offreinfo ,list ,addEditOffre }) =>{
+ const AddEditfrom =({ offreinfo ,list ,addEditOffre ,location }) =>{
 
     // set default value 
   let  [imguri=offreinfo.imguri,setImgUri]=useState()
@@ -30,8 +30,11 @@ import * as Yup from 'yup';
                     location:offreinfo.location  || '',
                     type:offreinfo.type  || '',
                     cat:offreinfo.cat  || '6',
-                    date_d: offreinfo.date_d  ||   `${dt.getFullYear()}-${dt.getMonth()< 9 ? '0'+(dt.getMonth()+1):dt.getMonth()+1}-${dt.getDate()}`,
-                    date_f:offreinfo.date_f  || `${dt.getFullYear()}-${dt.getMonth()< 9 ? '0'+(dt.getMonth()+1):dt.getMonth()+1}-${dt.getDate()}`,
+                    date_d: offreinfo.date_d  ||   `${dt.getFullYear()}-${dt.getMonth()< 9 ? '0'+(dt.getMonth()+1):dt.getMonth()+1}-${dt.getDate()}`
+                    ,
+                    date_f:offreinfo.date_f  
+                    // || `${dt.getFullYear()}-${dt.getMonth()< 9 ? '0'+(dt.getMonth()+1):dt.getMonth()+1}-${dt.getDate()}`
+                    ,
                 }}
                 validationSchema={Yup.object().shape({
                 titre: Yup.string()
@@ -44,14 +47,20 @@ import * as Yup from 'yup';
                 .required('location is required'),
                 type: Yup.string()
                 .required(' type is required'),
-                date_d: Yup.string()
-                .required(' date start is required'),
+                 
                 date_f: Yup.string()
                 .required(' date_end start is required'),
                 })}
                 onSubmit={fields => {
              // return fields of user with  imageuri property by  spreed ES6 method
+             let firstDate=new Date(fields.date_d )
+             let secondDate=new Date(fields.date_f )
+             if( firstDate > secondDate){
 
+                alert(" choose the current date")
+                return false ;
+
+   }
                    if(window.confirm("Are you sure")){
                     addEditOffre({...fields,imguri }); 
                    }
@@ -69,7 +78,7 @@ import * as Yup from 'yup';
                         <img src={imguri} style={{height:'150px', width:'120px'}}  />
                         <ShowImage   showImagEvent={showImagEvent}  />
                         <br/>
-                        <br/>
+                     
                   
                             <label htmlFor="titre">Title</label>
                             <Field name="titre" type="text" className={'w3-input w3-border' + (errors.titre && touched.titre? ' w3-border w3-border-red' : '')} />
@@ -77,7 +86,7 @@ import * as Yup from 'yup';
                             <br />
                         </div>
                         <div >
-                        <label htmlFor="phone">Phone</label>
+                        <label htmlFor="entreprise">Nom de entreprise</label>
 
                             <Field name="entreprise" type="text" className={'w3-input w3-border' + (errors.entreprise && touched.entreprise ? ' w3-border w3-border-red' : '')} />
                             {errors.entreprise && touched.entreprise? (<div className="w3-text-red">{errors.entreprise}</div>) : null}
@@ -85,7 +94,7 @@ import * as Yup from 'yup';
                         <div >
                             <label htmlFor="description">Description</label>
                             <Field name="description"  rows="15" as="textarea" className={'w3-input w3-border' + (errors.description && touched.description ? ' w3-border w3-border-red' : '')} />
-                            {errors.description && touched.description? (<div className="w3-text-red">{"mus number"}</div>) : null}
+                            {errors.description && touched.description? (<div className="w3-text-red">{errors.description}</div>) : null}
                          <br />                        </div>
                         <div >
                             <label htmlFor="description">Domain</label>
@@ -109,7 +118,16 @@ import * as Yup from 'yup';
                                 <div >
                                 <br />  
                             <label htmlFor="location">Location</label>
-                            <Field name="location" as="textarea"   className={'w3-input w3-border' + (errors.location && touched.location ? ' w3-border w3-border-red' : '')} />
+ 
+                            <Field name="location" as="select"   className={'w3-input w3-border' + (errors.location && touched.location ? ' w3-border w3-border-red' : '')} >
+                            
+                            {
+                location.map((item)=>    
+                  
+                    <option    key={item.id}value={item.label}>{item.label}</option>)
+
+                }                </Field>
+
                             {errors.location && touched.location ? (<div className="w3-text-red">{errors.location}</div>) : null}
 
                                   <br />                      
@@ -127,12 +145,7 @@ import * as Yup from 'yup';
                              <br />                      
                             </div>
                            
-                          <div >
-                            <label htmlFor="date_d"> date start</label>
-                            <Field name="date_d"  type='date'  className={'w3-input w3-border' + (errors. date_d && touched. date_d ? ' w3-border w3-border-red' : '')} />
-                            {errors.date_d && touched.date_d? (<div className="w3-text-red">{errors.date_d}</div>) : null}
-                                   <br />                      
-                                </div>
+                          
                   
                                     <div >
                             <label htmlFor="date_f"> date end</label>

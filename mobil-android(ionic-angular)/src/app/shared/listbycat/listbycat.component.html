@@ -1,4 +1,4 @@
-<li *ngFor="let item of listOffres" class="w3-padding-16 w3-border-light-gray   w3-border-top w3-light-gray  w3-border w3-margin">
+<li *ngFor="let item of listOffres" class=" w3-border-light-gray   w3-border-top w3-light-gray  w3-border w3-margin">
   <a (click)="jumpTo(item._id)">
     <img *ngIf="item.imguri"src={{item.imguri}} alt="Image" class=" w3-border w3-left w3-margin-right" style=" width: 50px" />
     <span class="w3-large  w3-text-black"> {{item.titre}}</span>

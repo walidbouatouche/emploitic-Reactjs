@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Menu from '../compenents/navigation'
+import Menu from '../compenents/menu'
 import Rightside from '../compenents/rightside'
 import Footer from '../compenents/footer'
 import { Helmet } from "react-helmet"

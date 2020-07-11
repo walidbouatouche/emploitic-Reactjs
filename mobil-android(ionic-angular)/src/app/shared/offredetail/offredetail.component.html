@@ -7,12 +7,12 @@
     <div class="w3-col  m11 ">
       <div class="w3-row">
 
-        <div class="w3-col  m3    ">
+        <div class="w3-col  m3     ">
           <ion-icon name="location"></ion-icon> {{oneOffre.location}} 
         </div>
         <div class="w3-col  m3">
 
-          <ion-icon name="time"></ion-icon>  date de fin:{{oneOffre.date_f}}
+          <ion-icon  name="time"></ion-icon>  {{oneOffre.date_d}}
         </div>
         <div class="w3-col  m6">
           <ion-icon name="person"></ion-icon> {{oneOffre.type}}
@@ -26,7 +26,7 @@
 
 
 <div class="ion-text-center " style="border-radius: 10px;">
-  <button  (click)="_postuler(oneOffre._id)" class="w3-button w3-orange w3-text-white  ">Postuler</button>
+  <button  (click)="_postuler(oneOffre._id)" class="w3-button  w3-hover-orange w3-orange w3-text-white  ">Postuler</button>
 
 </div>
 <div class="w3-margin-top w3-padding w3-white  ">

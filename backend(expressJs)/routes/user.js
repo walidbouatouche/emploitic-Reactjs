@@ -17,6 +17,8 @@ ROUTER.post('/sendnewpass/', USERCNTRL.sendNewPass)
 ROUTER.put('/updateuser/', USERCNTRL.updateUser)
 ROUTER.put('/upcvfile/', AUTH, MULTER, USERCNTRL.upfileCv)
 
-ROUTER.get('/logout/:id', USERCNTRL.logout)
 
+ROUTER.get('/cv/', AUTH, USERCNTRL.getCv)
+
+ROUTER.get('/_cv/', AUTH, USERCNTRL.getCvR)
 module.exports = ROUTER;

@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Layout render  correctly  1`] = `
+<div>
+  <HelmetWrapper
+    defer={true}
+    encodeSpecialCharacters={true}
+  >
+    <title>
+      Emploitik
+    </title>
+  </HelmetWrapper>
+  <Navabar />
+  <div
+    className="w3-row"
+  >
+    <div
+      className="w3-col   w3-margin-top"
+    >
+      <br />
+    </div>
+  </div>
+  <Footer />
+</div>
+`;

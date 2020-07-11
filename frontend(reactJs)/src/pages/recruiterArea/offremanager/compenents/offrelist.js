@@ -4,6 +4,7 @@ import React from 'react'
 import { faEdit, faTrash, faPlus, faUser } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import categorieoffre from '../../../../static/cat.json'
+import location  from '../../../../static/location.json'
 import Model from "../../../../compenents/model";
 import Offreform from '../compenents/offreform';
 import UserLIst from'./users'
@@ -19,7 +20,7 @@ const OffreList = ({ offrelist, _removeOffre, addOffre, editOffre, users, getUse
 
     return (<>
         <Model id={'id01'} title={<FontAwesomeIcon icon={faPlus} />}>
-            <Offreform addEditOffre={addOffre} offreinfo={[{}]} list={categorieoffre} />
+            <Offreform  location ={location} addEditOffre={addOffre} offreinfo={[{}]} list={categorieoffre} />
         </Model>
         <table className="w3-table-all w3-width w3-margin-top">
 
@@ -43,7 +44,7 @@ const OffreList = ({ offrelist, _removeOffre, addOffre, editOffre, users, getUse
 
 
                                 }
-                                <Offreform addEditOffre={editOffre} offreinfo={item} list={categorieoffre} />
+                                <Offreform  location ={location} addEditOffre={editOffre} offreinfo={item} list={categorieoffre} />
                             </Model>
 
 
@@ -58,7 +59,7 @@ const OffreList = ({ offrelist, _removeOffre, addOffre, editOffre, users, getUse
                            // i add  id   id={item._id + 'id'}  for id
                         }
                             <Model  id={item._id + 'id'} title={<FontAwesomeIcon  onClick={() => getUsersByOffre(item._id)} icon={faUser} />}>
-                                {users && <UserLIst users={users} /> 
+                                {users && <UserLIst idOffre={item._id}users={users} /> 
                                 
                                 }
 

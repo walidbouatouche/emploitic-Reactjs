@@ -19,6 +19,7 @@
     "enzyme-to-json": "^3.4.4",
     "formik": "^2.1.4",
     "history": "^4.10.1",
+    "js-file-download": "^0.4.12",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.0",
     "react-dom": "^16.13.1",
@@ -57,5 +58,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "jes": "^0.6.1"
   }
 }

@@ -15,8 +15,8 @@ export class UxService {
     this.loadingControllersub = await this.loadingController.create({
       message: message,
       mode: 'ios',
-      spinner:"bubbles",
-      cssClass:"w3-text-red"
+      spinner: "bubbles",
+      cssClass: "w3-text-red"
     });
   }
 
@@ -28,14 +28,14 @@ export class UxService {
   hideLoadingController() {
     this.loadingControllersub.dismiss();
   }
-  async showToastController(msg: string,color) {
+  async showToastController(msg: string, color) {
 
     const toast = await this.toastController.create({
       message: msg,
       duration: 2000,
       position: 'bottom',
-      color:color,
-     
+      color: color,
+
       buttons: [
 
         {
@@ -55,6 +55,11 @@ export class UxService {
   }
   closeMenuController() {
     this.menuController.close();
+  }
+
+
+  refrechPage() {
+    window.location.reload()
   }
 }
 

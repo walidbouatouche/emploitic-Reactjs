@@ -8,7 +8,7 @@ module.exports = (req, res, next) => {
     const token = req.headers.authorization;
     const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET');
     const userId = decodedToken.userId;
-    const QUERY = `SELECT mail FROM USER  WHERE  id=${userId} And role='admin'`
+    const QUERY = `SELECT mail FROM USER  WHERE  id='${userId}' And role='admin'`
     CON.query(QUERY, (err, result) => {
         if (err) _response(res, 401, { message: 'invalidRequest' }); // error sql syntax
         if (result.length > 0) {

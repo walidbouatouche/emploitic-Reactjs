@@ -7,15 +7,15 @@ import Panel from '../../../compenents/panel'
 import { Alerts } from '../../../compenents/alerts'
 import OffreList from './compenents/offrelist';
 import Search from '../../../compenents/search'
-import Select from '../../../compenents/select'
+
 import Button from '../../../compenents/button'
+import More from './compenents/moreoffres';
 
 import { _offreAction } from '../../../redux/_actions/offre.action';
 import { _userAction } from '../../../redux/_actions/user.action';
 
 
-import categorieoffre from '../../../static/cat.json'
-
+ 
 const incrementByLimit = 4; //  that mean  ++4 (*_*)
 
 {
@@ -103,11 +103,13 @@ const Offremanager = () => {
                 {state.offres.succes &&
                     <Alerts.Alertsuccess text={"Success!"} />
                 }
-             </div>
+                {!(limit >= (state.offres.nbr + incrementByLimit)) ? <More _moreOffre={getMoreOffre} limit={limit} /> : null}
+
+            </div>
             <div className="w3-col m4 ">
                 <Panel title="Recherche general">
                     <Search searchOffre={searchOffre} _placeholder={'search offre'} />
-                     {<Button title="Rest" onClick={() => getMoreOffre(4)} />}
+                    {<Button title="Rest" onClick={() => getMoreOffre(4)} />}
                     <p className="w3-text-black">
                         {state.offres.nbr && `  Nbr of Topics :${state.offres.nbr}`}
 

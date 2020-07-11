@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[` Alerts render  correctly  1`] = `
+<div
+  className="w3-panel w3-pale-red w3-padding-16 w3-animate-top"
+  style={
+    Object {
+      "display": "block",
+    }
+  }
+>
+  <p />
+</div>
+`;
+
+exports[` Alerts render  correctly  2`] = `
+<div
+  className="w3-panel w3-pale-green w3-padding-16  w3-animate-top"
+  style={
+    Object {
+      "display": "block",
+    }
+  }
+>
+  <p />
+</div>
+`;

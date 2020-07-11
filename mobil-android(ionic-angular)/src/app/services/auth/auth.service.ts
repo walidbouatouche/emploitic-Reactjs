@@ -50,7 +50,7 @@ export class AuthService {
   updateCvFile(formData) {
     return this.sendRequestService.sendRequest({
       method: 'PUT',
-      url: `/user/upcvfile/`,
+      url: `/user/upcvfile`,
       data: formData
 
     })

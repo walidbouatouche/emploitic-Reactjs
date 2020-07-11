@@ -6,6 +6,9 @@ import { ListComponent } from './list/list.component'
 import { ListbycatComponent } from './listbycat/listbycat.component'
 import { OffredetailComponent } from './offredetail/offredetail.component'
 import { ProfilfromComponent } from './profilfrom/profilfrom.component'
+import { ModelComponent } from './model/model.component'
+import { ExpOrdeploComponent } from './exp-ordeplo/exp-ordeplo.component'
+import { ExpoOrdeploFormComponent } from './expo-ordeplo-form/expo-ordeplo-form.component'
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
@@ -14,7 +17,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ListComponent,
     ListbycatComponent,
     OffredetailComponent,
-    ProfilfromComponent
+    ProfilfromComponent ,
+    ModelComponent,
+    ExpoOrdeploFormComponent ,
+    ExpOrdeploComponent 
   ],
   imports: [
     CommonModule,
@@ -27,6 +33,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ListComponent,
     ListbycatComponent,
     OffredetailComponent,
-    ProfilfromComponent]
+    ProfilfromComponent ,
+    ModelComponent ,
+    ExpoOrdeploFormComponent ,
+    ExpOrdeploComponent ]
 })
 export class SharedModule { }

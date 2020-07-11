@@ -2,7 +2,7 @@ import React from 'react'
 
 import Layout from '../../../layout/index'
 import categorieoffre from '../../../static/cat.json'
-import List from './compenets/listhome'
+import List from './compenents/listhome'
 
 //The first page that the user sees
 
