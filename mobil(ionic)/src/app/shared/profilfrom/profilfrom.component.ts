@@ -7,7 +7,7 @@ import _locations from '../../static/location'
 import _cat from '../../static/cat'
 import { NativesService } from '../../_helpers/natives/natives.service'
 import { DomSanitizer } from '@angular/platform-browser';
-import{dataURLtoFile} from'../../_helpers/speed-function'
+import{convertBase64ToBlob} from'../../_helpers/speed-function'
 @Component({
   selector: 'app-profilfrom',
   templateUrl: './profilfrom.component.html',
@@ -152,7 +152,7 @@ export class ProfilfromComponent implements OnInit {
     
     this.native.getFileInfo().then((result) => {
       // result.fileName;
-    const file= dataURLtoFile(result.fileData) ;
+    const file= convertBase64ToBlob(result.fileData) ;
     formData.append('pdf',file ) 
 
     //  result.fileSize;

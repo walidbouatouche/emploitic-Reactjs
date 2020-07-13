@@ -6,6 +6,9 @@ import { File, FileEntry, IFile } from '@ionic-native/file/ngx';
 import { Base64 } from "@ionic-native/base64/ngx";
 import { FileChooser } from "@ionic-native/file-chooser/ngx";
 import { FilePath } from "@ionic-native/file-path/ngx";
+
+
+// everythings native i put it here
 @Injectable({
   providedIn: 'root'
 })

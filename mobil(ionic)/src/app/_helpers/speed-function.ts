@@ -1,4 +1,4 @@
- 
+
 export const validateEmail = (mail: string) => {
     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
         return true
@@ -35,20 +35,37 @@ export const onlyNmbrAlph = (text) => {
     return text.replace(/[^A-Za-z-1-2 _]/ig, '')
 }
 
-export const  dataURLtoFile=(dataurl) =>{
- 
-    var arr = dataurl.split(','),
-        mime = arr[0].match(/:(.*?);/)[1],
-        bstr = atob(arr[1]), 
-        n = bstr.length, 
-        u8arr = new Uint8Array(n);
-        
-    while(n--){
-        u8arr[n] = bstr.charCodeAt(n);
+
+export const convertBase64ToBlob = (base64: string) => {
+    const info = getInfoFromBase64(base64);
+    const sliceSize = 512;
+    const byteCharacters = window.atob(info.rawBase64);
+    const byteArrays = [];
+
+    for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+        const slice = byteCharacters.slice(offset, offset + sliceSize);
+        const byteNumbers = new Array(slice.length);
+
+        for (let i = 0; i < slice.length; i++) {
+            byteNumbers[i] = slice.charCodeAt(i);
+        }
+
+        byteArrays.push(new Uint8Array(byteNumbers));
     }
-    
-    return new File([u8arr],  "cv.pdf", {type:mime});
+
+    return new Blob(byteArrays, { type: info.mime });
+}
+function getInfoFromBase64(base64: string) {
+    const meta = base64.split(',')[0];
+    const rawBase64 = base64.split(',')[1].replace(/\s/g, '');
+    const mime = /:([^;]+);/.exec(meta)[1];
+    const extension = /\/([^;]+);/.exec(meta)[1];
+
+    return {
+        mime,
+        extension,
+        meta,
+        rawBase64
+    };
 }
 
- 
- 
