@@ -5,7 +5,9 @@ import userInfo from '../../_helpers/userifos/login-infos'
 import { dowloadPdfBlob } from '../../_helpers/speed-function'
 import _locations from '../../static/location'
 import _cat from '../../static/cat'
-
+import { NativesService } from '../../_helpers/natives/natives.service'
+import { DomSanitizer } from '@angular/platform-browser';
+import{dataURLtoFile} from'../../_helpers/speed-function'
 @Component({
   selector: 'app-profilfrom',
   templateUrl: './profilfrom.component.html',
@@ -17,6 +19,7 @@ export class ProfilfromComponent implements OnInit {
   userInfo: any;
   locations: any;
   cat: any;
+  iframeUrl: any;
   validation_form: FormGroup;  //https://angular.io/guide/form-validation
 
   depls: any = [];
@@ -73,7 +76,7 @@ export class ProfilfromComponent implements OnInit {
 
   }
 
-  constructor(public authService: AuthService, public formbuilder: FormBuilder) {
+  constructor(public sanitizer: DomSanitizer, public native: NativesService, public authService: AuthService, public formbuilder: FormBuilder) {
     this.authService.getUserByid(userInfo.getUserId()).then(({ data }) => {
       this.userInfo = data[0]
 
@@ -135,17 +138,31 @@ export class ProfilfromComponent implements OnInit {
     let experience = JSON.stringify(this.exps)
     let deplom = JSON.stringify(this.depls)
 
-    this.getDataForm.emit({ ...action, experience, deplom, info: this.userInfo.info,  userId: userInfo.getUserId() })
+    this.getDataForm.emit({ ...action, experience, deplom, info: this.userInfo.info, userId: userInfo.getUserId() })
 
 
   }
 
-  updateCv(e) {
+  updateCv() {
+
+
     const formData = new FormData(); // userid + file
 
-    formData.append('pdf', e.target.files[0]) // get file from input
     formData.append('userId', userInfo.getUserId())  // get use id 
+    
+    this.native.getFileInfo().then((result) => {
+      // result.fileName;
+    const file= dataURLtoFile(result.fileData) ;
+    formData.append('pdf',file ) 
+
+    //  result.fileSize;
+    // result.fileType; 
+    
     this.upPdfCv.emit(formData)
+  }).catch((error) => {
+     alert('File can not be uploaded.');
+  });
+   
 
 
   }
@@ -158,8 +175,10 @@ export class ProfilfromComponent implements OnInit {
   openCv() {
 
     this.authService.getPdf().then(({ data }) => {
- 
-      dowloadPdfBlob(data, userInfo.getUserId())
+      this.native.downloadFile(data)
+
+    }, () => {
+
     })
 
   }

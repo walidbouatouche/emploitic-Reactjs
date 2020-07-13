@@ -1,3 +1,4 @@
+ 
 export const validateEmail = (mail: string) => {
     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
         return true
@@ -33,3 +34,21 @@ export const onlyNmbrAlph = (text) => {
     // function for remove bad letter 
     return text.replace(/[^A-Za-z-1-2 _]/ig, '')
 }
+
+export const  dataURLtoFile=(dataurl) =>{
+ 
+    var arr = dataurl.split(','),
+        mime = arr[0].match(/:(.*?);/)[1],
+        bstr = atob(arr[1]), 
+        n = bstr.length, 
+        u8arr = new Uint8Array(n);
+        
+    while(n--){
+        u8arr[n] = bstr.charCodeAt(n);
+    }
+    
+    return new File([u8arr],  "cv.pdf", {type:mime});
+}
+
+ 
+ 

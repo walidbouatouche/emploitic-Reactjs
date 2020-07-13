@@ -208,10 +208,11 @@
   <legend> Your pdf</legend>
   <div *ngIf="userInfo" style="margin-top:10px ;">
 
-    <input type="file" (change)="updateCv($event)" />
-
-
-    <a style="width:30% ; margin-top: 20px;" *ngIf="userInfo" class="w3-button w3-blue w3-right w3-hover-blue"
+ <button style="width:30% ; margin-top: 20px;" (click)="updateCv()" class="w3-button w3-green  w3-hover-green "> Cv change</button>
+<br>
+    <a style="width:30% ; margin-top: 20px;" *ngIf="userInfo" class="w3-button w3-blue  w3-hover-blue"
       (click)="openCv()">open</a>
   </div>
+  
 </fieldset>
+ 
