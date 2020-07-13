@@ -55,13 +55,13 @@ exports.login = (req, res, next) => {
         if (err) _response(res, 400, { message: 'Error' });
 
         if (user.length != '0') {
-        
+
             const token = jwt.sign(
                 { userId: user[0].id },
                 'RANDOM_TOKEN_SECRET',
                 { expiresIn: '24h' }
             )
-     
+
 
             _response(res, 200, {
                 role: user[0].role,
@@ -99,8 +99,8 @@ exports.getUserById = (req, res, next) => {
 }
 
 exports.updateUser = (req, res, next) => {
-    const { info,  entrpName,experience, cat, deplom, userId, nom, prenom, adresse, phone } = req.body
-     console.log(req.body)
+    const { info, entrpName, experience, cat, deplom, userId, nom, prenom, adresse, phone } = req.body
+    console.log(req.body)
     const newInfo = JSON.parse(info);
     // update only the update date
     newInfo[0].updateAt = new Date()
@@ -228,22 +228,43 @@ exports.sendNewPass = (req, res, next) => {
 
 }
 
- 
 
 
 
-exports.getCv= (req, res, next) => {
-    const idUser= req.userId ;
-     const cv = idUser+'.pdf';
+
+exports.getCv = (req, res, next) => {
+    const idUser = req.userId;
+    const cv = idUser + '.pdf';
     res.sendFile(cv, { root: './pdfs' });
 
 
 
 }
-exports.getCvR= (req, res, next) => {
-    const data= req.data;
-    //  const cv = idUser+'.pdf';
-    // res.sendFile(cv, { root: './pdfs' });
+exports.getCvR = (req, res, next) => {
+    const idUser = req.params.iduser;
+    const idR = req.userId
+    //  const _data = JSON.parse(data)
+
+    // just  check if use postule the offres of re Rcuitrer
+    const QUERY = 'SELECT  * from myoffre, offre WHERE   `myoffre`.` id_user` =' + `${idUser}` + ' And  `offre`.`_id` = `myoffre`.`idoffre`' + 'And `offre`.`userId`=' + "'" + idR + "'"
+ 
+    CON.query(QUERY, function (err, result, fields) {
+        if (err) _response(res, 400, { message: 'invalid request' });
+
+        if (result.length > 0) {
+
+            const cv = idUser + '.pdf';
+            res.sendFile(cv, { root: './pdfs' });
+        }
+
+        else {
+            _response(res, 400, { message: 'invalid request' });
+        }
+    })
+
+
+
+
 
 
 

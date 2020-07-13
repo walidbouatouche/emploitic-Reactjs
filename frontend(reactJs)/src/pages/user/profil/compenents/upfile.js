@@ -2,6 +2,7 @@ import React, { useRef } from 'react'
 import { faDownload, faEdit } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import sendRequest from '../../../../_helpers/sendrequest'
+import { dowloadPdfBlob } from '../../../../_helpers/speedFunction'
 const FileUpload = ({ updateCvFile, _cv_link, userId, token }) => {
 
 
@@ -22,13 +23,8 @@ const FileUpload = ({ updateCvFile, _cv_link, userId, token }) => {
       method: 'GET',
       url: `/user/cv/`,
       responseType: 'blob',
-    }).then((response) => {
-      const url = window.URL.createObjectURL(new Blob([response.data]));
-      const link = document.createElement('a');
-      link.href = url;
-      link.setAttribute('download', userId + '.pdf');
-      document.body.appendChild(link);
-      link.click();
+    }).then(({ data }) => {
+      dowloadPdfBlob(data, userId)
 
     }
     )

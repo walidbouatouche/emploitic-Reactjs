@@ -1,8 +1,14 @@
 import React  ,{useState}from'react'
 import { Formik, Field, Form  } from 'formik';
 import * as Yup from 'yup';
- import  ShowImage from'../../../../_helpers/imageTo64'
-  
+import  ShowImage from'../../../../_helpers/imageTo64'
+const types = [
+    { "id": "1", "label": "CDI(Débutant /Junior)" },
+    { "id": "2", "label": "CDD(Débutant / Junior)" },
+    { "id": "3", "label": "CDI(Confirmé / Expérimenté)" },
+    { "id": "4", "label": "CDD(Confirmé / Expérimenté)" }
+
+]
 
  const AddEditfrom =({ offreinfo ,list ,addEditOffre ,location }) =>{
 
@@ -28,7 +34,7 @@ import * as Yup from 'yup';
                     entreprise: offreinfo.entreprise || '',
                     description: offreinfo.description || '',
                     location:offreinfo.location  || '',
-                    type:offreinfo.type  || '',
+                    type:offreinfo.type  || "CDI(Débutant /Junior)",
                     cat:offreinfo.cat  || '6',
                     date_d: offreinfo.date_d  ||   `${dt.getFullYear()}-${dt.getMonth()< 9 ? '0'+(dt.getMonth()+1):dt.getMonth()+1}-${dt.getDate()}`
                     ,
@@ -46,7 +52,7 @@ import * as Yup from 'yup';
                 location: Yup.string()
                 .required('location is required'),
                 type: Yup.string()
-                .required(' type is required'),
+                .required(' type is required').max(30),
                  
                 date_f: Yup.string()
                 .required(' date_end start is required'),
@@ -139,9 +145,14 @@ import * as Yup from 'yup';
                              </div>
                               <div >
                             <label htmlFor="type"> Type</label>
-                            <Field name="type" as="textarea" className={'w3-input w3-border' + (errors. type && touched. type ? ' w3-border w3-border-red' : '')} />
+                            <Field name="type" as="select" className={'w3-input w3-border' + (errors. type && touched. type ? ' w3-border w3-border-red' : '')} >
                             {errors.type && touched.type? (<div className="w3-text-red">{errors.type}</div>) : null}
+                         { types.map((item)=>    
+                  
+                  <option    key={item.id}value={item.label}>{item.label}</option>)
 
+              } 
+                               </Field>
                              <br />                      
                             </div>
                            

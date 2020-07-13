@@ -1,0 +1,217 @@
+<form *ngIf="userInfo" [formGroup]="validation_form" (ngSubmit)=" getDataFromForm(validation_form.value)">
+  <button type="submit" style="background: #ec9f05;" class="w3-button  w3-hover-orange w3-text-white w3-margin"
+    [disabled]="!validation_form.valid">
+    Update
+  </button>
+  <br />
+  <fieldset>
+    <legend> Nom</legend>
+
+    <div class="ion-text-center">
+      <input class=" w3-input w3-border w3-border-purple-light" style="width: 90%;" type="text" formControlName="nom"
+        required>
+    </div>
+
+
+    <div class="validation-errors">
+      <ng-container *ngFor=" let validation of  validation_messages.nom">
+        <div class="w3-text-red" *ngIf="validation_form.get('nom').hasError(validation.type)
+  && ( validation_form.get('nom').dirty || validation_form.get('nom').touched)
+  
+  
+  ">
+          {{ validation.message}}
+        </div>
+
+      </ng-container>
+    </div>
+  </fieldset>
+
+
+
+
+
+
+  <fieldset>
+    <legend> Prenom</legend>
+
+
+    <div class="ion-text-center"> <input class=" w3-input w3-border w3-border-gray-light" style="width: 90%;"
+        type=" text" formControlName="prenom" required>
+    </div>
+
+
+    <div class="validation-errors">
+      <ng-container *ngFor=" let validation of validation_messages.prenom">
+        <div class="w3-text-red" *ngIf=" validation_form.get('prenom').hasError(validation.type)
+
+&&(validation_form.get('prenom').dirty || validation_form.get('prenom').touched)
+">
+
+
+          {{ validation.message}}
+        </div>
+
+
+      </ng-container>
+
+    </div>
+  </fieldset>
+
+
+
+
+
+  <fieldset>
+    <legend> Phone</legend>
+    <div class="ion-text-center"> <input class=" w3-input w3-border w3-border-gray-light" style="width: 90%;"
+        type="number" formControlName="phone" required>
+    </div>
+
+
+    <div class="validation-errors">
+      <ng-container *ngFor=" let validation of validation_messages.phone">
+        <div class="w3-text-red" *ngIf=" validation_form.get('phone').hasError(validation.type)
+
+&&(validation_form.get('phone').dirty || validation_form.get('phone').touched)
+">
+
+
+          {{ validation.message}}
+        </div>
+
+
+      </ng-container>
+
+    </div>
+  </fieldset>
+
+
+
+
+
+  <fieldset>
+    <legend> Adresse</legend>
+
+    <div class="ion-text-center">
+
+      <select class=" w3-input w3-border w3-border-gray-light" style="width: 90%;" type=" text"
+        formControlName="adresse">
+        <option *ngFor="let l of locations " value={{l.label}}>{{l.label}}</option>
+
+      </select>
+    </div>
+
+
+    <div class="validation-errors">
+      <ng-container *ngFor=" let validation of validation_messages.adresse">
+        <div class="w3-text-red" *ngIf=" validation_form.get('adresse').hasError(validation.type)
+
+&&(validation_form.get('adresse').dirty || validation_form.get('adresse').touched)
+">
+
+
+          {{ validation.message}}
+        </div>
+
+
+      </ng-container>
+
+    </div>
+  </fieldset>
+
+
+
+
+  <fieldset>
+    <legend> categorie</legend>
+
+    <div class="ion-text-center">
+
+      <select class=" w3-input w3-border w3-border-gray-light" style="width: 90%;" type=" text" formControlName="cat">
+        <option *ngFor="let c of cat " value={{c.title}}>{{c.title}}</option>
+
+      </select>
+    </div>
+
+
+    <div class="validation-errors">
+      <ng-container *ngFor=" let validation of validation_messages.cat">
+        <div class="w3-text-red" *ngIf=" validation_form.get('cat').hasError(validation.type)
+
+&&(validation_form.get('cat').dirty || validation_form.get('cat').touched)
+">
+
+
+          {{ validation.message}}
+        </div>
+
+
+      </ng-container>
+
+    </div>
+  </fieldset>
+
+</form>
+
+
+
+<fieldset>
+
+  <!-- the id of model musst be not the other // [id]="'exp'" -->
+  <legend> Experience</legend>
+  <app-model [id]="'exp'" title="+">
+    <app-expo-ordeplo-form (getField)="addItemExp($event)"></app-expo-ordeplo-form>
+  </app-model>
+
+  <ng-container *ngIf="exps">
+    <div class="span" *ngFor=' let e of exps ; let i=index;'>
+      <app-model [id]="'_exp'+i" [title]="e.title ">
+        <app-exp-ordeplo [index]=i (getIndex)="removeItemExp($event)" [expDeplo]=e></app-exp-ordeplo>
+      </app-model>
+
+    </div>
+
+  </ng-container>
+
+</fieldset>
+
+<fieldset>
+  <legend> Deplome</legend>
+  <app-model [id]="'deplo'" title="+">
+
+    <app-expo-ordeplo-form (getField)="addItemDeplo($event)"></app-expo-ordeplo-form>
+
+  </app-model>
+
+  <ng-container *ngIf="depls">
+
+    <div class="span" *ngFor=' let d of depls ; let i=index '>
+      <app-model [id]="'_deplo'+i" [title]="''+d.title ">
+        <app-exp-ordeplo [index]=i (getIndex)="removeItemDeplo($event)" [expDeplo]=d></app-exp-ordeplo>
+
+      </app-model>
+
+    </div>
+  </ng-container>
+
+</fieldset>
+
+
+
+
+
+
+
+
+<fieldset style="width: 80%;">
+  <legend> Your pdf</legend>
+  <div *ngIf="userInfo" style="margin-top:10px ;">
+
+    <input type="file" (change)="updateCv($event)" />
+
+
+    <a style="width:30% ; margin-top: 20px;" *ngIf="userInfo" class="w3-button w3-blue w3-right w3-hover-blue"
+      (click)="openCv()">open</a>
+  </div>
+</fieldset>

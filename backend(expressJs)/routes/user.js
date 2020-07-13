@@ -4,6 +4,8 @@ const AUTH = require('../_helpers/auth') // test if login
 const ISADMIN = require('../_helpers/Isadmin_') // test if admin
 const USERCNTRL = require('../controllers/user')
 const MULTER = require('../_helpers/multer-config');
+const isRecruiter = require('../_helpers/IsR') // test if recruter
+
 // get
 
 ROUTER.get('/getuserbyid/:id', USERCNTRL.getUserById)
@@ -20,5 +22,5 @@ ROUTER.put('/upcvfile/', AUTH, MULTER, USERCNTRL.upfileCv)
 
 ROUTER.get('/cv/', AUTH, USERCNTRL.getCv)
 
-ROUTER.get('/_cv/', AUTH, USERCNTRL.getCvR)
+ROUTER.get('/_cv/:iduser', isRecruiter, USERCNTRL.getCvR)
 module.exports = ROUTER;

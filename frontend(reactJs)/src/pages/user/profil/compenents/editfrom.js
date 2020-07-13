@@ -61,8 +61,8 @@ enableReinitialize
                     nom: userinfo.nom || '',
                     prenom: userinfo.prenom || '',
                     phone: userinfo.phone || '',
-                    adresse:userinfo.adresse  || '',
-                    cat:userinfo._cat  || ''
+                    adresse:userinfo.adresse  || 'Relizane',
+                    cat:userinfo._cat  || '1'
           
                 }}
                 validationSchema={Yup.object().shape({

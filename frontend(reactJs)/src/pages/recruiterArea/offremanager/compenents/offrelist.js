@@ -5,6 +5,8 @@ import { faEdit, faTrash, faPlus, faUser } from '@fortawesome/free-solid-svg-ico
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import categorieoffre from '../../../../static/cat.json'
 import location  from '../../../../static/location.json'
+// import {typs} from '../../../../static/types'
+
 import Model from "../../../../compenents/model";
 import Offreform from '../compenents/offreform';
 import UserLIst from'./users'
@@ -19,8 +21,9 @@ const OffreList = ({ offrelist, _removeOffre, addOffre, editOffre, users, getUse
     }
 
     return (<>
+ 
         <Model id={'id01'} title={<FontAwesomeIcon icon={faPlus} />}>
-            <Offreform  location ={location} addEditOffre={addOffre} offreinfo={[{}]} list={categorieoffre} />
+            <Offreform   location ={location} addEditOffre={addOffre} offreinfo={[{}]} list={categorieoffre} />
         </Model>
         <table className="w3-table-all w3-width w3-margin-top">
 

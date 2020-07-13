@@ -4,7 +4,6 @@ import Auth from './auth'
 
 const URL = 'http://localhost:3000'
 
-
 const sendRequest = (config) => {
   config.baseURL = URL
   // get token from  Auth class   

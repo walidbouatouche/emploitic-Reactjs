@@ -9,8 +9,7 @@ import * as Yup from 'yup';
 
  /* https://jasonwatmore.com/post/2020/04/20/react-formik-combined-add-edit-create-update-form-example */
 
- // walid@dd.fr
- //walid@dd.fr
+ 
  const Editfrom =({userinfo,list,updateUser ,userId ,location }) =>{
 
  
