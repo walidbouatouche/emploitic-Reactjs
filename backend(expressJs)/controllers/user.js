@@ -1,7 +1,10 @@
 const CON = require('../config/sql.config');
 const jwt = require('jsonwebtoken'); // token for login
 const _response = require('../_helpers/_response')
-const nodemailer = require('nodemailer');
+// const nodemailer = require('nodemailer').mail;
+ 
+const sendmail = require('sendmail')();
+
 
 
 exports.signup = (req, res, next) => {
@@ -91,7 +94,7 @@ exports.getUserById = (req, res, next) => {
     phone  ,
     mail ,
     entrpName
-    FROM user WHERE id='${req.params.id}'`, function (err, result, fields) {
+    FROM user WHERE id='${req.userId}'`, function (err, result, fields) {
         if (err) _response(res, 400, { message: 'invalid request' });
         _response(res, 200, result)
     });
@@ -100,7 +103,7 @@ exports.getUserById = (req, res, next) => {
 
 exports.updateUser = (req, res, next) => {
     const { info, entrpName, experience, cat, deplom, userId, nom, prenom, adresse, phone } = req.body
-    console.log(req.body)
+  
     const newInfo = JSON.parse(info);
     // update only the update date
     newInfo[0].updateAt = new Date()
@@ -117,7 +120,7 @@ exports.updateUser = (req, res, next) => {
        info='${JSON.stringify(newInfo)}',
        entrpName='${entrpName}'
       WHERE
-      id = '${userId}'
+      id = '${req.userId}'
       
       `
     CON.query(QUERY, function (err, user, fields) {
@@ -186,45 +189,54 @@ exports.getUsersByOffre = (req, res, next) => {
 
 
 exports.sendNewPass = (req, res, next) => {
-    const { mail } = req.params;
-    const newPass = "223"
-    const hash = (newPass)
-    const QUERY = `
-      UPDATE user SET 
-      _pass='${hash}'
-      WHERE
-      mail = '${mail}'
-      `
-    CON.query(QUERY, function (err, user, fields) {
-        if (err) _response(res, 400, { message: 'Verfier Your email' });
 
-        var transporter = nodemailer.createTransport({
-            service: 'gmail',
-            auth: {
-                user: 'youremail@gmail.com',
-                pass: 'yourpassword'
-            }
-        });
+   
+    // sendmail({
+    //     from: 'test@finra.org',
+    //     to: 'walid.info27@gmail.com',
+    //     subject: 'Hello World',
+    //     html: 'Mail of test sendmail '
+    //   } )
 
-        var mailOptions = {
-            from: 'youremail@gmail.com',
-            to: 'myfriend@yahoo.com',
-            subject: ' rest pass ',
-            text: 'Your new Password' + hash
-        };
+    // const { mail } = req.params;
+    // const newPass = "223"
+    // const hash = (newPass)
+    // const QUERY = `
+    //   UPDATE user SET 
+    //   _pass='${hash}'
+    //   WHERE
+    //   mail = '${mail}'
+    //   `
+    // CON.query(QUERY, function (err, user, fields) {
+    //     if (err) _response(res, 400, { message: 'Verfier Your email' });
 
-        transporter.sendMail(mailOptions, function (error, info) {
-            if (error) {
-                _response(res, 400, { message: 'email not set' });
-            } else {
-                _response(res, 200, { message: "Email sent:" })
-            }
-        });
+    //     var transporter = nodemailer.createTransport({
+    //         service: 'gmail',
+    //         auth: {
+    //             user: 'youremail@gmail.com',
+    //             pass: 'yourpassword'
+    //         }
+    //     });
+
+    //     var mailOptions = {
+    //         from: 'youremail@gmail.com',
+    //         to: 'myfriend@yahoo.com',
+    //         subject: ' rest pass ',
+    //         text: 'Your new Password' + hash
+    //     };
+
+    //     transporter.sendMail(mailOptions, function (error, info) {
+    //         if (error) {
+    //             _response(res, 400, { message: 'email not set' });
+    //         } else {
+    //             _response(res, 200, { message: "Email sent:" })
+    //         }
+    //     });
 
 
 
-    }
-    )
+    // }
+    // )
 
 }
 

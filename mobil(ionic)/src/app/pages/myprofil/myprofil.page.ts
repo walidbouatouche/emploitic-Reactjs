@@ -28,15 +28,14 @@ export class MyprofilPage implements OnInit {
           this.ux.hideLoadingController();
           if (data.message) {
             this.ux.showToastController("update good !!", 'success')
-            this.ux.refrechPage()
-          }
+           }
 
         }
         , ({ response }) => {
           const message = (response != undefined && response != null) ? response.data.message : "somthing wrong";
           this.ux.hideLoadingController();
           this.ux.showToastController(message, 'success')
-          this.ux.refrechPage()
+         
 
         });
 
@@ -45,12 +44,7 @@ export class MyprofilPage implements OnInit {
   }
 
 
-  async ionViewWillEnter() {
-
-    // every render of Compenent we call the loading for Promises data 
-    this.ux.prepareLoadingController("Loading...");
-  }
-
+ 
   upCvPdf(formData) {
 
     /* 
@@ -65,9 +59,7 @@ export class MyprofilPage implements OnInit {
      
           this.ux.showToastController("update Cv ", 'success')
 
-          // Refrech it optional you can not do it or not 
-
-          this.ux.refrechPage()
+     
         
 
 
@@ -77,7 +69,7 @@ export class MyprofilPage implements OnInit {
         const message = (response != undefined && response != null) ? response.data.message : "somthing wrong";
         this.ux.hideLoadingController();
         this.ux.showToastController(message, 'danger')
-      });
+      }) 
 
 
   }

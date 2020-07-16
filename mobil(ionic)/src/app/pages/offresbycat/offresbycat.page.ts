@@ -9,18 +9,18 @@ import { Offre } from '../../models/offre.class'
   templateUrl: './offresbycat.page.html',
   styleUrls: ['./offresbycat.page.scss'],
 })
-export class OffresbycatPage  {
+export class OffresbycatPage {
   listOffres: Offre
   constructor(
     public activatedRoute: ActivatedRoute,
-    public offreService: OffreService ,
-    public ux:UxService
+    public offreService: OffreService,
+    public ux: UxService
   ) { }
 
-  componentDidMount() {
+  ionViewDidEnter() {
     this.getOffreBycat()
-
   }
+
   getOffreBycat() {
     this.ux.showLoadingController();
     this.activatedRoute.queryParams.subscribe(data => {
@@ -29,23 +29,20 @@ export class OffresbycatPage  {
           this.ux.hideLoadingController();
           this.listOffres = data;
 
-        },()=>{
+        },
+          ({ response }) => {
+            const message = (response != undefined && response != null) ? response.data.message : "somthing wrong";
+            this.ux.hideLoadingController();
+            this.ux.showToastController(message, 'danger')
+          });
 
-
-          this.ux.hideLoadingController();
-        })
 
     })
 
   }
 
-  async ionViewWillEnter() {
-    this.ux.prepareLoadingController("Loading...");
-  }
 
 
 
-  ionViewDidEnter() {
-    this.componentDidMount()
-  }
+
 }

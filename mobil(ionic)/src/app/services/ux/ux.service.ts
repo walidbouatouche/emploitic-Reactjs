@@ -9,14 +9,17 @@ export class UxService {
 
   loadingControllersub: any;
 
-  constructor(public menuController: MenuController, public toastController: ToastController, public loadingController: LoadingController) { }
+  constructor(public menuController: MenuController, public toastController: ToastController, public loadingController: LoadingController) {
+
+    this.prepareLoadingController("Loading...");
+   }
 
   async prepareLoadingController(message: string) {
     this.loadingControllersub = await this.loadingController.create({
       message: message,
-      mode: 'ios',
+      mode: 'md',
       spinner: "bubbles",
-      cssClass: "w3-text-red"
+    
     });
   }
 
@@ -27,6 +30,8 @@ export class UxService {
 
   hideLoadingController() {
     this.loadingControllersub.dismiss();
+    
+    this.prepareLoadingController("Loading...");
   }
   async showToastController(msg: string, color) {
 
@@ -35,6 +40,7 @@ export class UxService {
       duration: 2000,
       position: 'bottom',
       color: color,
+       
 
       buttons: [
 

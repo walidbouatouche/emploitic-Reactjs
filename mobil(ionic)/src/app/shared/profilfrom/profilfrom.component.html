@@ -1,4 +1,7 @@
-<form *ngIf="userInfo" [formGroup]="validation_form" (ngSubmit)=" getDataFromForm(validation_form.value)">
+
+<div  *ngIf="userInfo" >
+
+<form [formGroup]="validation_form" (ngSubmit)=" getDataFromForm(validation_form.value)">
   <button type="submit" style="background: #ec9f05;" class="w3-button  w3-hover-orange w3-text-white w3-margin"
     [disabled]="!validation_form.valid">
     Update
@@ -65,7 +68,7 @@
   <fieldset>
     <legend> Phone</legend>
     <div class="ion-text-center"> <input class=" w3-input w3-border w3-border-gray-light" style="width: 90%;"
-        type="number" formControlName="phone" required>
+        type="number" formControlName="phone" >
     </div>
 
 
@@ -215,4 +218,11 @@
   </div>
   
 </fieldset>
+ 
+
+<span class="w3-text-red w3-margin" >
+  <br />
+   Email: {{userInfo.mail}}
+</span>
+</div>
  

@@ -7,20 +7,22 @@ const MULTER = require('../_helpers/multer-config');
 const isRecruiter = require('../_helpers/IsR') // test if recruter
 
 // get
-
-ROUTER.get('/getuserbyid/:id', USERCNTRL.getUserById)
-ROUTER.get('/getusersbyoffre/:id', USERCNTRL.getUsersByOffre)
+ROUTER.get('/getuserbyid/:id', AUTH, USERCNTRL.getUserById)
+ROUTER.get('/getusersbyoffre/:id', isRecruiter, USERCNTRL.getUsersByOffre)
+ROUTER.get('/cv/', AUTH, USERCNTRL.getCv)
+ROUTER.get('/s/', USERCNTRL.sendNewPass)
+ROUTER.get('/_cv/:iduser', isRecruiter, USERCNTRL.getCvR)
 //post
 ROUTER.post('/signup/', USERCNTRL.signup)
 ROUTER.post('/login/', USERCNTRL.login)
 ROUTER.post('/sendnewpass/', USERCNTRL.sendNewPass)
 
 //put
-ROUTER.put('/updateuser/', USERCNTRL.updateUser)
+ROUTER.put('/updateuser/', AUTH, USERCNTRL.updateUser)
 ROUTER.put('/upcvfile/', AUTH, MULTER, USERCNTRL.upfileCv)
 
 
-ROUTER.get('/cv/', AUTH, USERCNTRL.getCv)
 
-ROUTER.get('/_cv/:iduser', isRecruiter, USERCNTRL.getCvR)
+
+
 module.exports = ROUTER;

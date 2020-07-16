@@ -98,8 +98,14 @@ export class AppComponent {
     this.route.navigate(['/'])
   }
   logout() {
+
+    if("Are you sure !!"){
+
+
     this.logoutService.logout()
     this.go()
+
+  }
 
   }
   menuOpened() {

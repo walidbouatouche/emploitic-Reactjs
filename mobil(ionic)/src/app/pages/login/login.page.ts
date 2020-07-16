@@ -98,10 +98,7 @@ export class LoginPage implements OnInit {
   }
 
 
-  async ionViewWillEnter() {
-    this.ux.prepareLoadingController("Loading...");
-  }
-
+  
 
 }
 

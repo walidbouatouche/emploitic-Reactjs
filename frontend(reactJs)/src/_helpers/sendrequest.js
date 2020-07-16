@@ -18,18 +18,13 @@ const sendRequest = (config) => {
     }).catch((e) => {
       console.log(e)
       if (e.response && (e.response.status === 500 || e.response.status === 401)) {
-       // Auth.clearAll() // logout if token not valid Or token expired
+        Auth.clearAll() // logout if token not valid Or token expired
 
       }
       else {
-        if (e.response) {
+       
           reject(e)
-        }
-        else {
-
-
-        }
-
+        
       }
 
     })

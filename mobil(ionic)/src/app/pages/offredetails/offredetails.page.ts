@@ -22,9 +22,8 @@ export class OffredetailsPage {
   ) { }
 
 
-  componentDidMount() {
+   ionViewDidEnter() {
     this.getOffreById()
-
   }
 
 
@@ -38,14 +37,18 @@ export class OffredetailsPage {
         //  we use [0] because data come in array with one element 
         this._oneOffre = data[0]
 
-      }, () => {
-        this.ux.hideLoadingController()
-      })
+      },
+       ({ response }) => {
+        const message = (response != undefined && response != null) ? response.data.message : "somthing wrong";
+        this.ux.hideLoadingController();
+        this.ux.showToastController(message, 'danger')
+      });
+
     })
   }
 
   postuler(idOffre) {
-   
+
 
     this.ux.showLoadingController();
     this.offreService.postulerOffre(idOffre, loginInfo.getUserId()).then(
@@ -63,13 +66,8 @@ export class OffredetailsPage {
 
 
 
-  async ionViewWillEnter() {
-    this.ux.prepareLoadingController("Loading...");
-  }
+ 
 
 
-
-   async ionViewDidEnter() {
-    this.componentDidMount()
-  }
+ 
 }

@@ -12,9 +12,7 @@ export class MyoffresPage {
   listOffres: any;
   constructor(public offreService: OffreService,
     public ux: UxService) { }
-  componentDidMount() {
-    this.getMyOffre()
-  }
+ 
 
   getMyOffre() {
     this.ux.showLoadingController()
@@ -23,24 +21,26 @@ export class MyoffresPage {
         this.ux.hideLoadingController()
         this.listOffres = data;
 
-      }, () => {
-        this.ux.hideLoadingController()
-      })
+      }
+     , ({ response }) => {
+      const message = (response != undefined && response != null) ? response.data.message : "somthing wrong";
+      this.ux.hideLoadingController();
+      this.ux.showToastController(message, 'danger')
+     
+
+    } ) 
 
   }
 
 
 
-  async ionViewWillEnter() {
-    this.ux.prepareLoadingController("Loading...");
-  }
-
-
+ 
 
 
 
 
   ionViewDidEnter() {
-    this.componentDidMount()
+    this.getMyOffre()
   }
+
 }

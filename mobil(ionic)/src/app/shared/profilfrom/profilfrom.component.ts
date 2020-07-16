@@ -2,12 +2,12 @@ import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { AuthService } from '../../services/auth/auth.service'
 import userInfo from '../../_helpers/userifos/login-infos'
-import { dowloadPdfBlob } from '../../_helpers/speed-function'
 import _locations from '../../static/location'
 import _cat from '../../static/cat'
 import { NativesService } from '../../_helpers/natives/natives.service'
-import { DomSanitizer } from '@angular/platform-browser';
-import{convertBase64ToBlob} from'../../_helpers/speed-function'
+import { convertBase64ToBlob } from '../../_helpers/speed-function'
+import { UxService } from '../../services/ux/ux.service'
+
 @Component({
   selector: 'app-profilfrom',
   templateUrl: './profilfrom.component.html',
@@ -19,7 +19,6 @@ export class ProfilfromComponent implements OnInit {
   userInfo: any;
   locations: any;
   cat: any;
-  iframeUrl: any;
   validation_form: FormGroup;  //https://angular.io/guide/form-validation
 
   depls: any = [];
@@ -76,10 +75,18 @@ export class ProfilfromComponent implements OnInit {
 
   }
 
-  constructor(public sanitizer: DomSanitizer, public native: NativesService, public authService: AuthService, public formbuilder: FormBuilder) {
+  constructor(
+
+    public native: NativesService,
+    public authService: AuthService,
+    public formbuilder: FormBuilder,
+    public ux: UxService
+  ) {
+
+    this.ux.showLoadingController()
     this.authService.getUserByid(userInfo.getUserId()).then(({ data }) => {
       this.userInfo = data[0]
-
+      this.ux.hideLoadingController()
       this.exps = JSON.parse(this.userInfo._exp)
       this.depls = JSON.parse(this.userInfo._deplo)
       const numericNumberReg = '^-?[0-9]\\d*(\\.\\d{1,2})?$';
@@ -128,7 +135,16 @@ export class ProfilfromComponent implements OnInit {
       })
 
 
-    })
+    }
+      ,
+      ({ response }) => {
+        const message = (response != undefined && response != null) ? response.data.message : "somthing wrong";
+        this.ux.hideLoadingController();
+        this.ux.showToastController(message, 'danger')
+      }
+
+
+    )
 
 
 
@@ -149,20 +165,18 @@ export class ProfilfromComponent implements OnInit {
     const formData = new FormData(); // userid + file
 
     formData.append('userId', userInfo.getUserId())  // get use id 
-    
-    this.native.getFileInfo().then((result) => {
-      // result.fileName;
-    const file= convertBase64ToBlob(result.fileData) ;
-    formData.append('pdf',file ) 
 
-    //  result.fileSize;
-    // result.fileType; 
-    
-    this.upPdfCv.emit(formData)
-  }).catch((error) => {
-     alert('File can not be uploaded.');
-  });
-   
+    this.native.getFileInfo().then((result) => {
+      // result.fileName;  // result.fileSize // result.fileType; 
+      const file = convertBase64ToBlob(result.fileData);
+      formData.append('pdf', file)
+
+      this.upPdfCv.emit(formData)
+    }).catch((error) => {
+      this.ux.showToastController('File can not be uploaded.', 'danger')
+
+    });
+
 
 
   }
@@ -173,11 +187,14 @@ export class ProfilfromComponent implements OnInit {
   }
 
   openCv() {
-
+    this.ux.showLoadingController()
     this.authService.getPdf().then(({ data }) => {
       this.native.downloadFile(data)
-
+      this.ux.hideLoadingController()
     }, () => {
+      this.ux.hideLoadingController();
+      this.ux.showToastController(" cv Not finde", 'danger')
+      this.ux.hideLoadingController()
 
     })
 
@@ -222,5 +239,17 @@ export class ProfilfromComponent implements OnInit {
     this.depls = Object.assign([], newDepls)
 
   }
+
+  async ionViewWillEnter() {
+    this.ux.prepareLoadingController("Loading...");
+  }
+
+
+
+
+
+
+
+
 
 }
