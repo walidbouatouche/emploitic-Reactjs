@@ -228,6 +228,24 @@ export function offres(state = {}, action) {
                 error: action.error
             }
 
+
+            case offreConstants.FUll_SEARCH_OFFRES_BEGIN :
+                return {
+                    ...state,
+                    loading: true
+                }
+            case offreConstants.FUll_SEARCH_OFFRES_SUCCESS:
+                // index 0
+                return {
+                    ...state,
+                    loading: false,
+                    offresSearchFull: action.offre.data
+                }
+            case offreConstants.FUll_SEARCH_OFFRES_FAIL:
+                return {
+                    error: action.error
+                }
+    
         default:
             return state;
     }

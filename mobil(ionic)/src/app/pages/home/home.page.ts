@@ -24,7 +24,7 @@ export class HomePage implements OnInit {
 
   ngOnInit() {
     this.cat = categorieoffre;
- 
+
   }
 
 

@@ -2,7 +2,7 @@ const CON = require('../config/sql.config');
 const jwt = require('jsonwebtoken'); // token for login
 const _response = require('../_helpers/_response')
 // const nodemailer = require('nodemailer').mail;
- 
+
 const sendmail = require('sendmail')();
 
 
@@ -103,7 +103,7 @@ exports.getUserById = (req, res, next) => {
 
 exports.updateUser = (req, res, next) => {
     const { info, entrpName, experience, cat, deplom, userId, nom, prenom, adresse, phone } = req.body
-  
+
     const newInfo = JSON.parse(info);
     // update only the update date
     newInfo[0].updateAt = new Date()
@@ -190,7 +190,7 @@ exports.getUsersByOffre = (req, res, next) => {
 
 exports.sendNewPass = (req, res, next) => {
 
-   
+
     // sendmail({
     //     from: 'test@finra.org',
     //     to: 'walid.info27@gmail.com',
@@ -259,7 +259,7 @@ exports.getCvR = (req, res, next) => {
 
     // just  check if use postule the offres of re Rcuitrer
     const QUERY = 'SELECT  * from myoffre, offre WHERE   `myoffre`.` id_user` =' + `${idUser}` + ' And  `offre`.`_id` = `myoffre`.`idoffre`' + 'And `offre`.`userId`=' + "'" + idR + "'"
- 
+
     CON.query(QUERY, function (err, result, fields) {
         if (err) _response(res, 400, { message: 'invalid request' });
 
@@ -267,6 +267,47 @@ exports.getCvR = (req, res, next) => {
 
             const cv = idUser + '.pdf';
             res.sendFile(cv, { root: './pdfs' });
+        }
+
+        else {
+            _response(res, 400, { message: 'invalid request' });
+        }
+    })
+
+
+
+
+
+
+
+}
+
+
+exports.getUserByR = (req, res, next) => {
+    const idUser = req.params.iduser;
+    const idR = req.userId
+    //  const _data = JSON.parse(data)
+
+    // just  check if use postule the offres of re Rcuitrer
+    const QUERY = 'SELECT  * from myoffre, offre WHERE   `myoffre`.` id_user` =' + `${idUser}` + ' And  `offre`.`_id` = `myoffre`.`idoffre`' + 'And `offre`.`userId`=' + "'" + idR + "'"
+
+    CON.query(QUERY, function (err, result, fields) {
+        if (err) _response(res, 400, { message: 'invalid request' });
+
+        if (result.length > 0) {
+
+            CON.query(`SELECT _exp, _cv_link ,	_cat ,_deplo ,info  ,
+            nom,
+            prenom,
+            adresse	, 
+            phone  ,
+            mail ,
+            entrpName
+            FROM user WHERE id='${idUser}'`, function (err, result, fields) {
+                if (err) _response(res, 400, { message: 'invalid request' });
+                _response(res, 200, result)
+            });
+
         }
 
         else {

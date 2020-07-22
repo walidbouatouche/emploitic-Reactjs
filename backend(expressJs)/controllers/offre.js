@@ -115,7 +115,7 @@ exports.updateOffre = (req, res, next) => {
       titre,
       type,
       _id,
-      active ,
+      active,
       entrpName
     } = req.body.data
   const QUERY = ` 
@@ -285,8 +285,15 @@ exports.getOffreSame = (req, res, next) => {
 }
 
 
+exports.searchFullOffres = (req, res, next) => {
 
+  const { char } = req.params;
 
+  const QUERY = `SELECT * FROM offre   WHERE titre LIKE '%${char}%' or  description LIKE '%${char}%'`
+  CON.query(QUERY, (err, result) => {
+    if (err) _response(res, 400, { message: 'invalidRequest' });
+    _response(res, 200, result)
+  });
 
-
+}
 

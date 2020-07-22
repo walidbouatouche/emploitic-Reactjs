@@ -19,6 +19,12 @@ const Navabar = () => {
             to: "/"
 
         }
+        ,
+        {
+            id: 2,
+            title: "search",
+            to: 'search'
+        }
     ]
 
     const usersmenu = [
@@ -82,6 +88,8 @@ const Navabar = () => {
             <Link to='/login' className="w3-right">
                 <FontAwesomeIcon className="w3-text-orange" icon={Icon.faUser} />
             </Link>
+            <Link className="w3-padding" to='/search'>
+                search     </Link>
         </div>)
 
     }

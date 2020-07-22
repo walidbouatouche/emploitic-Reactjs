@@ -6,7 +6,7 @@ exports._deleteOffreById = (req, res, next) => {
     const schema = Joi.object({
         id: Joi.number().required()
     })
-    validateRequest(next, schema, req.params)
+    validateRequest(res,next, schema, req.params)
 
 }
 

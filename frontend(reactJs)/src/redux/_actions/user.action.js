@@ -8,7 +8,8 @@ export const _userAction = {
     updateCvFile,
     updateUser,
     getUserByid,
-    getUsersByOffre
+    getUsersByOffre,
+    getUserByR
 }
 
 
@@ -166,6 +167,34 @@ function getUsersByOffre(idOffre) {
         }, ({ response }) => {
             dispatch({
                 type: userConstants.GET_USERS_BY_OFFRE_FAIL,
+                error: (response != undefined && response != null) ? response.data.message : "somthing wrong"
+
+            })
+        })
+    }
+}
+
+function getUserByR(id) {
+
+    return dispatch => {
+        dispatch({
+            type: userConstants.GET_USER_BY_R_REQUEST,
+        })
+
+        return sendRequest({
+            method: 'GET',
+            url: `/user/getuserbyr/${id}`,
+
+        }).then(user => {
+
+            dispatch({
+                type: userConstants.GET_USER_BY_R_SUCCESS,
+                user
+            })
+
+        }, ({ response }) => {
+            dispatch({
+                type: userConstants.GET_USER_BY_R_FAILURE,
                 error: (response != undefined && response != null) ? response.data.message : "somthing wrong"
 
             })

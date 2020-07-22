@@ -25,7 +25,7 @@ enableReinitialize
                     nom: userinfo.nom || '',
                     prenom: userinfo.prenom || '',
                     phone: userinfo.phone || '',
-                    adresse:userinfo.adresse  || '',
+                    adresse:userinfo.adresse  || 'Relizane',
                     entrpName:userinfo.entrpName  || ''
            
                 }}

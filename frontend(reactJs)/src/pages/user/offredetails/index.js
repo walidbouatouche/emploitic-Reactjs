@@ -48,7 +48,7 @@ const Offredetail = ({ match }) => {
             </div>
 
             <div className="w3-padding">
-                <p className="w3-orange w3-text-white  w3-padding-16" style={{ width: "50%" }}> Les candidats ayant postulé à cette offre ont également postulé à ces offres</p>
+                <p className="w3-orange w3-text-white  w3-padding-16" style={{ width: "50%" , borderRadius:"20px" }}> Les candidats ayant postulé à cette offre ont également postulé à ces offres</p>
                 <ul className="w3-ul w3-hoverable w3-white">
                     {state.offres.offresSame && <ListSame list={state.offres.offresSame}></ListSame>}
                 </ul>

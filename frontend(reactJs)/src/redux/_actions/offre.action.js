@@ -13,8 +13,9 @@ export const _offreAction = {
     getMyOffre,
     getOffreNumber,
     getNumberOffresByCat,
-    getOffreByCatWithPagination ,
-    getOffreSame 
+    getOffreByCatWithPagination,
+    getOffreSame,
+    fullSearchOffres
 }
 
 /*  
@@ -406,6 +407,32 @@ function getOffreSame(idOffre) {
             () => {
                 dispatch({
                     type: offreConstants.GET_SAME_OFFRES_FAIL,
+                    error: "somthing Wrong"
+                })
+            }
+        )
+    }
+}
+
+
+function fullSearchOffres(char) {
+
+    return dispatch => {
+        dispatch({
+            type: offreConstants.FUll_SEARCH_OFFRES_BEGIN
+        })
+        return sendRequest({
+            method: 'GET',
+            url: `/offre/searchfull/${char}`
+        }).then((offre) => {
+            dispatch({
+                type: offreConstants.FUll_SEARCH_OFFRES_SUCCESS,
+                offre
+            })
+        },
+            () => {
+                dispatch({
+                    type: offreConstants.FUll_SEARCH_OFFRES_FAIL,
                     error: "somthing Wrong"
                 })
             }

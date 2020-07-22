@@ -22,14 +22,17 @@ ROUTER.get('/getoffrebylimit/:limit', isRecruiter, OFFRECNTRL.getOffreByLimit);
 ROUTER.get('/getoffrenumber', isRecruiter, OFFRECNTRL.getOffreNumber)
 
 // methods Users
-ROUTER.get('/getoffrebyid/:id', OFFRECNTRL.getOffreById);
-ROUTER.get('/getoffrebycat/:catId', OFFRECNTRL.getOffreByCat);
+
 ROUTER.get('/getmyoffre/:id', AUTH, OFFRECNTRL.getMyoffres);
-ROUTER.get('/sameoffres/:id', OFFRECNTRL.getOffreSame)
-ROUTER.get('/getoffrenumberbycat/:catId', OFFRECNTRL.getNumberOffresByCat)
-ROUTER.get('/getOffrebycatwithpagination/:data', OFFRECNTRL.getOffreByCatWithPagination)
 ROUTER.post('/postuleroffres', AUTH, OFFRECNTRL.postulerOffres)
 
 
+// vistor methodes 
+ROUTER.get('/sameoffres/:id', OFFRECNTRL.getOffreSame)
+ROUTER.get('/getoffrebyid/:id', OFFRECNTRL.getOffreById);
+ROUTER.get('/getoffrebycat/:catId', OFFRECNTRL.getOffreByCat);
+ROUTER.get('/getoffrenumberbycat/:catId', OFFRECNTRL.getNumberOffresByCat)
+ROUTER.get('/getOffrebycatwithpagination/:data', OFFRECNTRL.getOffreByCatWithPagination)
+ROUTER.get('/searchfull/:char', OFFRECNTRL.searchFullOffres)
 
 module.exports = ROUTER;

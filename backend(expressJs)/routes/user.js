@@ -12,6 +12,11 @@ ROUTER.get('/getusersbyoffre/:id', isRecruiter, USERCNTRL.getUsersByOffre)
 ROUTER.get('/cv/', AUTH, USERCNTRL.getCv)
 ROUTER.get('/s/', USERCNTRL.sendNewPass)
 ROUTER.get('/_cv/:iduser', isRecruiter, USERCNTRL.getCvR)
+
+// if the user postuler  one  offre of rectuirer 
+// he have acces to see the profil user
+ROUTER.get('/getuserbyr/:iduser', isRecruiter, USERCNTRL.getUserByR)
+
 //post
 ROUTER.post('/signup/', USERCNTRL.signup)
 ROUTER.post('/login/', USERCNTRL.login)
