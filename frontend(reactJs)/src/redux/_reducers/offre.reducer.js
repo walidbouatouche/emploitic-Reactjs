@@ -229,23 +229,40 @@ export function offres(state = {}, action) {
             }
 
 
-            case offreConstants.FUll_SEARCH_OFFRES_BEGIN :
-                return {
-                    ...state,
-                    loading: true
-                }
-            case offreConstants.FUll_SEARCH_OFFRES_SUCCESS:
-                // index 0
-                return {
-                    ...state,
-                    loading: false,
-                    offresSearchFull: action.offre.data
-                }
-            case offreConstants.FUll_SEARCH_OFFRES_FAIL:
-                return {
-                    error: action.error
-                }
-    
+        case offreConstants.FUll_SEARCH_OFFRES_BEGIN:
+            return {
+                ...state,
+                loading: true
+            }
+        case offreConstants.FUll_SEARCH_OFFRES_SUCCESS:
+            // index 0
+            return {
+                ...state,
+                loading: false,
+                offresSearchFull: action.offre.data
+            }
+        case offreConstants.FUll_SEARCH_OFFRES_FAIL:
+            return {
+                error: action.error
+            }
+        case offreConstants.GET_OFFRES_BY_R_BEGIN:
+            return {
+                ...state,
+                loading: true
+            }
+        case offreConstants.GET_OFFRES_BY_R_SUCCESS:
+
+            return {
+                ...state,
+                loading: false,
+                OffresByR: action.offre.data
+            }
+        case offreConstants.GET_OFFRES_BY_R_SUCCESS:
+            return {
+                error: action.error
+            }
+
+
         default:
             return state;
     }

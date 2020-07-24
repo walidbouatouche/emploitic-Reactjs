@@ -297,3 +297,17 @@ exports.searchFullOffres = (req, res, next) => {
 
 }
 
+
+
+exports.getOffresByRecruiter = (req, res, next) => {
+
+  const { idRecruiter } = req.params;
+
+  const QUERY = `SELECT * FROM offre   WHERE userId='${idRecruiter}' `
+  CON.query(QUERY, (err, result) => {
+    if (err) _response(res, 400, { message: 'invalidRequest' });
+    _response(res, 200, result)
+  });
+
+}
+

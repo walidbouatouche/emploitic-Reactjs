@@ -15,7 +15,8 @@ export const _offreAction = {
     getNumberOffresByCat,
     getOffreByCatWithPagination,
     getOffreSame,
-    fullSearchOffres
+    fullSearchOffres ,
+    getOffresByRecruiter
 }
 
 /*  
@@ -433,6 +434,34 @@ function fullSearchOffres(char) {
             () => {
                 dispatch({
                     type: offreConstants.FUll_SEARCH_OFFRES_FAIL,
+                    error: "somthing Wrong"
+                })
+            }
+        )
+    }
+}
+
+
+
+
+function getOffresByRecruiter(idR) {
+
+    return dispatch => {
+        dispatch({
+            type: offreConstants.GET_OFFRES_BY_R_BEGIN
+        })
+        return sendRequest({
+            method: 'GET',
+            url: `/offre/getoffresbyrecruiter/${idR}`
+        }).then((offre) => {
+            dispatch({
+                type: offreConstants.GET_OFFRES_BY_R_SUCCESS,
+                offre
+            })
+        },
+            () => {
+                dispatch({
+                    type: offreConstants.GET_OFFRES_BY_R_FAIL,
                     error: "somthing Wrong"
                 })
             }

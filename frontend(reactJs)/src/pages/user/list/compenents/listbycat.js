@@ -14,7 +14,7 @@ const Listlist = ({ list }) => {
                     {item.imguri && <img src={item.imguri} alt="Image" className="w3-left w3-margin-right" style={{ width: '50px' }} />
                     }                    <span className="w3-large  w3-text-black"> {item.titre}</span>
                     <br />
-                    <span>{item.entreprise}</span>
+                    <Link style={{ color: "blue" }} to={'/offrebyR/' + item.userId} ><span>{item.entreprise}</span></Link>
                     <div className="w3-row">
                         <div className="w3-col  11 ">
                             <div className="w3-row">

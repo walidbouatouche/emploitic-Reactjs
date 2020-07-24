@@ -1,6 +1,6 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFilePdf } from '@fortawesome/free-solid-svg-icons'
+import { faFilePdf, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
 import Auth from '../../../../_helpers/auth'
 import sendRequest from '../../../../_helpers/sendrequest'
@@ -50,8 +50,8 @@ const UsersList = ({ users, idOffre }) => {
 
                         <th>
                             <Link className="w3-text-black" to={`/userprofil/${item.id}`}  >
-                                Profil
-   s
+                            <FontAwesomeIcon icon={faArrowRight} />
+
                             </Link>
                         </th>
 

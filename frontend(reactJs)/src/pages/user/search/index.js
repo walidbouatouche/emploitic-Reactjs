@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback }  from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
 import Layout from '../../../layout/index'
@@ -32,7 +32,6 @@ const SearchOffrePage = () => {
                 </ul>
 
             </div>
-
         </Layout>
     )
 

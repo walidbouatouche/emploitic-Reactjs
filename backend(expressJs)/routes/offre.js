@@ -34,5 +34,5 @@ ROUTER.get('/getoffrebycat/:catId', OFFRECNTRL.getOffreByCat);
 ROUTER.get('/getoffrenumberbycat/:catId', OFFRECNTRL.getNumberOffresByCat)
 ROUTER.get('/getOffrebycatwithpagination/:data', OFFRECNTRL.getOffreByCatWithPagination)
 ROUTER.get('/searchfull/:char', OFFRECNTRL.searchFullOffres)
-
+ROUTER.get('/getoffresbyrecruiter/:idRecruiter', OFFRECNTRL.getOffresByRecruiter)
 module.exports = ROUTER;

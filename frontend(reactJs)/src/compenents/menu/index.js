@@ -22,7 +22,7 @@ const Navabar = () => {
         ,
         {
             id: 2,
-            title: "search",
+            title: "Advanced Search",
             to: 'search'
         }
     ]
@@ -89,7 +89,7 @@ const Navabar = () => {
                 <FontAwesomeIcon className="w3-text-orange" icon={Icon.faUser} />
             </Link>
             <Link className="w3-padding" to='/search'>
-                search     </Link>
+            Advanced Search   </Link>
         </div>)
 
     }
