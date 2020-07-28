@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useEffect} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
 import { _offreAction } from '../../../redux/_actions/offre.action';
 
 import Layout from '../../../layout/index'
-import Listbycat from './compenents/listbycat'
+import Listbycat from '../listoffres'
 import Spinner from '../../../compenents/spinner'
 import { Alerts } from '../../../compenents/alerts'
 import Pagination from '../../../compenents/pagination'
@@ -45,8 +45,8 @@ const Listpage = ({ match }) => {
         <Layout>
             <div className="w3-white w3-margin">
 
-                <div className="w3-container w3-padding  w3-orange text-white">
-                    <h4>Offres </h4>
+                <div className="w3-container w3-padding  w3-orange w3-text-white">
+                    <span>Offres </span>
                 </div>
 
                 {

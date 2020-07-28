@@ -10,7 +10,7 @@ import OffreDetail from './compenents/offrevwier'
 
 import Auth from '../../../_helpers/auth'
 
-import ListSame from '../list/compenents/listbycat'
+import ListSame from '../listoffres'
 // page show a content of offre 
 const Offredetail = ({ match }) => {
 
@@ -21,6 +21,7 @@ const Offredetail = ({ match }) => {
     useEffect(() => {
         dispatch(_offreAction.getOffreById(id))
         dispatch(_offreAction.getOffreSame(id))
+        window.scrollTo(0, 0)
 
     }, [id])
 

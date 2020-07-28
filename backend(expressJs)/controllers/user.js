@@ -191,52 +191,47 @@ exports.getUsersByOffre = (req, res, next) => {
 exports.sendNewPass = (req, res, next) => {
 
 
-    // sendmail({
-    //     from: 'test@finra.org',
-    //     to: 'walid.info27@gmail.com',
-    //     subject: 'Hello World',
-    //     html: 'Mail of test sendmail '
-    //   } )
 
-    // const { mail } = req.params;
-    // const newPass = "223"
-    // const hash = (newPass)
-    // const QUERY = `
-    //   UPDATE user SET 
-    //   _pass='${hash}'
-    //   WHERE
-    //   mail = '${mail}'
-    //   `
-    // CON.query(QUERY, function (err, user, fields) {
-    //     if (err) _response(res, 400, { message: 'Verfier Your email' });
 
-    //     var transporter = nodemailer.createTransport({
-    //         service: 'gmail',
-    //         auth: {
-    //             user: 'youremail@gmail.com',
-    //             pass: 'yourpassword'
-    //         }
-    //     });
+    const { mail } = req.params;
+    const newPass = "random('465645')"
+    const hash = (newPass)
+    const QUERY = `
+      UPDATE user SET 
+      _pass='${hash}'
+      WHERE
+      mail = '${mail}'
+      `
+    CON.query(QUERY, function (err, user, fields) {
+        if (err) _response(res, 400, { message: 'Verfier Your email' });
 
-    //     var mailOptions = {
-    //         from: 'youremail@gmail.com',
-    //         to: 'myfriend@yahoo.com',
-    //         subject: ' rest pass ',
-    //         text: 'Your new Password' + hash
-    //     };
+        var transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: 'youremail@gmail.com',
+                pass: 'yourpassword'
+            }
+        });
 
-    //     transporter.sendMail(mailOptions, function (error, info) {
-    //         if (error) {
-    //             _response(res, 400, { message: 'email not set' });
-    //         } else {
-    //             _response(res, 200, { message: "Email sent:" })
-    //         }
-    //     });
+        var mailOptions = {
+            from: 'youremail@gmail.com',
+            to: mail,
+            subject: ' rest pass ',
+            text: 'Your new Password' + hash
+        };
+
+        transporter.sendMail(mailOptions, function (error, info) {
+            if (error) {
+                _response(res, 400, { message: 'email not set' });
+            } else {
+                _response(res, 200, { message: "Email sent:" })
+            }
+        });
 
 
 
-    // }
-    // )
+    }
+    )
 
 }
 

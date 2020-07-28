@@ -8,7 +8,7 @@ const serverInfo = {
     database: 'db'
 }
 
-
+ 
 
 const con = mysql.createConnection(serverInfo);
 con.connect((errors) => {

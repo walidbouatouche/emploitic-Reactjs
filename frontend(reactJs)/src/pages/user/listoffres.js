@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from "react-router-dom"
 
 
-// compenent show list of offres by categoreis
+// compenent show list of offres 
 const Listlist = ({ list }) => {
 
     return (

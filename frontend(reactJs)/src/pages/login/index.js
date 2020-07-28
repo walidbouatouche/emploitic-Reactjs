@@ -65,7 +65,7 @@ const LoginOrRegister = ({ history }) => {
         <div className="w3-text-center  w3-padding">
             <br />
             <br />
-            <div style={{ width: '50%', marginRight: "auto", marginLeft: "auto" }} className=" w3-border w3-white  w3-text-center  ">
+            <div style={{ width: '100%', marginRight: "auto", marginLeft: "auto" }} className=" w3-border w3-white  w3-text-center  ">
                 <br />
                 <br />
                 <h5 className="w3-text-center " style={{ width: '40%', marginRight: "auto", marginLeft: "auto" }}  >   Welcom To login page</h5>
@@ -111,6 +111,6 @@ export default LoginOrRegister
 
 function Button({ title }) {
     return (<div style={{ width: '50%', marginRight: "auto", marginLeft: "auto" }}>
-        <button style={{ width: '100%' }} className="w3-btn w3-orange w3-padding w3-margin w3-large">{title}</button>
+        <button style={{ width: '100%' }} className="w3-button w3-orange w3-padding w3-margin w3-large">{title}</button>
     </div>)
 }

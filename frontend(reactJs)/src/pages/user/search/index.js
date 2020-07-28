@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import Layout from '../../../layout/index'
 import Search from '../../../compenents/search'
-import ListResult from '../list/compenents/listbycat'
+import ListResult from '../listoffres'
 import { _offreAction } from '../../../redux/_actions/offre.action'
 //The first page that the user sees
 

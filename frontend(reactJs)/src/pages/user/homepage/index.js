@@ -12,7 +12,7 @@ const Home = () => {
 
             <div className="w3-white w3-margin">
                 <div className="w3-container w3-padding-16  w3-orange text-white">
-                    <h4>Offres d'emploi par fonction</h4>
+                    <span className="w3-padding-16  w3-orange w3-text-white">Offres d'emploi par fonction</span>
                 </div>
                 <ul className="w3-ul w3-hoverable w3-white">
 

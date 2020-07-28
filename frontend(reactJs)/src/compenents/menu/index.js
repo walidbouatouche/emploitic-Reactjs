@@ -23,7 +23,7 @@ const Navabar = () => {
         {
             id: 2,
             title: "Advanced Search",
-            to: 'search'
+            to: '/search'
         }
     ]
 

@@ -33,7 +33,7 @@ const types = [
                     titre: offreinfo.titre || '',
                     entreprise: offreinfo.entreprise || '',
                     description: offreinfo.description || '',
-                    location:offreinfo.location  || '',
+                    location:offreinfo.location  || 'Adrar',
                     type:offreinfo.type  || "CDI(Débutant /Junior)",
                     cat:offreinfo.cat  || '6',
                     date_d: offreinfo.date_d  ||   `${dt.getFullYear()}-${dt.getMonth()< 9 ? '0'+(dt.getMonth()+1):dt.getMonth()+1}-${dt.getDate()}`
@@ -63,7 +63,7 @@ const types = [
              let secondDate=new Date(fields.date_f )
              if( firstDate > secondDate){
 
-                alert(" choose the current date")
+                alert("  End Date not valid")
                 return false ;
 
    }

@@ -169,7 +169,7 @@ export function offres(state = {}, action) {
             // index 0
             return {
                 ...state,
-                nbr: action.nbr.data[0]['count(*)']
+                nbr: action.nbr?.data[0]['count(*)']
             }
         case offreConstants.NBR_OFFRES_FAIL:
             return {
@@ -203,7 +203,7 @@ export function offres(state = {}, action) {
             return {
                 ...state,
                 loading: false,
-                nbrPgn: action.nbr.data[0]['count(*)']
+                nbrPgn: action.nbr?.data[0]['count(*)']
             }
         case offreConstants.NBR_OFFRES_C_FAIL:
             return {

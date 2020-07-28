@@ -10,8 +10,7 @@ module.exports = (req, res, next) => {
     console.log(userId)
     if (parseInt(userId)) {
         req.userId=userId ;
-        console.log('connected')
-        next()
+         next()
     }
     else {
         _response(res, 401, { message: 'Unauthorized' })

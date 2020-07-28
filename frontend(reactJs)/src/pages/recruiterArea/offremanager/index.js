@@ -77,12 +77,16 @@ const Offremanager = () => {
         dispatch(_offreAction.addOffre(data))
         getMoreOffre(incrementByLimit)
 
+        // just for hide model
+        document.getElementById('id01').style.display = 'none'
+
 
     }
     function editOffre(data) {
         dispatch(_offreAction.updateOffre(data))
         getMoreOffre(incrementByLimit)
-
+               // just for hide model
+   document.getElementById(data._id).style.display = 'none'
 
     }
 

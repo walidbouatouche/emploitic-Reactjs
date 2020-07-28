@@ -13,6 +13,7 @@ module.exports = (req, res, next) => {
         if (err) _response(res, 401, { message: 'invalidRequest' }); // error sql syntax
         if (result.length > 0) {
             // is admin
+            req.userId = userId;
             next()
         }
         else {
