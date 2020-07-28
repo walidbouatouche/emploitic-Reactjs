@@ -16,13 +16,13 @@ const routes: Routes = [
   {
     path: 'offredetails',
     loadChildren: () => import('./pages/offredetails/offredetails.module').then( m => m.OffredetailsPageModule)
-    , canActivate: [GuardPagesGuard]
+    // , canActivate: [GuardPagesGuard]
  
   },
   {
     path: 'offresbycat',
     loadChildren: () => import('./pages/offresbycat/offresbycat.module').then( m => m.OffresbycatPageModule)
-    , canActivate: [GuardPagesGuard]
+    // , canActivate: [GuardPagesGuard]
   },
   {
     path: 'myoffres',

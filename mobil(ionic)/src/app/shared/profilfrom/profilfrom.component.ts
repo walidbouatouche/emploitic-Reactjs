@@ -240,10 +240,7 @@ export class ProfilfromComponent implements OnInit {
 
   }
 
-  async ionViewWillEnter() {
-    this.ux.prepareLoadingController("Loading...");
-  }
-
+ 
 
 
 
