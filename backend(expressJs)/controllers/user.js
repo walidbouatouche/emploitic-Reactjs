@@ -49,8 +49,6 @@ exports.signup = (req, res, next) => {
 exports.login = (req, res, next) => {
 
     // connect
-
-
     const { mail, password } = req.body.data;
     const hash = (password);
     const QUERY = `SELECT * FROM user  WHERE mail='${mail}'   and  _pass='${hash}'  `

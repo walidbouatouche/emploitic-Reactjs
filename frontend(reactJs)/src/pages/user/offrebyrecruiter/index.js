@@ -26,7 +26,7 @@ const OffresByRecruiter = ({ match }) => {
 
             <div className="w3-white w3-margin">
                 <div className="w3-container w3-padding  w3-orange w3-text-white">
-                    <span>        {state.offres.OffresByR && state.offres.OffresByR[0].entreprise}
+                    <span>        {state.offres.OffresByR && state.offres.OffresByR[0]?.entreprise}
                     </span>
                 </div>
                 <ul className="w3-ul w3-hoverable w3-white">

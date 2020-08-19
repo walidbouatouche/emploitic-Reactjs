@@ -13,7 +13,6 @@ exports.searchOffre = (req, res, next) => {
     _response(res, 200, result)
   })
 
-
 }
 
 exports.getOffreByLimit = (req, res, next) => {

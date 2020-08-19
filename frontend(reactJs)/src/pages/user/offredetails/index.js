@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { _offreAction } from '../../../redux/_actions/offre.action';
 
 import Layout from '../../../layout/index'
- 
+
 import { Alerts } from '../../../compenents/alerts'
 import OffreDetail from './compenents/offrevwier'
 
@@ -26,7 +26,7 @@ const Offredetail = ({ match }) => {
     }, [id])
 
     const postuler = (id) => {
-     
+
         dispatch(_offreAction.postulerOffre(id, Auth.getUserId()))
     }
 
@@ -49,9 +49,9 @@ const Offredetail = ({ match }) => {
             </div>
 
             <div className="w3-padding">
-                <p className="w3-orange w3-text-white  w3-padding-16" style={{ width: "50%" , borderRadius:"20px" }}> Les candidats ayant postulé à cette offre ont également postulé à ces offres</p>
+                <p className="w3-orange w3-text-white  w3-padding-16" style={{ width: "50%", borderRadius: "20px" }}> Les candidats ayant postulé à cette offre ont également postulé à ces offres</p>
                 <ul className="w3-ul w3-hoverable w3-white">
-                    {state.offres.offresSame && <ListSame list={state.offres.offresSame}></ListSame>}
+                    {state.offres.offresSame && !state.offres.error && <ListSame list={state.offres.offresSame}></ListSame>}
                 </ul>
             </div>
         </Layout>

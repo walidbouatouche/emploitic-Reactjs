@@ -11,7 +11,6 @@ export class SendRequestService {
   urlBase = 'http://localhost:3000/';
 
 
-
   constructor(public logout: LogoutService) {
   }
 
@@ -19,7 +18,6 @@ export class SendRequestService {
   sendRequest = (config) => {
 
     try {
-
 
       config.baseURL = this.urlBase
       // get token from  Auth class   
