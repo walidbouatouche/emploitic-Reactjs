@@ -1,20 +1,20 @@
 
 
 
- #  EMPLOITIK DEMO V 0.0.1: React native + Reactjs
+ #  EMPLOITIK   V 0.0.1: + Reactjs +express js
 
 <img src='plan.png' width='700px' height='500px'>
 
 
 ## Getting Started
 
-#git clone https://github.com/walidbouatouche/emploitic-React.git
+#git clone https://github.com/walidbouatouche/emploitic-Reactjs
 
 ###  next step 
 
 
 ```
- cd frontend(reactJs) /mobil(ionic-angular)/backend(expressJs) / mobil(ReactNative-en progress)
+ cd frontend(reactJs)   / backend(expressJs) / 
 ```
  
 
@@ -54,20 +54,6 @@ testing with enzyme and jest
 * git push heroku master
 
 
-
-#mobil(ionic-angular)
-* ionic cordova build android --prod
-
-
-
-
-#mobil(ReactNative-en progress)
-
-  * let the project running 
-  * open other window   got to project  :
-                                       * login with expo
-                                       * set EXPO_DEBUG=true
-                                       * expo build:android 
 
 
  
